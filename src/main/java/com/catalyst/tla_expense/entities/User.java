@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -29,7 +30,8 @@ public class User {
 	@Column(name="user_password")
 	private String userPassword;
 
-	@NotNull
+	@NotNull 
+	@Pattern(regexp="^[a-zA-Z0-9._%+-]{1,}[@]{1}[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z]{2,}$")
 	@Column(name="user_email", unique = true)
 	private String userEmail;
 	
