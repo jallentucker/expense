@@ -1,5 +1,8 @@
 package com.catalyst.tla_expense.entities;
 
+
+
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="users", schema="public")
 public class User {
@@ -23,15 +28,14 @@ public class User {
 	@NotNull
 	@Column(name="user_password")
 	private String userPassword;
-	
-	
+
 	@NotNull
 	@Column(name="user_email", unique = true)
 	private String userEmail;
 	
-	@Column(name="create_date", columnDefinition="TIME")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	@Column(name="create_date", columnDefinition="DATE")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+	private Date createDate = new Date();
 	
 	public int getId() {
 		return id;
@@ -56,7 +60,7 @@ public class User {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-
+	
 	public Date getCreateDate() {
 		return createDate;
 	}

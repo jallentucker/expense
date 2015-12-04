@@ -26,4 +26,9 @@ public class UserDaoImpl implements UserDao{
 		this.em = em;
 	}
 
+	@Override
+	public void createUser(User user) {
+		em.merge(user);
+	}
+
 }
