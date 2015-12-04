@@ -12,6 +12,9 @@ import java.util.regex.Pattern;
  *	Validate(string).password()
  *  for a true or false result
  *  
+ *  Further Validation methods 
+ *  should follow this pattern
+ *  
  */
 public class Validate {
 
