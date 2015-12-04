@@ -6,10 +6,16 @@
 	}]);
 	
 	function appConfig($stateProvider){
-		var search = { name: 'login', url:'/login',
+		var login = { name: 'login', url:'/login',
 					templateUrl: 'templates/login.html',
 					controller: 'loginCtrl'};
-		$stateProvider.state(search);
+		$stateProvider.state(login);
+		var register = { name: 'register', url:'/register',
+				templateUrl: 'templates/register.html',
+				controller: 'registerCtrl'};
+	$stateProvider.state(register);
+		
+		
 	}
 	
 })();
