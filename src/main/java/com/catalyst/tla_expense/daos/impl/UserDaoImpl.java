@@ -22,13 +22,12 @@ public class UserDaoImpl implements UserDao{
 		return em.createQuery("SELECT u FROM User u", User.class).getResultList();
 	}
 
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
-
 	@Override
 	public void createUser(User user) {
 		em.merge(user);
 	}
 
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
 }
