@@ -11,18 +11,18 @@
 					<div class="form-group">
 						<label for="InputUsername">Enter Username</label>
 						<div class="input-group">
-							<input ng-model="userEmail" type="text" class="form-control" name="InputUsername" id="loginUsername" placeholder="Enter Email" required>
+							<input ng-model="user.userEmail" type="text" class="form-control" name="InputUsername" id="loginUsername" placeholder="Enter Email" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="InputPassword">Enter Password</label>
 						<div class="input-group">
-							<input ng-model="userPassword" type="password" class="form-control" id="loginPassword" name="InputPassword" placeholder="Enter Password" required>
+							<input ng-model="user.userPassword" type="password" class="form-control" id="loginPassword" name="InputPassword" placeholder="Enter Password" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 					</div>
-					<button name="submit" id="loginSubmit" class="btn btn-success pull-right" ng-click="addUser(user)">Log In</button>
+					<button name="submit" id="loginSubmit" class="btn btn-success pull-right" ng-click="getUsers()">Log In</button>
 					</div>
 					<div class="error" id="loginError"></div>
 				</div>

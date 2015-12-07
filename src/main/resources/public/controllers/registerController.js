@@ -5,11 +5,11 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 	
 	$scope.password;
 	
-	$scope.confirmPassword;
+	$scope.confirmUserPassword;
 	
 	$scope.user = {};
-	$scope.user.userPassword = $scope.userPassword;
-	$scope.user.userEmail = $scope.userEmail;
+	$scope.user.userPassword;
+	$scope.user.userEmail;
 
 	$scope.getUsers = function(){
 	
@@ -23,12 +23,15 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 		);
 	};
 	$scope.addUser = function(user){
-		
+		console.log(user.userPassword);
+		console.log(user.userEmail);
 		usersFactory.addUser().then(
 			function(results){
+				console.log("success");
 				$scope.results = results;
 			},
 			function(error){
+				console.log("error");
 				console.log(error);
 			}
 		);
