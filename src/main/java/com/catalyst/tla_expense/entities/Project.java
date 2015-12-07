@@ -11,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import com.catalyst.HobbyCollector.entities.Condition;
-
 
 @Entity (name = "project")
 public class Project {
