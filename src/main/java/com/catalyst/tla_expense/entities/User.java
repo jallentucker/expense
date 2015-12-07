@@ -19,12 +19,13 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name="users", schema="public")
+@Table(name="entity_user", schema="public")
 public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name="user_id")
+	private int userId;
 	
 	@NotNull
 	@Column(name="user_password")
@@ -39,12 +40,12 @@ public class User {
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date createDate = new Date();
 	
-	public int getId() {
-		return id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUserPassword() {

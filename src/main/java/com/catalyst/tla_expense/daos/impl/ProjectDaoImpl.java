@@ -8,28 +8,30 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.catalyst.tla_expense.daos.UserDao;
-import com.catalyst.tla_expense.entities.User;
+import com.catalyst.tla_expense.daos.ProjectDao;
+import com.catalyst.tla_expense.entities.Project;
+
 
 @Repository
 @Transactional
-public class UserDaoImpl implements UserDao{
+public class ProjectDaoImpl implements ProjectDao{
 
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
-	public List<User> getAllUsers() {
-		return em.createQuery("SELECT u FROM User u", User.class).getResultList();
+	public List<Project> getAllProjects() {
+		return em.createQuery("SELECT p FROM project p", Project.class).getResultList();
 	}
-
+	
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
 
 	@Override
-	public void createUser(User user) {
-		em.merge(user);
+	public void createProject(Project project) {
+		em.merge(project);
+		
 	}
 
 }
