@@ -9,9 +9,9 @@
 				<div class="col-lg-5">
 					<div class="well well-sm">
 					<div class="form-group">
-						<label for="InputUsername">Enter Username/Email</label>
+						<label for="InputUsername">Enter User Email</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter Username" required>
+							<input type="text" ng-model="user.userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 					</div>
@@ -19,19 +19,19 @@
 						<div>
 						<label for="InputPassword">Enter Password</label>
 						<div class="input-group">
-							<input type="password" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required>
+							<input type="password" ng-model="user.userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						</div>
 						<div>
 						<label for="InputPassword">Confirm Password</label>
 						<div class="input-group">
-							<input type="password" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Enter Password" required>
+							<input type="password" ng-model="confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						</div>
 					</div>
-					<button name="submit" id="registerSubmit" class="btn btn-info pull-right">Complete Registration</button>
+					<button name="submit" id="registerSubmit" class="btn btn-success pull-right" ng-click="addUser(user)">Create</button>
 					</div>
 					<div class="error" id="registerError"></div>
 				</div>
