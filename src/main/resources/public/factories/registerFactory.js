@@ -1,6 +1,13 @@
 angular.module('myApp').factory('registerFactory', [function(){
 	
 	return {
+		comfirmEmail: function(email1, email2) {
+			if (email1 === email2) {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		validateEmail: function(email) {
 			var pattern = new RegExp('^.{1,}@.{1,}\..{1,}$');
 			return pattern.test(email);
