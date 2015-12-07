@@ -1,5 +1,7 @@
 package com.catalyst.tla_expense.services.impl;
 
+
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,13 @@ public class ProjectServiceImpl implements ProjectService {
 	ProjectDao projectDao;
 	
 	@Override
+	public List<Project> getAllProjects() {
+		return projectDao.getAllProjects();
+	}
+
+	@Override
 	public void createProject(Project project) {
-		projectDao.createUser(project);
+		projectDao.createProject(project);
 	}
 
 }

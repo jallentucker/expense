@@ -1,9 +1,12 @@
 package com.catalyst.tla_expense.daos;
 
+
 import com.catalyst.tla_expense.entities.Project;
+import java.util.List;
 
 public interface ProjectDao {
 
-	void createUser(Project project);
+	List<Project> getAllProjects();
 
+	void createProject(Project project);
 }

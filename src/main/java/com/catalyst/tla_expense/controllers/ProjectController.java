@@ -1,5 +1,8 @@
 package com.catalyst.tla_expense.controllers;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +13,7 @@ import com.catalyst.tla_expense.entities.Project;
 import com.catalyst.tla_expense.services.ProjectService;
 
 /**
- * Project Controller class. Has end points for POST.
+ * Project Controller class. Has end points for POST, and GET.
  * 
  * @author cmiller
  */
@@ -20,10 +23,13 @@ public class ProjectController {
 	@Autowired
 	ProjectService projectService;
 	
+	@RequestMapping(value="/project/get", method = RequestMethod.GET)
+	public  List<Project> getAllProjects(){
+		return projectService.getAllProjects();
+	}
+	
 	@RequestMapping(value="/project/post", method = RequestMethod.POST)
 	public void createProject(@RequestBody Project project){
 		projectService.createProject(project);
 	}
-	
-	
 }

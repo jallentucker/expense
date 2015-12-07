@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
+
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao{
@@ -21,14 +22,15 @@ public class UserDaoImpl implements UserDao{
 	public List<User> getAllUsers() {
 		return em.createQuery("SELECT u FROM User u", User.class).getResultList();
 	}
-
-	public void setEm(EntityManager em) {
-		this.em = em;
-	}
-
+	
 	@Override
 	public void createUser(User user) {
 		em.merge(user);
 	}
+	
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+
 
 }
