@@ -1,3 +1,11 @@
+var comfirmEmail = function(email1, email2) {
+	if (email1 === email2) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 var validateEmail = function(email) {
 	var pattern = new RegExp('^.{1,}@.{1,}\..{1,}$');
 	return pattern.test(email);
@@ -19,10 +27,3 @@ var validateStrHasMinOfCharClass = function(charClass, min, str) {
 	var pattern = new RegExp('^.*' + charClass + '{' + min + ',}.*$');
 	return pattern.test(str);
 };
-
-console.log(validatePassword('bad'));
-console.log(validatePassword('A!0hhhhh'));
-console.log(validatePassword('h!0hhhhh'));
-console.log(validatePassword('Ah0hhhhh'));
-console.log(validatePassword('A!hhhhhh'));
-console.log(validatePassword('A!0hhhh'));
