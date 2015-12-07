@@ -34,21 +34,21 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 		);
 	};
 	$scope.confirmPassword = function(password1, password2) {
-		if (!registerFactory.confirmPassword(password1, password2)) {
+		if (!registerFactory.confirmPassword(password1, password2) && password1 !== undefined && password2 !== undefined) {
 			$scope.passwordsDiffer = true;
 		} else {
 			$scope.passwordsDiffer = false;
 		}
 	};
 	$scope.validateEmail = function(email) {
-		if (!registerFactory.validateEmail(email)) {
+		if (!registerFactory.validateEmail(email) && email !== undefined) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
 		}
 	};
 	$scope.validatePassword = function(password) {
-		if (!registerFactory.validatePassword(password)) {
+		if (!registerFactory.validatePassword(password) && password !== undefined) {
 			$scope.passwordIsInvalid = true;
 		} else {
 			$scope.passwordIsInvalid = false;
