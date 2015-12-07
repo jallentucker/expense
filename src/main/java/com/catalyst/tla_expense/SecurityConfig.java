@@ -25,6 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		this.datasource = datasource;
 	}*/
 	
+	//this will need to be configured as well.
+	//Needs to change to get querries from
+	//the database. 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
