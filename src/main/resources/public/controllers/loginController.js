@@ -24,9 +24,11 @@ angular.module('myApp').controller('loginCtrl',['$scope', 'loginFactory','usersF
 		
 		usersFactory.addUser().then(
 			function(results){
+				alert("success");
 				$scope.results = results;
 			},
 			function(error){
+				alert("error");
 				console.log(error);
 			}
 		);
