@@ -13,7 +13,7 @@
 		var register = { name: 'register', url:'/register',
 				templateUrl: 'templates/register.html',
 				controller: 'registerCtrl'};
-	$stateProvider.state(register);
+		$stateProvider.state(register);
 		
 		
 	}
