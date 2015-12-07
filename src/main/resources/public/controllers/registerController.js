@@ -1,12 +1,10 @@
-angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'registerFactory',
-  function($scope, usersFactory, registerFactory){
+angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'validationFactory',
+  function($scope, usersFactory, validationFactory){
 
 	$scope.username;
 	
 	$scope.password;
 
-	$scope.confirmPassword;
-	
 	$scope.user = {};
 	$scope.user.userPassword = $scope.userPassword;
 	$scope.user.userEmail = $scope.userEmail;
@@ -34,21 +32,21 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 		);
 	};
 	$scope.confirmPassword = function(password1, password2) {
-		if (!registerFactory.confirmPassword(password1, password2) && password1 !== undefined && password2 !== undefined) {
+		if (!validationFactory.confirmPassword(password1, password2) && password1 !== undefined && password2 !== undefined) {
 			$scope.passwordsDiffer = true;
 		} else {
 			$scope.passwordsDiffer = false;
 		}
 	};
 	$scope.validateEmail = function(email) {
-		if (!registerFactory.validateEmail(email) && email !== undefined) {
+		if (!validationFactory.validateField('^.{1,}@.{1,}\..{1,}$', email) && email !== undefined) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
 		}
 	};
 	$scope.validatePassword = function(password) {
-		if (!registerFactory.validatePassword(password) && password !== undefined) {
+		if (!validationFactory.validatePassword(password) && password !== undefined) {
 			$scope.passwordIsInvalid = true;
 		} else {
 			$scope.passwordIsInvalid = false;

@@ -7,19 +7,15 @@ angular.module('myApp').factory('validationFactory', [function() {
 				return false;
 			}
 		},
-		validateEmail: function(email) {
-			var pattern = new RegExp('^.{1,}@.{1,}\..{1,}$');
-			return pattern.test(email);
+		validateField: function(pattern, str) {
+			var regex = new RegExp(pattern);
+			return regex.test(str);
 		},
 		validatePassword: function(password) {
-			var validateStrHasMinOfCharClass = function(charClass, min, str) {
-				var pattern = new RegExp('^.*' + charClass + '{' + min + ',}.*$');
-				return pattern.test(str);
-			}
-			var test1 = validateStrHasMinOfCharClass('.', 8, password);
-			var test2 = validateStrHasMinOfCharClass('[A-Z]', 1, password);
-			var test3 = validateStrHasMinOfCharClass('[!@#$%&*]', 1, password);
-			var test4 = validateStrHasMinOfCharClass('[0-9]', 1, password);
+			var test1 = this.validateField('^.{8,}$', password);
+			var test2 = this.validateField('^.*[A-Z]{1,}.*$', password);
+			var test3 = this.validateField('^.*[!@#$%^&*]{1,}.*$', password);
+			var test4 = this.validateField('^.*[0-9]{1,}.*$', password);
 			if (test1 && test2 && test3 && test4) {
 				return true;
 			} else {
