@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	/**
-	 * Persists a user to the database.
+	 * Creates a user in the database.
 	 * @author cmiller
 	 */
 	@Override
