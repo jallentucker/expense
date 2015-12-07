@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity(name = "reports")
+@Entity(name = "report")
 public class Report {
 	
 	/**
@@ -72,11 +72,11 @@ public class Report {
 	private String reportNotes;
 
 	/**
-	 * Placeholder to add the date a report was approved
+	 * Placeholder to generate the date a report was approved
 	 */
 	@Column(name="approved_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date approvedDate = new Date();
+	private Date approvedDate;
 	
 	/**
 	 * Generates a time stamp for when the report is submitted
@@ -84,7 +84,7 @@ public class Report {
 	@NotNull
 	@Column (name="report_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date reportDate;
+	private Date reportDate = new Date();
 	
 	/**
 	 * flexible constructor
@@ -119,7 +119,10 @@ public class Report {
 		this.approvedDate = null;
 		this.reportDate = null;
 	}
-
+	
+	/**
+	 * Getters and setters
+	 */
 	public int getReportId() {
 		return reportId;
 	}

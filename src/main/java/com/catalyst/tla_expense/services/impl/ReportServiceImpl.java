@@ -64,6 +64,10 @@ public class ReportServiceImpl implements ReportService {
 	 */
 	@Override
 	public void editReport(Report report){
+//		if(report.status == "Approved")
+//		{
+//			report.setApprovedDate(new Date());
+//		}
 		this.reportDao.editReport(report);
 	}
 }
