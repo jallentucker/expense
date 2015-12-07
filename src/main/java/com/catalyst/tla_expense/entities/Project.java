@@ -1,5 +1,7 @@
 package com.catalyst.tla_expense.entities;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import com.catalyst.HobbyCollector.entities.Condition;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity (name = "project")
 public class Project {
@@ -28,6 +28,10 @@ public class Project {
 	@Column(name = "description", length = 255)
 	private String description;
 	
+	@Column(name="create_date", columnDefinition="DATE")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+	private Date createDate = new Date();
+
 	// Link to user table by id
 	@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
@@ -66,6 +70,13 @@ public class Project {
 		this.user = user;
 	}
 	
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
 
 }
