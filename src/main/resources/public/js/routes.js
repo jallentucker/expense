@@ -8,14 +8,23 @@
 	function appConfig($stateProvider){
 		var login = { name: 'login', url:'/login',
 					templateUrl: 'templates/login.html',
-					controller: 'loginCtrl'};
+					controller: 'loginCtrl'
+		};
 		$stateProvider.state(login);
+		
 		var register = { name: 'register', url:'/register',
 				templateUrl: 'templates/register.html',
-				controller: 'registerCtrl'};
+				controller: 'registerCtrl'
+		};
 		$stateProvider.state(register);
-		
-		
+		       
+        var createProject = {
+            name:'createProject',
+            url:'/createProject',
+            templateUrl:'/templates/createproject.html',
+            controller:'projectController'
+        };
+        $stateProvider.state(createProject);
 	}
 	
 })();
