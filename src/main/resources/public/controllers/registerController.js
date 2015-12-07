@@ -1,10 +1,10 @@
 angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'registerFactory',
-  function($scope, usersFactory){
+  function($scope, usersFactory, registerFactory){
 
 	$scope.username;
 	
 	$scope.password;
-	
+
 	$scope.confirmPassword;
 	
 	$scope.user = {};
@@ -33,7 +33,11 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 			}
 		);
 	};
-	
-
-
+	$scope.validateEmail = function(email) {
+		if (!registerFactory.validateEmail(email)) {
+			$scope.emailIsInvalid = true;
+		} else {
+			$scope.emailIsInvalid = false;
+		}
+	};
 }]);
