@@ -1,13 +1,13 @@
 angular.module('myApp').controller('loginCtrl',['$scope', 'loginFactory','usersFactory',
    function($scope, loginFactory, usersFactory) {
 	
-	$scope.username;
+	$scope.userEmail;
 	
-	$scope.password;
+	$scope.userPassword;
 		
 	$scope.user = {};
-	$scope.user.password = $scope.password;
-	$scope.user.username = $scope.username;
+	$scope.user.userPassword = $scope.userPassword;
+	$scope.user.userEmail = $scope.userEmail;
 
 	$scope.getUsers = function(){
 	
@@ -22,7 +22,7 @@ angular.module('myApp').controller('loginCtrl',['$scope', 'loginFactory','usersF
 	};
 	$scope.addUser = function(user){
 		
-		usersFactory.addUsers().then(
+		usersFactory.addUser().then(
 			function(results){
 				$scope.results = results;
 			},

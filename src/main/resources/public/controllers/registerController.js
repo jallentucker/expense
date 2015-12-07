@@ -8,8 +8,8 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 	$scope.confirmPassword;
 	
 	$scope.user = {};
-	$scope.user.password = $scope.password;
-	$scope.user.username = $scope.username;
+	$scope.user.userPassword = $scope.userPassword;
+	$scope.user.userEmail = $scope.userEmail;
 
 	$scope.getUsers = function(){
 	
@@ -24,7 +24,7 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 	};
 	$scope.addUser = function(user){
 		
-		usersFactory.addUsers().then(
+		usersFactory.addUser().then(
 			function(results){
 				$scope.results = results;
 			},

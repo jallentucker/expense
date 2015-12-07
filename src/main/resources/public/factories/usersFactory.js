@@ -4,13 +4,13 @@ angular.module('myApp').factory('usersFactory', ['$http', function($http){
 	
 		getUsers: function(){
 		
-			return $http.get("localhost:8080/users/get");
+			return $http.get("localhost:8080/user/get");
 		
 		},
 	
-		addUser: function(searchQuery){
+		addUser: function(user){
 		
-			return $http.post("localhost:8080/users/get");
+			return $http.post("localhost:8080/user/post");
 		
 		}
 	
