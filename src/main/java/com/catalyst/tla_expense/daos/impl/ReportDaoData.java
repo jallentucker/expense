@@ -9,8 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import com.catalyst.tla_expense.entities.Report;
 
-import catalyst.applicationRunner.entities.ToDoItem;
-
 @Repository
 @Transactional
 public class ReportDaoData {
