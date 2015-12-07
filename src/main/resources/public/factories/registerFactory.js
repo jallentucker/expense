@@ -1,8 +1,8 @@
 angular.module('myApp').factory('registerFactory', [function(){
 	
 	return {
-		comfirmEmail: function(email1, email2) {
-			if (email1 === email2) {
+		confirmPassword: function(password1, password2) {
+			if (password1 === password2) {
 				return true;
 			} else {
 				return false;
@@ -13,6 +13,10 @@ angular.module('myApp').factory('registerFactory', [function(){
 			return pattern.test(email);
 		},
 		validatePassword: function(password) {
+			var validateStrHasMinOfCharClass = function(charClass, min, str) {
+				var pattern = new RegExp('^.*' + charClass + '{' + min + ',}.*$');
+				return pattern.test(str);
+			}
 			var test1 = validateStrHasMinOfCharClass('.', 8, password);
 			var test2 = validateStrHasMinOfCharClass('[A-Z]', 1, password);
 			var test3 = validateStrHasMinOfCharClass('[!@#$%&*]', 1, password);
@@ -23,9 +27,5 @@ angular.module('myApp').factory('registerFactory', [function(){
 				return false;
 			}
 		},
-		validateStrHasMinOfCharClass: function(charClass, min, str) {
-			var pattern = new RegExp('^.*' + charClass + '{' + min + ',}.*$');
-			return pattern.test(str);
-		}
 	};
 }]);

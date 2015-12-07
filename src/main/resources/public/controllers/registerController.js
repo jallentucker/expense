@@ -33,11 +33,25 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 			}
 		);
 	};
+	$scope.confirmPassword = function(password1, password2) {
+		if (!registerFactory.confirmPassword(password1, password2)) {
+			$scope.passwordsDiffer = true;
+		} else {
+			$scope.passwordsDiffer = false;
+		}
+	};
 	$scope.validateEmail = function(email) {
 		if (!registerFactory.validateEmail(email)) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
+		}
+	};
+	$scope.validatePassword = function(password) {
+		if (!registerFactory.validatePassword(password)) {
+			$scope.passwordIsInvalid = true;
+		} else {
+			$scope.passwordIsInvalid = false;
 		}
 	};
 }]);

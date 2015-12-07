@@ -14,7 +14,7 @@
 							<input type="text" ng-model="userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required ng-blur="validateEmail(userEmail)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
-						<div ng-show="emailIsInvalid">
+						<div class="validationError" ng-show="emailIsInvalid">
 							<p>Please enter a valid email address.</p>
 						</div>
 					</div>
@@ -22,15 +22,27 @@
 						<div>
 						<label for="InputPassword">Enter Password</label>
 						<div class="input-group">
-							<input type="password" ng-model="userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required>
+							<input type="password" ng-model="userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required ng-blur="validatePassword(userPassword)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						</div>
+						<div class="validationError" ng-show="passwordIsInvalid">
+							<p>Please enter a valid password. Must have at least:</p>
+							<ul>
+								<li>8 characters</li>
+								<li>1 capital character</li>
+								<li>1 special characters</li>
+								<li>1 number</li>
+							</ul>
 						</div>
 						</div>
 						<div>
 						<label for="InputPassword">Confirm Password</label>
 						<div class="input-group">
-							<input type="password" ng-model="confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required>
+							<input type="password" ng-model="confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required ng-blur="confirmPassword(userPassword, confirmUserPassword)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						</div>
+						<div class="validationError" ng-show="passwordsDiffer">
+							<p>Passwords do not match.</p>
 						</div>
 						</div>
 					</div>
