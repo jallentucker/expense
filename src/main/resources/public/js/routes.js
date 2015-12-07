@@ -14,6 +14,13 @@
 				        templateUrl: 'templates/register.html',
 				        controller: 'registerCtrl'};
         $stateProvider.state(register);
+        var createProject = {
+            name:'createProject',
+            url:'/createProject',
+            templateUrl:'/templates/createproject.html',
+            controller:'projectController'
+        };
+        $stateProvider.state(createProject);
 	}
 	
 })();
