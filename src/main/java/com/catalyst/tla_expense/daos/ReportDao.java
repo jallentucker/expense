@@ -31,4 +31,17 @@ public interface ReportDao {
 	 * @param id 
 	 */
 	public void deleteReport(int id);
+	
+	/**
+	 * Updates a report in the database
+	 * @param report
+	 */
+	public void editReport(Report report);
+	
+	/**
+	 * verifies if a report with the given name exists in the database
+	 * @param reportName
+	 * @return
+	 */
+	public boolean inList(String reportName);
 }

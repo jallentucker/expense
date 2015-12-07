@@ -31,5 +31,10 @@ public interface ReportService {
 	 */
 	public void createReport(Report report);
 	
+	/**
+	 * Edits a selected report and updates it in the database.
+	 */
+	void editReport(Report report);
+	
 
 }

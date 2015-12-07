@@ -58,6 +58,15 @@ public class ReportController {
 		reportService.deleteReport(id);
 	}
 	
+	/**
+	 * Updates a report from the database
+	 * @param report updated in database
+	 */
+	@RequestMapping(value = "/editReport/{id}", method = RequestMethod.PUT)
+	public void editReport(@RequestBody Report report){
+		this.reportService.editReport(report);
+	}
+	
 	
 
 }

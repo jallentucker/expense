@@ -27,7 +27,14 @@ public class Report {
 	private int reportId;
 	
 	/**
-	 * Joines the report table with the user table via user_id
+	 * Required field to add a unique report name.
+	 */
+	@NotNull
+	@Column(name = "report_name", unique=true, length=150)
+	private String reportName;
+	
+	/**
+	 * Joins the report table with the user table via user_id
 	 */
 	@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
@@ -67,19 +74,21 @@ public class Report {
 	/**
 	 * Placeholder to add the date a report was approved
 	 */
-	@Column(name="approved_date")
+	@Column(name="approved_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date approvedDate = new Date();
 	
 	/**
-	 * Generates a timestamp for when the report is submitted
+	 * Generates a time stamp for when the report is submitted
 	 */
 	@NotNull
 	@Column (name="report_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date reportDate;
 	
-	
+	/**
+	 * flexible constructor
+	 */
 	public Report() {
 		super();
 		this.user = null;
@@ -91,6 +100,14 @@ public class Report {
 		this.reportDate = null;
 	}
 	
+	/**
+	 * fully filled constructor
+	 * @param user
+	 * @param rejectReason
+	 * @param reportNotes
+	 * @param approvedDate
+	 * @param reportDate
+	 */
 	public Report(User user, /*Project project, Status status,*/ String rejectReason,
 			String reportNotes, Date approvedDate, Date reportDate) {
 		super();
@@ -149,5 +166,13 @@ public class Report {
 
 	public void setReportDate(Date reportDate) {
 		this.reportDate = reportDate;
+	}
+
+	public String getReportName() {
+		return reportName;
+	}
+
+	public void setReportName(String reportName) {
+		this.reportName = reportName;
 	}	
 }

@@ -1,8 +1,6 @@
 package com.catalyst.tla_expense.daos.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -55,5 +53,33 @@ public class ReportDaoData {
 	public void deleteReport(int id) {
 		em.remove(id);
 	}
+	
+	/**
+	 * Updates a report in the database
+	 * @param report
+	 */
+	public void editReport(Report report) {
+		em.merge(report);
+	}
+	
+	/**
+	 * verifies if a report with the given name exists in the database
+	 * @param reportName
+	 * @return
+	 */
+	public boolean inList(String reportName)
+	{
+		
+		List<Report> reportList = getAllReports();
+		for(Report i: reportList)
+		{
+			if((i.getReportName()).equals(reportName))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 }
