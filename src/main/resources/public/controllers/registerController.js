@@ -22,7 +22,7 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 			}
 		);
 	};
-	$scope.addUser = function($scope.user){
+	$scope.addUser = function(user){
 		
 		usersFactory.addUsers().then(
 			function(results){
