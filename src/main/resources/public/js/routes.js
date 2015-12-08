@@ -5,19 +5,7 @@
 		$state.transitionTo('login');
 	}]);
 	
-	function appConfig($stateProvider){
-		var login = { name: 'login', url:'/login',
-					templateUrl: 'templates/login.html',
-					controller: 'loginCtrl'
-		};
-		$stateProvider.state(login);
-		
-		var register = { name: 'register', url:'/register',
-				templateUrl: 'templates/register.html',
-				controller: 'registerCtrl'
-		};
-		$stateProvider.state(register);
-		       
+	function appConfig($stateProvider){		       
         var createProject = {
             name:'createProject',
             url:'/createProject',
