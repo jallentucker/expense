@@ -9,9 +9,9 @@
 				<div class="col-lg-5">
 					<div class="well well-sm">
 					<div class="form-group">
-						<label for="InputUsername">Enter User Email {{userEmail}}</label>
+						<label for="InputUsername">Enter User Email</label>
 						<div class="input-group">
-							<input type="text" ng-model="userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required ng-blur="validateEmail(userEmail, false)">
+							<input type="text" ng-model="user.userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required ng-blur="validateEmail(user.userEmail, false)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="emailIsInvalid">
@@ -20,9 +20,9 @@
 					</div>
 					<div class="form-group">
 						<div>
-						<label for="InputPassword">Enter Password {{userPassword}}</label>
+						<label for="InputPassword">Enter Password</label>
 						<div class="input-group">
-							<input type="password" ng-model="userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required ng-blur="validatePassword(userPassword, false)">
+							<input type="password" ng-model="user.userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required ng-blur="validatePassword(user.userPassword, false)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="passwordIsInvalid">
@@ -38,7 +38,7 @@
 						<div>
 						<label for="InputPassword">Confirm Password</label>
 						<div class="input-group">
-							<input type="password" ng-model="confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required ng-blur="confirmPassword(userPassword, confirmUserPassword)">
+							<input type="password" ng-model="user.confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required ng-blur="confirmPassword(user.userPassword, user.confirmUserPassword)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="passwordsDiffer">
