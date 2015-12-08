@@ -21,6 +21,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 		.dataSource(datasource)
+		//.passwordEncoder(encoder()) //Un-comment this one registration passwords get hashed. 
 		.usersByUsernameQuery("SELECT user_email, user_password, TRUE FROM expense_user WHERE user_email=?")
 		.authoritiesByUsernameQuery("SELECT user_email, 'USER' FROM expense_user WHERE user_email=?");
 	}
