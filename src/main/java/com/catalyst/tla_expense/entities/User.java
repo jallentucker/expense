@@ -36,8 +36,6 @@ public class User {
 	@Column(name="create_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date createDate = new Date();
-	
-	
 
 	public int getUserId() {
 		return userId;
