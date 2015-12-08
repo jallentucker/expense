@@ -25,19 +25,4 @@ public void verifyTitle(){
 public void tearDown() throws Exception{
 	_driver.quit();
 }*/
-
-@Test
-public void SignInLinkShouldTakeMeToSignInPage(){
-		
-		Amazon store = new Amazon(SeleniumDriver.getDriver());
-		String expectedUrl = "https://www.amazon.com/gp/goldbox/ref=nav_cs_gb";
-		Actions builder = new Actions(_driver);
-		By hoverElement = By.xpath("//*[@id='nav-link-yourAccount']/span[1]");
-		builder.moveToElement((WebElement) hoverElement).perform();
-		String actualUrl = store.create().getUrl();
-		WebElement addButtonPresent = (new WebDriverWait(_driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.className("addTarget")));
-		store.createAccount().selectLinkByName("Forgot your password?");
-		
-		Assert.assertEquals(expectedUrl,  actualUrl);
-}
 }
