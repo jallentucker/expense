@@ -14,7 +14,7 @@
         };
         $stateProvider.state(createProject);
         
-        var createProject = {
+        var home = {
                 name:'home',
                 url:'/home',
                 templateUrl:'/templates/home.html',

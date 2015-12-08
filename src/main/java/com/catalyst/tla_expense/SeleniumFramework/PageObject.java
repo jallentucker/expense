@@ -18,38 +18,38 @@ public abstract class PageObject {
 		this.driver = driver;
 	}
 	
-	protected WebElement find(By by)
+	public WebElement find(By by)
 	{
 		return driver.findElement(by);
 	}
 	
-	protected void clear(By by){
+	public void clear(By by){
 		find(by).clear();
 	}
 	
-	protected void sendKeys(By by, String value){
+	public void sendKeys(By by, String value){
 		find(by).sendKeys(value);
 	}
 	
-	protected void clearAndSendKeys(By by, String value)
+	public void clearAndSendKeys(By by, String value)
 	{
 		clear(by);
 		sendKeys(by, value);
 	}
 	
-	protected void click(By by){
+	public void click(By by){
 		find(by).click();
 	}
 	
-	protected Collection<WebElement> findAll(By by){
+	public Collection<WebElement> findAll(By by){
 		return driver.findElements(by);
 	}
 	
-	protected String getInnerHtml(By by){
+	public String getInnerHtml(By by){
 		return find(by).getAttribute("innerHTML");
 	}
 	
-	protected String getText(By by){
+	public String getText(By by){
 		return find(by).getText();
 	}
 	

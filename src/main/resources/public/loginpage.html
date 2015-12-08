@@ -1,19 +1,13 @@
 <head>
 	<title>Expenses Application</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<script src="js/app.js"></script>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="controllers/loginController.js"></script>
-	<script src="factories/loginFactory.js"></script>
-	<script src="factories/usersFactory.js"></script>
 	<!--<link href="toastr.css" rel="stylesheet"/>
 	<script src="toastr.js"></script>-->
 
 	<!-- Your scripts here -->
 </head>
-<body ng-app="myApp">
+<body>
 	<h1>Expense Report Application</h1>
 
 	<div class="container">
@@ -21,9 +15,9 @@
 			<button id="registerBtn"><a href="register.html">Register a New Account</a></button>
 			<h3>Login to your Expense account </h3>
 		</div>
+		<form name="f" action="/login" method="post">  
 		<div class="row">
 			<div class="col-lg-2"></div>
-			<form role="form" name="f" action="/login" method="post">
 				<div class="col-lg-5">
 					<div class="well well-sm">
 					<div class="form-group">
@@ -44,8 +38,8 @@
 					</div>
 					<div class="error" id="loginError"></div>
 				</div>
-			</form>
 		</div>
+		</form>
 	</div>
 </body>
 </html>
