@@ -32,5 +32,12 @@ public class UserDaoImpl implements UserDao{
 		this.em = em;
 	}
 
+	@Override
+	public User getEmployeeByUsername(String username) {
+		return em.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
+				.setParameter("username", username)
+				.getSingleResult();
+	}
+
 
 }

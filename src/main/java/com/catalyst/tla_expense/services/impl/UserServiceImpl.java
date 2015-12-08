@@ -22,11 +22,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createUser(User user) {
-		/*String email = user.getUserEmail();
-		String password = user.getUserPassword();
-		if()*/
 		userDao.createUser(user);
 		
+	}
+
+	@Override
+	public User getEmployeeByUsername(String username) {
+		return userDao.getEmployeeByUsername(username);
 	}
 
 }

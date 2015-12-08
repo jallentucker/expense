@@ -18,7 +18,7 @@
             name:'createProject',
             url:'/createProject',
             templateUrl:'/templates/createproject.html',
-            controller:'projectController'
+            controller:'projectCtrl'
         };
         $stateProvider.state(createProject);
 	}

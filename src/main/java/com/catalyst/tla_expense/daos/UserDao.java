@@ -10,4 +10,6 @@ public interface UserDao {
 
 	void createUser(User user);
 
+	User getEmployeeByUsername(String username);
+
 }
