@@ -18,13 +18,6 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private DataSource datasource;
 	
-	
-	/*@Override
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("jacob")
-		.password("root").authorities("USER");
-	}*/
-	
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 		.dataSource(datasource)

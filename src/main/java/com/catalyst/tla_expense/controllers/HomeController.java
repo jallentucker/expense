@@ -19,6 +19,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		return "/templates/login.html";
+		return "/loginIndex.html";
 	}
 }

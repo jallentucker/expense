@@ -3,10 +3,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+
+<link href="js/spring.js">
+
 </head>
 <body>
-
-	<h1>we have launched!</h1>
+			 <form name="f" action="/login" method="post">   
+				<label for="username">Username</label>
+                <input type="text" id="username" name="username"/>        
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"/>
+                <button type="submit" class="btn">Log in</button>
+             </form>
 
 </body>
 </html>
