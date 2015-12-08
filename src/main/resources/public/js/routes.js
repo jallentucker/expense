@@ -2,7 +2,7 @@
 	angular.module("myApp")
 	.config(appConfig)
 	.run(['$state', function($state){
-		$state.transitionTo('login');
+		$state.transitionTo('home');
 	}]);
 	
 	function appConfig($stateProvider){		       
