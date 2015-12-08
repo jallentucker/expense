@@ -32,5 +32,5 @@ public class ValidateTest {
 		Validate validation = new Validate("password");
 		assertFalse(validation.password());
 	}
-
+	
 }
