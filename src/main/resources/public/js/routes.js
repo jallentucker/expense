@@ -22,9 +22,17 @@
             name:'createProject',
             url:'/createProject',
             templateUrl:'/templates/createproject.html',
-            controller:'projectController'
+            controller:'projectCtrl'
         };
         $stateProvider.state(createProject);
+        
+        var createProject = {
+                name:'home',
+                url:'/home',
+                templateUrl:'/templates/home.html',
+                controller:'homeCtrl'
+         };
+         $stateProvider.state(home);
 	}
 	
 })();
