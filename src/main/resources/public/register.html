@@ -1,6 +1,23 @@
-<div class="container">
+<head>
+	<title>Expenses Application</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="controllers/registerController.js"></script>
+	<script src="factories/registerFactory.js"></script>
+	<script src="factories/usersFactory.js"></script>
+	<!--<link href="toastr.css" rel="stylesheet"/>
+	<script src="toastr.js"></script>-->
+	
+	<!-- Your scripts here -->
+</head>
+<body ng-app="myApp">
+	<h1>Expense Report Application</h1>
+	<div class="container">
 		<div class="page-header">
-			<button id="loginBtn"><a ui-sref="login">Login to Your New Account</a></button>
+			<button id="loginBtn"><a href="login.html">Login to Your New Account</a></button>
 			<h3>Register a New Expense account </h3>
 		</div>
 		<div class="row">
@@ -38,3 +55,6 @@
 			</form>
 		</div>
 	</div>
+
+</body>
+</html>
