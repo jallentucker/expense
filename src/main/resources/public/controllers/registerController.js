@@ -8,6 +8,7 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 	$scope.user = {};
 	$scope.user.userPassword = $scope.userPassword;
 	$scope.user.userEmail = $scope.userEmail;
+	$scope.user.confirmUserPassword = $scope.confirmUserPassword;
 
 	$scope.getUsers = function(){
 	
@@ -21,35 +22,46 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 		);
 	};
 	$scope.addUser = function(user){
-		
-		usersFactory.addUser().then(
-			function(results){
-				$scope.results = results;
-			},
-			function(error){
-				console.log(error);
-			}
-		);
+		if($scope.validateUser(user)) {
+			usersFactory.addUser().then(
+				function(results){
+					$scope.results = results;
+				},
+				function(error){
+					console.log(error);
+				}
+			);
+		}
 	};
-	$scope.confirmPassword = function(password1, password2) {
-		if (!validationFactory.confirmPassword(password1, password2) && password1 !== undefined && password2 !== undefined) {
+	$scope.confirmPassword = function(password, confirmation) {
+		if (!validationFactory.confirmPassword(password, confirmation) && password !== undefined && confirmation !== undefined) {
 			$scope.passwordsDiffer = true;
 		} else {
 			$scope.passwordsDiffer = false;
 		}
 	};
 	$scope.validateEmail = function(email) {
-		if (!validationFactory.validateField(emailRegex, email) && email !== undefined) {
+		if (!validationFactory.validateField(emailRegex, false, email)) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
 		}
 	};
 	$scope.validatePassword = function(password) {
-		if (!validationFactory.validateField(passwordRegex, password) && password !== undefined) {
+		if (!validationFactory.validateField(passwordRegex, false, password)) {
 			$scope.passwordIsInvalid = true;
 		} else {
 			$scope.passwordIsInvalid = false;
+		}
+	};
+	$scope.validateUser = function(user) {
+		$scope.passwordsDiffer = !$scope.confirmPassword(user.userPassword, user.confirmUserPassword);
+		$scope.emailIsInvalid = !$scope.validateEmail(user.userEmail);
+		$scope.passwordIsInvalid = !$scope.validatePassword(user.userPassword);
+		if ($scope.passwordsDiffer || $scope.emailIsInvalid || $scope.passwordIsInvalid) {
+			return false;
+		} else {
+			return true;
 		}
 	};
 }]);

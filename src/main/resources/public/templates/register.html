@@ -11,7 +11,7 @@
 					<div class="form-group">
 						<label for="InputUsername">Enter User Email</label>
 						<div class="input-group">
-							<input type="text" ng-model="userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required ng-blur="validateEmail(userEmail)">
+							<input type="text" ng-model="userEmail" class="form-control" name="InputUsername" id="registerUsername" placeholder="Enter User Email" required ng-blur="validateEmail(userEmail, false)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="emailIsInvalid">
@@ -22,7 +22,7 @@
 						<div>
 						<label for="InputPassword">Enter Password</label>
 						<div class="input-group">
-							<input type="password" ng-model="userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required ng-blur="validatePassword(userPassword)">
+							<input type="password" ng-model="userPassword" class="form-control" id="registerPassword" name="InputPassword" placeholder="Enter Password" required ng-blur="validatePassword(userPassword, false)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="passwordIsInvalid">
