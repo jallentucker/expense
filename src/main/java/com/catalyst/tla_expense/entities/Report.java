@@ -34,6 +34,14 @@ public class Report {
 	private String reportName;
 	
 	/**
+	 * Required field to add the timeframe in which reimbursement was 
+	 * being recorded
+	 */
+//	@NotNull
+//	@Column(name="time_frame",columnDefinition="DATE")
+//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+//	private 
+	/**
 	 * Joins the report table with the user table via user_id
 	 */
 	@NotNull
@@ -44,19 +52,18 @@ public class Report {
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
-//	@NotNull
-//	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//	@JoinColumn(name="project_id")
-//	private Project project;
-//	
-//	
+	@NotNull
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name="project_id")
+	private Project project;
+
 	/**
 	 * Joins the report table with the status table via status_id
 	 */
-//	@NotNull
-//	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-//	@JoinColumn(name="status_id")
-//	private Status status;
+	@NotNull
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name="status_id")
+	private Status status;
 	
 	/**
 	 * Placeholder for the approver to add a reject reason so that users
@@ -92,8 +99,7 @@ public class Report {
 	public Report() {
 		super();
 		this.user = null;
-		//this.project = null;
-		//this.status = "saved";
+		this.project = null;
 		this.rejectReason = null;
 		this.reportNotes = null;
 		this.approvedDate = null;
@@ -108,12 +114,12 @@ public class Report {
 	 * @param approvedDate
 	 * @param reportDate
 	 */
-	public Report(User user, /*Project project, Status status,*/ String rejectReason,
+	public Report(User user, Project project, Status status, String rejectReason,
 			String reportNotes, Date approvedDate, Date reportDate) {
 		super();
 		this.user = null;
-		//this.project = null;
-		//this.status = "saved";
+		this.project = null;
+		this.status = status;
 		this.rejectReason = null;
 		this.reportNotes = null;
 		this.approvedDate = null;
@@ -123,6 +129,22 @@ public class Report {
 	/**
 	 * Getters and setters
 	 */
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
 	public int getReportId() {
 		return reportId;
 	}

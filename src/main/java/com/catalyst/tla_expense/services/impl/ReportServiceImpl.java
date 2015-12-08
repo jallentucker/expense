@@ -1,14 +1,12 @@
 package com.catalyst.tla_expense.services.impl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.catalyst.tla_expense.daos.ReportDao;
 import com.catalyst.tla_expense.entities.Report;
+import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.ReportService;
 
 @Service
@@ -16,7 +14,7 @@ public class ReportServiceImpl implements ReportService {
 	
 	@Autowired
 	private ReportDao reportDao;
-	private Object report;
+	private Status status;
 	
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
@@ -55,8 +53,21 @@ public class ReportServiceImpl implements ReportService {
 	 * @param report added to database
 	 */
 	@Override
-	public void createReport(Report report) {		
-		this.reportDao.createReport(report);
+	public void createReport(Report report) {
+		
+		String reportName = report.getReportName();
+		
+		/**
+		 * Checks to see if the entered report name is greater
+		 * than 3 characters and there's no whitespace.
+		 */
+		if(reportName.trim().length() > 3)
+		{
+			reportName.toLowerCase();
+			report.setReportName(reportName);
+			this.reportDao.createReport(report);
+		}
+		System.out.println("Report name doesn't meet requirements.");
 	}
 	
 	/**
@@ -64,10 +75,30 @@ public class ReportServiceImpl implements ReportService {
 	 */
 	@Override
 	public void editReport(Report report){
-//		if(report.status == "Approved")
-//		{
-//			report.setApprovedDate(new Date());
-//		}
+		
+		String statusType = status.getStatusType();
+		String reportName = report.getReportName();
+		
+		/**
+		 * Checks to see if the entered report name is greater
+		 * than 3 characters and there's no whitespace.
+		 */
+		if(reportName.trim().length() > 3)
+		{
+			reportName.toLowerCase();
+			report.setReportName(reportName);
+		} else {
+			System.out.println("Report name doesn't meet requirements.");
+		}
+		
+		/**
+		 * Checks to see what the status is set to and if it is approved, then
+		 * generate an approved date and store it.
+		 */
+		if(statusType.equals("approved"))
+		{
+			report.setApprovedDate(new Date());
+		}
 		this.reportDao.editReport(report);
 	}
 }

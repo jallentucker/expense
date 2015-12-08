@@ -67,6 +67,12 @@ public class ReportController {
 		this.reportService.editReport(report);
 	}
 	
+	@RequestMapping(value="/dummy", method=RequestMethod.GET)
+	public void dummyData() {
+		Report report = new Report();
+		report.setReportName("blue");
+		
+		this.reportService.createReport(report);
+	}
 	
-
 }
