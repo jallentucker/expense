@@ -26,26 +26,26 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public boolean createProject(Project project) throws Exception {
-		//try{
+		try{
 			boolean result = false;
-			//boolean valid = projectServiceValidation.projectName(project);
-			if(projectServiceValidation.projectName(project)){
+			boolean valid = projectServiceValidation.projectName(project);
+			if(valid){
 				result = true;
 				projectDao.createProject(project);
 			}
 			return result;
-		/*}catch(Exception e){
+		}catch(Exception e){
 			throw new Exception(e.getMessage());
-		}*/
+		}
 		
-	}
-
-	public ProjectServiceValidation getProjectServiceValidation() {
-		return projectServiceValidation;
 	}
 
 	public void setProjectServiceValidation(ProjectServiceValidation projectServiceValidation) {
 		this.projectServiceValidation = projectServiceValidation;
+	}
+
+	public void setProjectDao(ProjectDao projectDao) {
+		this.projectDao = projectDao;
 	}
 
 }
