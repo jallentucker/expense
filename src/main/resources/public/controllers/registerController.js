@@ -1,5 +1,5 @@
-angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'validationFactory',
-  function($scope, usersFactory, validationFactory){
+angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'validationFactory', 'emailRegex', 'passwordRegex',
+  function($scope, usersFactory, validationFactory, emailRegex, passwordRegex){
 
 	$scope.username;
 	
@@ -39,14 +39,14 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 		}
 	};
 	$scope.validateEmail = function(email) {
-		if (!validationFactory.validateField('^.{1,}@.{1,}\..{1,}$', email) && email !== undefined) {
+		if (!validationFactory.validateField(emailRegex, email) && email !== undefined) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
 		}
 	};
 	$scope.validatePassword = function(password) {
-		if (!validationFactory.validatePassword(password) && password !== undefined) {
+		if (!validationFactory.validateField(passwordRegex, password) && password !== undefined) {
 			$scope.passwordIsInvalid = true;
 		} else {
 			$scope.passwordIsInvalid = false;
