@@ -31,6 +31,7 @@ public class Validate {
 	//checks email meets a specific pattern. I think anyways.
 	private String regexEmail = "^[_A-Za-z0-9]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	
 		
 	public Validate(String validation){
 		this.validation = validation;
@@ -47,4 +48,6 @@ public class Validate {
 		matcher = pattern.matcher(validation);
 		return !(matcher.matches());
 	}
+	
+	
 }
