@@ -33,7 +33,7 @@ public class Project {
 	private Date createDate = new Date();
 
 	// Link to user table by id
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "approver_id", referencedColumnName="user_id")
 	private User user;
