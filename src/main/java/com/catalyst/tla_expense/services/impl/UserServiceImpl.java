@@ -3,6 +3,7 @@ package com.catalyst.tla_expense.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.catalyst.tla_expense.daos.UserDao;
@@ -16,6 +17,9 @@ import com.catalyst.tla_expense.services.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	@Autowired
 	UserDao userDao;
 	
@@ -34,8 +38,9 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public void createUser(User user) {
+		String encryptedPass = encoder.encode(user.getUserPassword());
+		user.setUserPassword(encryptedPass);
 		userDao.createUser(user);
-		
 	}
 
 	public UserDao getUserDao() {
@@ -44,5 +49,9 @@ public class UserServiceImpl implements UserService {
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public void setEncoder(BCryptPasswordEncoder encoder){
+		this.encoder = encoder;
 	}
 }
