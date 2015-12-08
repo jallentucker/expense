@@ -5,11 +5,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+
+import com.catalyst.tla_expense.daos.ReportDao;
 import com.catalyst.tla_expense.entities.Report;
 
 @Repository
 @Transactional
-public class ReportDaoData {
+public class ReportDaoData implements ReportDao {
 	
 	@PersistenceContext
 	private EntityManager em;

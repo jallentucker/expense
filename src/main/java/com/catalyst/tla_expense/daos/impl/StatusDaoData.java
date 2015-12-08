@@ -4,9 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.catalyst.tla_expense.daos.StatusDao;
 import com.catalyst.tla_expense.entities.Status;
 
+@Repository
+@Transactional
 public class StatusDaoData implements StatusDao {
 	
 	@PersistenceContext

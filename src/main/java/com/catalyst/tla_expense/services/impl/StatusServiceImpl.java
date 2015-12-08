@@ -3,11 +3,13 @@ package com.catalyst.tla_expense.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.catalyst.tla_expense.daos.StatusDao;
 import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.StatusService;
 
+@Service
 public class StatusServiceImpl implements StatusService {
 	
 	@Autowired

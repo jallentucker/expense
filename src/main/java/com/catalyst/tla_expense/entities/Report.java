@@ -44,7 +44,7 @@ public class Report {
 	/**
 	 * Joins the report table with the user table via user_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
@@ -52,7 +52,7 @@ public class Report {
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="project_id")
 	private Project project;
@@ -60,7 +60,7 @@ public class Report {
 	/**
 	 * Joins the report table with the status table via status_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="status_id")
 	private Status status;
@@ -88,7 +88,7 @@ public class Report {
 	/**
 	 * Generates a time stamp for when the report is submitted
 	 */
-	@NotNull
+	//@NotNull
 	@Column (name="report_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date reportDate = new Date();

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.catalyst.tla_expense.entities.Report;
+import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.ReportService;
 
 @RestController
@@ -69,8 +70,12 @@ public class ReportController {
 	
 	@RequestMapping(value="/dummy", method=RequestMethod.GET)
 	public void dummyData() {
+		
 		Report report = new Report();
+		Status status = new Status();
+		
 		report.setReportName("blue");
+		status.setStatusType("approved");
 		
 		this.reportService.createReport(report);
 	}
