@@ -34,17 +34,27 @@ public class Report {
 	private String reportName;
 	
 	/**
-	 * Required field to add the timeframe in which reimbursement was 
+	 * Required field to add the start date in which reimbursement began
 	 * being recorded
 	 */
-//	@NotNull
-//	@Column(name="time_frame",columnDefinition="DATE")
-//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-//	private 
+	@NotNull
+	@Column(name="start_date",columnDefinition="DATE")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+	private Date startDate;
+	
+	/**
+	 * Required field to add the end date in which reimbursement period
+	 * ended.
+	 */
+	@NotNull
+	@Column(name="end_date",columnDefinition="DATE")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+	private Date endDate;
+	
 	/**
 	 * Joins the report table with the user table via user_id
 	 */
-	//@NotNull
+	@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
@@ -52,7 +62,7 @@ public class Report {
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
-	//@NotNull
+	@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="project_id")
 	private Project project;
@@ -60,7 +70,7 @@ public class Report {
 	/**
 	 * Joins the report table with the status table via status_id
 	 */
-	//@NotNull
+	@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="status_id")
 	private Status status;
@@ -88,7 +98,7 @@ public class Report {
 	/**
 	 * Generates a time stamp for when the report is submitted
 	 */
-	//@NotNull
+	@NotNull
 	@Column (name="report_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date reportDate = new Date();
@@ -104,6 +114,8 @@ public class Report {
 		this.reportNotes = null;
 		this.approvedDate = null;
 		this.reportDate = null;
+		this.startDate = null;
+		this.endDate = null;
 	}
 	
 	/**
@@ -115,15 +127,17 @@ public class Report {
 	 * @param reportDate
 	 */
 	public Report(User user, Project project, Status status, String rejectReason,
-			String reportNotes, Date approvedDate, Date reportDate) {
+			String reportNotes, Date approvedDate, Date reportDate, Date endDate, Date startDate) {
 		super();
-		this.user = null;
-		this.project = null;
+		this.user = user;
+		this.project = project;
 		this.status = status;
-		this.rejectReason = null;
-		this.reportNotes = null;
-		this.approvedDate = null;
-		this.reportDate = null;
+		this.rejectReason = rejectReason;
+		this.reportNotes = reportNotes;
+		this.approvedDate = approvedDate;
+		this.reportDate = reportDate;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 	
 	/**

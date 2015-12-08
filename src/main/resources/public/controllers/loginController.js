@@ -23,6 +23,11 @@ angular.module('myApp').controller('loginCtrl',['$scope', 'loginFactory','usersF
 			function(results){
 				console.log("success");
 				$scope.results = results;
+				for(var result: results){
+					if(result.userEmail==user.userEmail&&result.userPassword==user.userPassword){
+						$location.path( "/home" );
+					}
+				}
 			},
 			function(error){
 				console.log("error");

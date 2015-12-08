@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDao{
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
+
 	/**
 	 * Returns a list of users from the database.
 	 * @author cmiller
