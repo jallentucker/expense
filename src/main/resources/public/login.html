@@ -23,24 +23,24 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-2"></div>
-			<form role="form">
+			<form role="form" name="f" action="/login" method="post">
 				<div class="col-lg-5">
 					<div class="well well-sm">
 					<div class="form-group">
-						<label for="InputUsername">Enter Username</label>
+						<label for="username">Enter Username</label>
 						<div class="input-group">
-							<input ng-model="user.userEmail" type="text" class="form-control" name="InputUsername" id="loginUsername" placeholder="Enter Email" required>
+							<input ng-model="user.userEmail" type="text" class="form-control" name="username" id="username" placeholder="Enter Email" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="InputPassword">Enter Password</label>
+						<label for="password">Enter Password</label>
 						<div class="input-group">
-							<input ng-model="user.userPassword" type="password" class="form-control" id="loginPassword" name="InputPassword" placeholder="Enter Password" required>
+							<input ng-model="user.userPassword" type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 					</div>
-					<button name="submit" id="loginSubmit" class="btn btn-success pull-right" ng-click="getUsers()">Log In</button>
+					<button type="submit" name="submit" id="loginSubmit" class="btn btn-success pull-right" ng-click="getUsers()">Log In</button>
 					</div>
 					<div class="error" id="loginError"></div>
 				</div>
