@@ -1,30 +1,25 @@
 angular.module('myApp').factory('validationFactory', [function() {
 	return {
-		comfirmEmail: function(email1, email2) {
-			if (email1 === email2) {
+		confirmPassword: function(password, confirmation) {
+			if (password === confirmation) {
 				return true;
 			} else {
 				return false;
 			}
 		},
-		validateEmail: function(email) {
-			var pattern = new RegExp('^.{1,}@.{1,}\..{1,}$');
-			return pattern.test(email);
-		},
-		validatePassword: function(password) {
-			var test1 = validateStrHasMinOfCharClass('.', 8, password);
-			var test2 = validateStrHasMinOfCharClass('[A-Z]', 1, password);
-			var test3 = validateStrHasMinOfCharClass('[!@#$%&*]', 1, password);
-			var test4 = validateStrHasMinOfCharClass('[0-9]', 1, password);
-			if (test1 && test2 && test3 && test4) {
+		// The persist argument is a boolean that indicates whether the user is trying to persist data or not.
+		// This argument is provided so that validation is not fired when focusing out of an empty field.
+		validateField: function(pattern, persist, str) {
+			if (!persist && str === undefined) {
 				return true;
 			} else {
-				return false;
+				if (str === undefined) {
+					return false;
+				} else {
+					var regex = new RegExp(pattern);
+					return regex.test(str);
+				}
 			}
-		},
-		validateStrHasMinOfCharClass: function(charClass, min, str) {
-			var pattern = new RegExp('^.*' + charClass + '{' + min + ',}.*$');
-			return pattern.test(str);
 		}
 	};
 }]);

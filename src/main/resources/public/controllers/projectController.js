@@ -1,4 +1,4 @@
-angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', function($scope, projectFactory){
+angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'validationFactory', 'projectNameRegex', function($scope, projectFactory, validationFactory, projectNameRegex){
     
     $scope.project = {};
     
@@ -12,13 +12,24 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', fu
     		});
     
     $scope.createProject = function(project){
-    	project.user = $scope.currentUser;
-    	projectFactory.createProject(project).then(
-    			function(success){
-    				$scope.createProjectResult = success;
-    			},
-    			function(error){
-    				$scope.createProjectResult = error;
-    			})
-    }
+        $scope.validateProjectName(project.projectName, true);
+        if (!$scope.projectNameIsInvalid) {
+            project.user = $scope.currentUser;
+            projectFactory.createProject(project).then(
+                    function(success){
+                        $scope.createProjectResult = success;
+                    },
+                    function(error){
+                        $scope.createProjectResult = error;
+                    });
+        }
+    };
+
+    $scope.validateProjectName = function(projectName, persist) {
+        if (!validationFactory.validateField(projectNameRegex, persist, projectName)) {
+            $scope.projectNameIsInvalid = true;
+        } else {
+            $scope.projectNameIsInvalid = false;
+        }
+    };
 }])
