@@ -2,16 +2,18 @@ package com.catalyst.tla_expense.PageObjectFramework.Pages;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
 
 
 public class LoginPageTest extends TestPageObject{
-private WebDriver driver;
 
 @Test
 public void checkThatItGoesToTheRightPage(){
@@ -30,7 +32,7 @@ public void checkThatThePageGetsTheTitle(){
 
     String actualtitle = login.getTitle();
 
-    assertEquals("Expense Application", actualtitle);
+    assertEquals("Expenses Application", actualtitle);
 }
 
 @Test
@@ -47,4 +49,5 @@ public void checkThatValidUserNameAndPasswordNavigatesToHomePage(){
     String actualURL = login.getUrl();
     assertEquals("http://localhost:8080/home", actualURL);
 }
+
 }
