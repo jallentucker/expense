@@ -1,76 +1,68 @@
-<head>
-	<title> Create Report </title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<script src="js/app.js"></script>
-	<link rel="stylesheet" href="css/style.css">
-</head>
-<body ng-app="myApp">
-	<h1>New Expense Report</h1>
-	<div class = "container">
-		<div class="page-header">
-		<h3> Create a Report for Expense Reimbursement </h3>
-		</div>
-		<div class="row">
-			<div class="col-lg-2"></div>
-				<form role="form">
-					<div class="col-lg-5">
-						<div class="well well-sm">
-						<div class="form-group">
-							<label for="InputProjectName"> Enter name of the Report</label>
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Report Name" required>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="InputUserName"> Enter name employee</label>
-							<div class="input-group inline">
-								<input type="text" class="form-control" placeholder="Employee Name" required>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="dropdown">
-								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggles="dropdown"
-								aria-haspopup="true" aria-expanded="true">Select a Project <span class="caret"></span></button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li></li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label for="ReimbursementStartDate"> Enter start date</label>
-							<div class="input-group">
-								<input type="date" class="form-control" required>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-							</div>
-						</div>
-					
-						<div class="form-group">
-							<label for="ReimbursementEndDate"> Enter end date</label>
-							<div class="input-group">
-								<input type="date" class="form-control" required>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="NotesInput"> Notes </label>
-							<div class="input-group">
-								<textarea id="reportNotes" class="form-control" rows="5" placeholder="Enter comments or notes"></textarea>
-							</div>
-						</div>
-						
-						<div>
-							<button type="submit" name="submit" id="ReportSubmit" class="btn btn-success pull-right">Submit</button>
-						</div>		
-					  </div>
-					</div>
-				</form>
+<div>
+		<div class = "container">
+			<div class="page-header">
+			<h3> Create a Report for Expense Reimbursement </h3>
 			</div>
-	</div>
-</body>
+			<div class="row">
+				<div class="col-lg-2"></div>
+					<form role="form">
+						<div class="col-lg-5">
+							<div class="well well-sm">
+							<div class="form-group">
+								<label for="InputProjectName"> Enter name of the Report:</label>
+								<div class="input-group">
+									<input type="text" class="form-control" ng-model="report.reportName" placeholder="Report Name" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="InputUserName"> Enter Employee Name:</label>
+								<div class="input-group inline">
+									<input type="text" class="form-control" placeholder="Employee Name" ng-model="report.user" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggles="dropdown"
+										aria-haspopup="true" aria-expanded="true" ng-model="report.project">Select a Project <span class="caret"></span></button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li></li>
+									</ul>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="ReimbursementStartDate"> Enter Start Date:</label>
+								<div class="input-group">
+									<input type="date" class="form-control" ng-model="report.startDate" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<label for="ReimbursementEndDate"> Enter End Date:</label>
+								<div class="input-group">
+									<input type="date" class="form-control" ng-model="report.endDate" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="NotesInput"> Notes: </label>
+								<div class="input-group">
+									<textarea id="reportNotes" class="form-control custom-control" ng-model="report.reportNotes" rows="5" placeholder="Enter comments or notes"></textarea>
+								</div>
+							</div>
+							
+							<div>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click=createReport(report) class="btn btn-success pull-right">Create</button>
+								<button name="cancel" id="ReportCancel" class="btn btn-success pull-right" ui-sref="home">Cancel</button>
+							</div>		
+						  </div>
+						</div>
+					</form>
+				</div>
+		</div>
+</div>

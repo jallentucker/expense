@@ -45,7 +45,7 @@ public class ReportController {
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
 	 */
-	@RequestMapping(value = "/newReportAdded", method = RequestMethod.POST)
+	@RequestMapping(value = "/report/post", method = RequestMethod.POST)
 	public void addReport(@RequestBody Report report) {
 		this.reportService.createReport(report);
 	}
