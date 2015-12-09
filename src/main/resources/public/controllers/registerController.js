@@ -23,15 +23,14 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'r
 		);
 	};
 	$scope.addUser = function(user){
-		console.log(user.userPassword);
-		console.log(user.userEmail);
+		
 		usersFactory.addUser().then(
 			function(results){
-				console.log("success");
+				
 				$scope.results = results;
 			},
 			function(error){
-				console.log("error");
+				
 				console.log(error);
 			}
 		);
