@@ -45,12 +45,12 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	}
 	
 	public void configure(WebSecurity web) throws Exception{
-		//web.ignoring().antMatchers("/css/**");
-		//web.ignoring().antMatchers("/js/**");
-		//web.ignoring().antMatchers("/controllers/**");
-		//web.ignoring().antMatchers("/factories/**");
-		//web.ignoring().antMatchers("/templates/**");
-		//web.ignoring().antMatchers("/values/**");
+		web.ignoring().antMatchers("/css/**");
+		web.ignoring().antMatchers("/js/**");
+		web.ignoring().antMatchers("/controllers/**");
+		web.ignoring().antMatchers("/factories/**");
+		web.ignoring().antMatchers("/templates/**");
+		web.ignoring().antMatchers("/values/**");
 		web.ignoring().antMatchers("/register**");
 	}
 	/**
@@ -64,7 +64,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/**")
+        	.antMatchers("/**", "/css/**")
         		.permitAll()
         		.anyRequest()
         		.authenticated()
@@ -77,7 +77,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
         	.permitAll()
         .and()
         .csrf()
-        .disable();;
+        .disable();
 		
 		
 	}
