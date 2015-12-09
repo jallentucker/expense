@@ -10,3 +10,7 @@ a:hover .btn-group { text-decoration: none }
 .inline {
 	display: inline;
 }
+
+#reportNotes {
+	min-width: 100%;
+}
