@@ -5,8 +5,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -42,6 +44,15 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		.authoritiesByUsernameQuery("SELECT user_email, 'USER' FROM expense_user WHERE user_email=?");
 	}
 	
+	public void configure(WebSecurity web) throws Exception{
+		//web.ignoring().antMatchers("/css/**");
+		//web.ignoring().antMatchers("/js/**");
+		//web.ignoring().antMatchers("/controllers/**");
+		//web.ignoring().antMatchers("/factories/**");
+		//web.ignoring().antMatchers("/templates/**");
+		//web.ignoring().antMatchers("/values/**");
+		web.ignoring().antMatchers("/register**");
+	}
 	/**
 	 * The main configuration method for Spring Security.
 	 * 
@@ -51,20 +62,24 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		super.configure(http);
 		
-		http.authorizeRequests()
-		.antMatchers("/register", "/user/post")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
+		http
+		.authorizeRequests()
+        	.antMatchers("/**")
+        		.permitAll()
+        		.anyRequest()
+        		.authenticated()
+            	.and()
         .formLogin()
-        .loginPage("/login")
-        .permitAll()
-        .and()
+            .loginPage("/login")
+            	.permitAll()
+            .and()
         .logout()                                    
-        .permitAll();
+        	.permitAll()
+        .and()
+        .csrf()
+        .disable();;
 		
-		http.csrf().disable();
+		
 	}
 	
 	/**
