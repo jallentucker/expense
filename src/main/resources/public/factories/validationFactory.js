@@ -19,6 +19,7 @@ angular.module('myApp').factory('validationFactory', [function() {
 					var regex = new RegExp(pattern);
 					return regex.test(str);
 				}
+
 			}
 		}
 	};

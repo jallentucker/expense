@@ -41,6 +41,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/user/post", method = RequestMethod.POST)
 	public void createUser(@RequestBody User user){
+		System.out.println("Post method called");
 		userService.createUser(user);
 	}
 }
