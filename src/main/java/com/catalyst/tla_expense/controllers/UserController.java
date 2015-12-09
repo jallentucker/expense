@@ -22,11 +22,23 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
+	/**
+	 * GET
+	 * Url "/user/get
+	 * Returns a list of all users.
+	 * @author cmiller
+	 */
 	@RequestMapping(value="/user/get", method = RequestMethod.GET)
 	public  List<User> getAllUsers(){
 		return userService.getAllUsers();
 	}
 	
+	/**
+	 * POST
+	 * Url "/user/post
+	 * Sends a User through the layers and eventually persists in the dao.
+	 * @author cmiller
+	 */
 	@RequestMapping(value="/user/post", method = RequestMethod.POST)
 	public void createUser(@RequestBody User user){
 		userService.createUser(user);
