@@ -9,9 +9,9 @@
 						<div class="col-lg-5">
 							<div class="well well-sm">
 							<div class="form-group">
-								<label for="InputProjectName"> Enter name of the Report:</label>
+								<label for="InputReportName"> Enter name of the Report:</label>
 								<div class="input-group">
-									<input type="text" class="form-control" ng-model="report.reportName" placeholder="Report Name" required>
+									<input type="text" class="form-control" name="report-name" ng-model="report.reportName" placeholder="Report Name" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
@@ -19,25 +19,23 @@
 							<div class="form-group">
 								<label for="InputUserName"> Enter Employee Name:</label>
 								<div class="input-group inline">
-									<input type="text" class="form-control" placeholder="Employee Name" ng-model="report.user" required>
+									<input type="text" class="form-control" name="report-employee" placeholder="Employee Name" ng-model="report.user" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<div class="dropdown">
-									<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggles="dropdown"
-										aria-haspopup="true" aria-expanded="true" ng-model="report.project">Select a Project <span class="caret"></span></button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<li></li>
-									</ul>
+								<div ng-app="myApp"  ng-controller="createReportController">
+									<select ng-model="report.project" name="report-project" ng-options="project.projectName for project in ProjectList" 
+										class="btn btn-default" aria-haspopup="true" aria-expanded="true">
+										<option value="">Select a Project</option>
+									</select>
 								</div>
 							</div>
-							
 							<div class="form-group">
 								<label for="ReimbursementStartDate"> Enter Start Date:</label>
 								<div class="input-group">
-									<input type="date" class="form-control" ng-model="report.startDate" required>
+									<input type="date" class="form-control" name="report-startDate" ng-model="report.startDate" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 								</div>
 							</div>
@@ -45,14 +43,14 @@
 							<div class="form-group">
 								<label for="ReimbursementEndDate"> Enter End Date:</label>
 								<div class="input-group">
-									<input type="date" class="form-control" ng-model="report.endDate" required>
+									<input type="date" class="form-control" name="report-endDate" ng-model="report.endDate" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="NotesInput"> Notes: </label>
 								<div class="input-group">
-									<textarea id="reportNotes" class="form-control custom-control" ng-model="report.reportNotes" rows="5" placeholder="Enter comments or notes"></textarea>
+									<textarea id="reportNotes" class="form-control custom-control" name="report-notes" ng-model="report.reportNotes" rows="5" placeholder="Enter comments or notes"></textarea>
 								</div>
 							</div>
 							

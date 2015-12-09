@@ -1,5 +1,5 @@
 
-angular.module('myApp').controller('createReportController',['$scope', 'createReportFactory', function($scope, createReportFactory){
+angular.module('myApp').controller('createReportController',['$scope', '$http', 'createReportFactory', function($scope, $http, createReportFactory){
 	$scope.report = {};
 	
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
@@ -10,16 +10,29 @@ angular.module('myApp').controller('createReportController',['$scope', 'createRe
     		function(error){
     			$scope.currentUser = error;
     		});
-    
-    $scope.createReport = function(report){
-    	report.user = $scope.currentUser;
-    	createReportFactory.createReport(report).then(
-    			function(success){
-    				$scope.createReportResult = success;
-    			},
-    			function(error){
-    				$scope.createReportResult = error;
-    			})
+    $scope.createReport = function() {
+    	$http({
+    		method: 'POST',
+    		url: '/report/post',
+    		data: $scope.report
+    	}).success(function(data){
+    		console.log(data);
+    		$scope.report=data;
+    	}, function(error){
+    		$scope.report = error;
+    	});
     }
+    
+	$scope.ProjectList = null;
+	$scope.fillProjectList = function() {
+		$http({
+			method: 'GET',
+			url: '/project/get',
+			data: {}
+		}).success(function(result) {
+			$scope.ProjectList = result;
+		});
+	}
+	$scope.fillProjectList();
 }])
     
