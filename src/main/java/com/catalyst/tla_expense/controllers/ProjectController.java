@@ -29,7 +29,7 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value="/project/post", method = RequestMethod.POST)
-	public void createProject(@RequestBody Project project) throws Exception{
-		projectService.createProject(project);
+	public boolean createProject(@RequestBody Project project) throws Exception{
+		return projectService.createProject(project);
 	}
 }
