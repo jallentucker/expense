@@ -21,17 +21,18 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 			}
 		);
 	};
-	$scope.addUser = function(user){
-		if($scope.validateUser(user)) {
-			usersFactory.addUser().then(
+	$scope.addUser = function(){
+		//if($scope.validateUser($scope.user)) {
+			usersFactory.addUser($scope.user).then(
 				function(results){
-					$scope.results = results;
+					console.log(results);
 				},
 				function(error){
+
 					console.log(error);
 				}
 			);
-		}
+		//}
 	};
 	$scope.confirmPassword = function(password, confirmation) {
 		if (!validationFactory.confirmPassword(password, confirmation) && password !== undefined && confirmation !== undefined) {

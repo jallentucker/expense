@@ -8,6 +8,8 @@
 	<script src="controllers/registerController.js"></script>
 	<script src="factories/registerFactory.js"></script>
 	<script src="factories/usersFactory.js"></script>
+	<script src="factories/validationFactory.js"></script>
+	<script src="values/regexValues.js"></script>
 	<!--<link href="toastr.css" rel="stylesheet"/>
 	<script src="toastr.js"></script>-->
 	
@@ -52,7 +54,7 @@
 						</div>
 						</div>
 						<div>
-						<label for="InputPassword">Confirm Password</label>
+						<label for="InputPassword">Confirm Password {{user}}</label>
 						<div class="input-group">
 							<input type="password" ng-model="user.confirmUserPassword" class="form-control" id="confirmPassword" name="InputPassword" placeholder="Confirm Password" required ng-blur="confirmPassword(user.userPassword, user.confirmUserPassword)">
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
