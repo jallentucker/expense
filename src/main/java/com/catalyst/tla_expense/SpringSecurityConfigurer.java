@@ -60,11 +60,11 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		super.configure(http);
+		//super.configure(http);
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/**", "/css/**")
+        	.antMatchers("/user/post", "/css/**")
         		.permitAll()
         		.anyRequest()
         		.authenticated()
