@@ -9,19 +9,17 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     		},
     		function(error){
     			$scope.currentUser = error;
-    		});
-    $scope.createReport = function() {
-    	$http({
-    		method: 'POST',
-    		url: '/report/post',
-    		data: $scope.report
-    	}).success(function(data){
-    		console.log(data);
-    		$scope.report=data;
-    	}, function(error){
-    		$scope.report = error;
     	});
-    }
+    $scope.createReport = function(report){
+            report.user = $scope.currentUser;
+            createReportFactory.createReport(report).then(
+                    function(success){
+                        $scope.createReporttResult = success;
+                    },
+                    function(error){
+                        $scope.createReportResult = error;
+                    });
+    };
     
 	$scope.ProjectList = null;
 	$scope.fillProjectList = function() {
