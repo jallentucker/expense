@@ -17,7 +17,7 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
             project.user = $scope.currentUser;
             projectFactory.createProject(project).then(
                     function(success){
-                        $scope.createProjectResult = success;
+                       $scope.createProjectResult = success
                     },
                     function(error){
                         $scope.createProjectResult = error;
