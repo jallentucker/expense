@@ -6,14 +6,17 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
 import com.catalyst.tla_expense.services.impl.UserServiceImpl;
 
 public class UserServiceImplTest {
-
+	
 	private UserServiceImpl target;
 	private UserDao mockUserDao;
+	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	@Before
 	public void setup(){
@@ -26,7 +29,7 @@ public class UserServiceImplTest {
 	public void testAddUserWithValidUser(){
 		User user = new User();
 		user.setUserEmail("valid@email.com");
-		user.setUserPassword("Password");
+		user.setUserPassword(encoder.encode("Password123@"));
 		
 		target.createUser(user);
 		verify(mockUserDao, times(1)).createUser(user);
