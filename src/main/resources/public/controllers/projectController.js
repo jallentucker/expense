@@ -17,7 +17,8 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
             project.user = $scope.currentUser;
             projectFactory.createProject(project).then(
                     function(success){
-                        $scope.createProjectResult = success;
+                       $scope.createProjectResult = success
+                       if(success.data == true){window.location = "/#/home"};
                     },
                     function(error){
                         $scope.createProjectResult = error;
