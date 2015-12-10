@@ -7,8 +7,11 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.catalyst.tla_expense.daos.ReportDao;
 import com.catalyst.tla_expense.entities.Report;
@@ -53,5 +56,17 @@ public class ReportServiceImplTest {
 		target.editReport(report);
 		System.out.println(expected + " & " + approvedDate);
 		assertEquals(expected, approvedDate);
+	}
+	
+	/**
+	 * Tests that getAllReports() calls the dao method of the same name
+	 */
+	@Test
+	public void testGetAllReports() {
+		target.setReportDao(mockReportDao);
+		List<Report> expected = new ArrayList<>();
+		when(mockReportDao.getAllReports()).thenReturn(expected);
+		List<Report> actual = target.getAllReports();
+		assertEquals(expected, actual);
 	}
 }
