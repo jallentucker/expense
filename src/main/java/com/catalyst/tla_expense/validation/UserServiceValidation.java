@@ -3,10 +3,12 @@ package com.catalyst.tla_expense.validation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
 
+@Service
 public class UserServiceValidation {
 	@Autowired
 	UserDao userDao;

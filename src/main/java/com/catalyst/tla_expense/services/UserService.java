@@ -8,7 +8,7 @@ public interface UserService {
 
 	List<User> getAllUsers();
 
-	void createUser(User user);
+	boolean createUser(User user);
 
 	User getEmployeeByUsername(String username);
 

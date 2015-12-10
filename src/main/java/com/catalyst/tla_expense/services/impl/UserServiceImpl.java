@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
 import com.catalyst.tla_expense.services.UserService;
+import com.catalyst.tla_expense.validation.UserServiceValidation;
 
 /**
  * The Service Implementation for a user. All service validation gets called from here.
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@Autowired
+	private UserServiceValidation userServiceValidation;
 	
 	@Autowired
 	UserDao userDao;
@@ -35,17 +39,28 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * Sends a User to the dao layer.
 	 * @author cmiller
+	 * @return 
 	 */
 	@Override
-	public void createUser(User user) {
-		String encryptedPass = encoder.encode(user.getUserPassword());
-		user.setUserPassword(encryptedPass);
-		userDao.createUser(user);
+	public boolean createUser(User user) {
+		boolean valid = userServiceValidation.validateUser(user);
+		boolean result = false;
+		if(valid){
+			String encryptedPass = encoder.encode(user.getUserPassword());
+			user.setUserPassword(encryptedPass);
+			userDao.createUser(user);
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public User getEmployeeByUsername(String username) {
 		return userDao.getEmployeeByUsername(username);
+	}
+
+	public void setUserServiceValidation(UserServiceValidation userServiceValidation) {
+		this.userServiceValidation = userServiceValidation;
 	}
 
 	public UserDao getUserDao() {

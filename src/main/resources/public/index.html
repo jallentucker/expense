@@ -22,8 +22,13 @@
 	<!-- Your scripts here -->
 </head>
 <body ng-app="myApp">
-	<div>
+	<!-- <div>
 		<button><a id = "logout_button" href="/logout"> Logout</a></button>
+	</div> -->
+	<div>
+		<form action="/logout">
+			<input type="submit" value="Logout" id="logout_button">
+		</form>
 	</div>
 	<h1>Expense Report Application</h1>
 
