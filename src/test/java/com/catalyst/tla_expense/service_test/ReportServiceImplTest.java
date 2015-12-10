@@ -40,6 +40,7 @@ public class ReportServiceImplTest {
 	public void testGetAllReports() {
 		target.getAllReports();
 		verify(mockReportDao, times(1)).getAllReports();
+	}
 	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
 	{
 		

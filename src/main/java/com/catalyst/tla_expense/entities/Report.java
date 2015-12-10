@@ -54,7 +54,7 @@ public class Report {
 	/**
 	 * Joins the report table with the user table via user_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
@@ -214,22 +214,6 @@ public class Report {
 
 	public Date getReportDate() {
 		return reportDate;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
 	}
 
 	public void setReportDate(Date reportDate) {

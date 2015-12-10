@@ -22,7 +22,7 @@
 										class="btn btn-default" aria-haspopup="true" aria-expanded="true">
 										<option value="">Select a Project</option>
 									</select>
-									{{selectedProject.projectId}}
+									{{selectedProject}}
 								</div>
 							</div>
 							<div class="form-group">
@@ -48,7 +48,7 @@
 							</div>
 							
 							<div>
-								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject.projectId)" class="btn btn-success pull-right">Create</button>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-success pull-right">Create</button>
 								<button name="cancel" id="ReportCancel" class="btn btn-success pull-right" ui-sref="home">Cancel</button>
 							</div>		
 						  </div>
