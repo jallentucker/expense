@@ -51,7 +51,7 @@ public class ReportServiceImplTest {
 		Date expected = new Date();
 		
 		target.editReport(report);
-		System.out.println(expected+" & "+ approvedDate);
+		System.out.println(expected + " & " + approvedDate);
 		assertEquals(expected, approvedDate);
 	}
 }

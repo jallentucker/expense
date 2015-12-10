@@ -16,6 +16,14 @@ public class ReportServiceImpl implements ReportService {
 	private ReportDao reportDao;
 	private Status status;
 	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
 	}
