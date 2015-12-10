@@ -18,21 +18,20 @@
     <script src="factories/projectFactory.js"></script>
     <script src="controllers/projectController.js"></script>
 	<script src="controllers/homeController.js"></script>
+	<script src="factories/createReportFactory.js"></script>
+	<script src="controllers/createReportController.js"></script>
 	<script src="factories/validationFactory.js"></script>
 	<script src="values/regexValues.js"></script>
 
 	<!-- Your scripts here -->
 </head>
 <body ng-app="myApp">
-	<!-- <div>
-		<button><a id = "logout_button" href="/logout"> Logout</a></button>
-	</div> -->
 	<div>
 		<form action="/logout">
 			<input type="submit" value="Logout" id="logout_button">
 		</form>
 	</div>
 	<h1>Expense Report Application</h1>
-
 	<ui-view></ui-view>
+
 </body>

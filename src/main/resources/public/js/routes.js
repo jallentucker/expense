@@ -22,6 +22,14 @@
          };
          $stateProvider.state(home);
          
+         var createReport = {
+        		 name: 'createReport',
+        		 url: '/createReport',
+        		 templateUrl: '/templates/createReport.html',
+        		 controller: 'createReportController'
+         };
+         $stateProvider.state(createReport);
+         
          var login = {
         		 name:'login',
                  url:'/login',
@@ -30,5 +38,4 @@
          }
          $stateProvider.state(login);
 	}
-	
 })();

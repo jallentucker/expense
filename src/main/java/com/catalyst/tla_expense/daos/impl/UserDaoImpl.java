@@ -25,6 +25,7 @@ public class UserDaoImpl implements UserDao{
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+
 	/**
 	 * Returns a list of users from the database.
 	 * @author cmiller
@@ -38,12 +39,10 @@ public class UserDaoImpl implements UserDao{
 	 * Creates a user in the database.
 	 * @author cmiller
 	 */
-	
 	@Override
 	public void createUser(User user) {
 		em.merge(user);
 	}
-	
 
 	@Override
 	public User getEmployeeByUsername(String username) {
@@ -51,7 +50,4 @@ public class UserDaoImpl implements UserDao{
 				.setParameter("userEmail", username)
 				.getSingleResult();
 	}
-
-
-	
 }
