@@ -21,6 +21,14 @@
                 controller:'homeCtrl'
          };
          $stateProvider.state(home);
+         
+         var login = {
+        		 name:'login',
+                 url:'/login',
+                 templateUrl:'/loginpage.html',
+                 controller:'homeCtrl'
+         }
+         $stateProvider.state(login);
 	}
 	
 })();

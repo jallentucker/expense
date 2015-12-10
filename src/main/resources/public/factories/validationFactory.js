@@ -13,8 +13,12 @@ angular.module('myApp').factory('validationFactory', [function() {
 			if (!persist && str === undefined) {
 				return true;
 			} else {
-				var regex = new RegExp(pattern);
-				return regex.test(str);
+				if (str === undefined) {
+					return false;
+				} else {
+					var regex = new RegExp(pattern);
+					return regex.test(str);
+				}
 			}
 		}
 	};
