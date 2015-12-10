@@ -40,7 +40,6 @@ public class ReportServiceImplTest {
 		verify(mockReportDao, times(1)).createReport(report);
 	}
 	
-	@Test
 	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
 	{
 		
@@ -57,27 +56,7 @@ public class ReportServiceImplTest {
 		target.editReport(report);
 		System.out.println(expected + " & " + approvedDate);
 		assertEquals(expected, approvedDate);
-	}
-	
-//	@Test
-//	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
-//	{
-//		
-//		Report report = new Report();
-//		Status status = new Status();
-//		report.setReportName("Test Report Test Report");
-//		status.setStatusType("approved");
-//		
-//	
-//		
-//		Date approvedDate = report.getApprovedDate();
-//		Date expected = new Date();
-//		
-//		target.editReport(report);
-//		System.out.println(expected+" & "+ approvedDate);
-//		assertEquals(expected, approvedDate);
-//	}
-	
+	}	
 	
 	/**
 	 * Tests that getAllReports() calls the dao method of the same name

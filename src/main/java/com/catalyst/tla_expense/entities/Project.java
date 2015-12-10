@@ -62,7 +62,7 @@ public class Project {
 		this.description = description;
 	}
 	
-	public User getCondition() {
+	public User getUser() {
 		return user;
 	}
 
