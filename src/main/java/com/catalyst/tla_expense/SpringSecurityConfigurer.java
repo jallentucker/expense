@@ -44,6 +44,10 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		.authoritiesByUsernameQuery("SELECT user_email, 'USER' FROM expense_user WHERE user_email=?");
 	}
 	
+	/**
+	 * This specifies the links on the website that should be ignored. 
+	 * this is possibly redundant.
+	 */
 	public void configure(WebSecurity web) throws Exception{
 		//web.ignoring().antMatchers("/css/**");
 		web.ignoring().antMatchers("/js/**");
@@ -55,9 +59,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	}
 	/**
 	 * The main configuration method for Spring Security.
-	 * 
 	 */
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		//super.configure(http);
@@ -85,11 +87,11 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	/**
 	 * Configures a bean for password encryption
 	 */
-	
 	@Bean
 	public BCryptPasswordEncoder encoder(){
 		return new BCryptPasswordEncoder();
 	}
+	
 	
 	public void setDatasource(DataSource datasource){
 		this.datasource = datasource;
