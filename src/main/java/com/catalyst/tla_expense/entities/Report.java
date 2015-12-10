@@ -37,7 +37,7 @@ public class Report {
 	 * Required field to add the start date in which reimbursement began
 	 * being recorded
 	 */
-	@NotNull
+	//@NotNull
 	@Column(name="start_date",columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date startDate;
@@ -46,7 +46,7 @@ public class Report {
 	 * Required field to add the end date in which reimbursement period
 	 * ended.
 	 */
-	@NotNull
+	//@NotNull
 	@Column(name="end_date",columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date endDate;
@@ -62,7 +62,7 @@ public class Report {
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="project_id")
 	private Project project;
@@ -70,7 +70,7 @@ public class Report {
 	/**
 	 * Joins the report table with the status table via status_id
 	 */
-	@NotNull
+	//@NotNull
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="status_id")
 	private Status status;
@@ -98,7 +98,6 @@ public class Report {
 	/**
 	 * Generates a time stamp for when the report is submitted
 	 */
-	@NotNull
 	@Column (name="report_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date reportDate = new Date();
@@ -106,47 +105,61 @@ public class Report {
 	/**
 	 * flexible constructor
 	 */
-	public Report() {
-		super();
-		this.user = null;
-		this.project = null;
-		this.rejectReason = null;
-		this.reportNotes = null;
-		this.approvedDate = null;
-		this.reportDate = null;
-		this.startDate = null;
-		this.endDate = null;
-	}
+//	public Report() {
+//		super();
+//		this.user = null;
+//		this.project = null;
+//		this.rejectReason = null;
+//		this.reportNotes = null;
+//		this.approvedDate = null;
+//		this.reportDate = null;
+//		this.startDate = null;
+//		this.endDate = null;
+//	}
 	
-	/**
-	 * fully filled constructor
-	 * @param user
-	 * @param rejectReason
-	 * @param reportNotes
-	 * @param approvedDate
-	 * @param reportDate
-	 */
-	public Report(User user, Project project, Status status, String rejectReason,
-			String reportNotes, Date approvedDate, Date reportDate, Date endDate, Date startDate) {
-		super();
-		this.user = user;
-		this.project = project;
-		this.status = status;
-		this.rejectReason = rejectReason;
-		this.reportNotes = reportNotes;
-		this.approvedDate = approvedDate;
-		this.reportDate = reportDate;
-		this.startDate = startDate;
-		this.endDate = endDate;
-	}
-	
+//	/**
+//	 * fully filled constructor
+//	 * @param user
+//	 * @param rejectReason
+//	 * @param reportNotes
+//	 * @param approvedDate
+//	 * @param reportDate
+//	 */
+//	public Report(User user, Project project, Status status, String rejectReason,
+//			String reportNotes, Date approvedDate, Date reportDate, Date endDate, Date startDate) {
+//		super();
+//		this.user = user;
+//		this.project = project;
+//		this.status = status;
+//		this.rejectReason = rejectReason;
+//		this.reportNotes = reportNotes;
+//		this.approvedDate = approvedDate;
+//		this.reportDate = reportDate;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//	}
+
 	/**
 	 * Getters and setters
 	 */
 	public Project getProject() {
 		return project;
 	}
+	public Date getStartDate() {
+		return startDate;
+	}
 
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	public void setProject(Project project) {
 		this.project = project;
 	}

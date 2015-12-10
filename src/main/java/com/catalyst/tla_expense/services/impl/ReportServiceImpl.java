@@ -61,13 +61,15 @@ public class ReportServiceImpl implements ReportService {
 		 * Checks to see if the entered report name is greater
 		 * than 3 characters and there's no whitespace.
 		 */
-		if(reportName.trim().length() > 3)
+		if(reportName.trim().length() > 2)
 		{
 			reportName.toLowerCase();
 			report.setReportName(reportName);
 			this.reportDao.createReport(report);
 		}
-		System.out.println("Report name doesn't meet requirements.");
+		else{
+			System.out.println("Report name doesn't meet requirements.");
+		}
 	}
 	
 	/**
