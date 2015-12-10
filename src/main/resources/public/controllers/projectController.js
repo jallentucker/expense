@@ -18,7 +18,10 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
             projectFactory.createProject(project).then(
                     function(success){
                        $scope.createProjectResult = success
-                       if(success.data == true){window.location = "/#/home"};
+                       if(success.data == true)
+                       {
+                    	   window.location = "/#/home";
+                       }
                     },
                     function(error){
                         $scope.createProjectResult = error;
