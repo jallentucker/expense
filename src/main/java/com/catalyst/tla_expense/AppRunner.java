@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Main app runner function
+ * Main app runner function.
  */
 @SpringBootApplication
 public class AppRunner {
