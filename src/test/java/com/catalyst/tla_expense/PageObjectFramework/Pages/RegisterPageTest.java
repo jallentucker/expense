@@ -43,6 +43,7 @@ public class RegisterPageTest extends TestPageObject{
 		 register.sendKeys(By.id("registerPassword"), "Pass1234$");
 		 register.sendKeys(By.id("confirmPassword"), "Pass1234$");
 		 register.click(By.id("registerSubmit"));
+		 register.goTo("http://localhost:8080/login");
 		 register.sendKeys(By.id("username"), "tla@catalyst.com");
 		 register.sendKeys(By.id("password"), "Pass1234$");
 		 register.click(By.id("loginSubmit"));
