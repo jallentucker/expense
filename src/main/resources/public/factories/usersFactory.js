@@ -9,7 +9,7 @@ angular.module('myApp').factory('usersFactory', ['$http', function($http){
 		},
 	
 		addUser: function(user){
-			return $http.post("/user/post");
+			return $http.post("/user/post",user);
 		
 		}
 	

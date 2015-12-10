@@ -8,7 +8,7 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 	$scope.user = {};
 	$scope.user.userPassword;
 	$scope.user.userEmail;
-	$scope.user.confirmUserPassword;
+	$scope.confirmUserPassword;
 
 	$scope.getUsers = function(){
 	
@@ -21,11 +21,12 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 			}
 		);
 	};
-	$scope.addUser = function(user){
-		if($scope.validateUser(user)) {
-			usersFactory.addUser().then(
+	$scope.addUser = function(){
+		if($scope.validateUser($scope.user)) {
+			usersFactory.addUser($scope.user).then(
 				function(results){
-					$scope.results = results;
+					console.log(results);
+					window.location.href = "http://localhost:8080/login";
 				},
 				function(error){
 					console.log(error);
