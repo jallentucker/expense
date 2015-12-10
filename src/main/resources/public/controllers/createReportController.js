@@ -5,7 +5,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
 	
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
-    			console.log(success.data);
     			$scope.currentUser = success.data;
     		},
     		function(error){
@@ -13,7 +12,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     	});
     
     $scope.createReport = function(report, selectedProject){
-    		console.log(startDate);
     		report.user = $scope.currentUser;
             report.project = selectedProject;
             if(report.reportName.length > 2) {
