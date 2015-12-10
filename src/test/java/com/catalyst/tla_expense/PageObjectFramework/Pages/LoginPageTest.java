@@ -47,7 +47,7 @@ public void checkThatValidUserNameAndPasswordNavigatesToHomePage(){
     login.click(By.id("loginSubmit"));
 
     String actualURL = login.getUrl();
-    assertEquals("http://localhost:8080/home", actualURL);
+    assertEquals("http://localhost:8080/#/home", actualURL);
 }
 
 }
