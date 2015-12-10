@@ -26,6 +26,7 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 			usersFactory.addUser($scope.user).then(
 				function(results){
 					console.log(results);
+					window.location.href = "http://localhost:8080/login";
 				},
 				function(error){
 					console.log(error);
