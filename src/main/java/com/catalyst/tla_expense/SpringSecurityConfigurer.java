@@ -39,49 +39,34 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication()
 		.dataSource(datasource)
-		.passwordEncoder(encoder()) //Un-comment this one registration passwords get hashed. 
+		.passwordEncoder(encoder())
 		.usersByUsernameQuery("SELECT user_email, user_password, TRUE FROM expense_user WHERE user_email=?")
 		.authoritiesByUsernameQuery("SELECT user_email, 'USER' FROM expense_user WHERE user_email=?");
 	}
 	
 	/**
-	 * This specifies the links on the website that should be ignored. 
-	 * this is possibly redundant.
-	 */
-	public void configure(WebSecurity web) throws Exception{
-		//web.ignoring().antMatchers("/css/**");
-		web.ignoring().antMatchers("/js/**");
-		web.ignoring().antMatchers("/controllers/**");
-		web.ignoring().antMatchers("/factories/**");
-		web.ignoring().antMatchers("/templates/**");
-		web.ignoring().antMatchers("/values/**");
-		web.ignoring().antMatchers("/register**");
-	}
-	/**
 	 * The main configuration method for Spring Security.
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		//super.configure(http);
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/user/post", "/css/**")
-        		.permitAll()
+        	.antMatchers("/user/post", "/css/**", "/js/**", "/controllers/**", "/factories/**", 
+        			"/templates/**", "/values/**", "/register**")//these end pont/file/folder locations
+        		.permitAll()//are allowed to be visited by anyone. 
         		.anyRequest()
         		.authenticated()
             	.and()
         .formLogin()
-            .loginPage("/login")
+            .loginPage("/login")//this specifies the custom login page end point
             	.permitAll()
             .and()
         .logout()                                    
-        	.permitAll()
+        	.permitAll()//this allows anywone that is logged in to be logged out. 
         .and()
         .csrf()
         .disable();
-		
-		
 	}
 	
 	/**
