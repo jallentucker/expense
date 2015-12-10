@@ -9,6 +9,6 @@ public interface ProjectService {
 
 	List<Project> getAllProjects();
 
-	void createProject(Project project);
+	boolean createProject(Project project) throws Exception;
 
 }

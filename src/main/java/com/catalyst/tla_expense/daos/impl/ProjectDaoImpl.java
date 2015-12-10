@@ -27,7 +27,6 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public void createProject(Project project) {
 		em.merge(project);
-		
 	}
 	
 	public void setEm(EntityManager em) {

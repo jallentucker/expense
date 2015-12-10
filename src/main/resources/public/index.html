@@ -11,6 +11,8 @@
 	<script src="controllers/registerController.js"></script>
 	<script src="factories/registerFactory.js"></script>
 	<script src="factories/usersFactory.js"></script>
+	<script src="factories/validationFactory.js"></script>
+	<script src="values/regexValues.js"></script>
 	<!--<link href="toastr.css" rel="stylesheet"/>
 	<script src="toastr.js"></script>-->
     <script src="factories/projectFactory.js"></script>
@@ -22,6 +24,14 @@
 	<!-- Your scripts here -->
 </head>
 <body ng-app="myApp">
+	<!-- <div>
+		<button><a id = "logout_button" href="/logout"> Logout</a></button>
+	</div> -->
+	<div>
+		<form action="/logout">
+			<input type="submit" value="Logout" id="logout_button">
+		</form>
+	</div>
 	<h1>Expense Report Application</h1>
 
 	<ui-view></ui-view>
