@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateProjectPageTest {
 
@@ -29,13 +31,13 @@ public class CreateProjectPageTest {
 		driver.get("http://localhost:8080/");
 
 		WebElement element = driver.findElement(By.id("username"));
-        element.sendKeys("dummy");
+        element.sendKeys("tla@te.st");
         
         //wait 5 secs for username to be entered
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         
         WebElement element1 = driver.findElement(By.id("password"));
-        element1.sendKeys("password1");
+        element1.sendKeys("Password1!");
         
         element.submit();
         
@@ -45,12 +47,14 @@ public class CreateProjectPageTest {
 	@Test
     public void navigateToNewProject(){
 		
-		driver.get("http://localhost:8080/#/home");
+		/*driver.get("http://localhost:8080/#/home");*/
 		
 		driver.findElement(By.id("createProjectBtn")).click();
+		
+		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Projectname']")));
         
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "http://localhost:8080/#/createProject" );
+        Assert.assertEquals("http://localhost:8080/#/createProject", URL );
     	
     }
 	
