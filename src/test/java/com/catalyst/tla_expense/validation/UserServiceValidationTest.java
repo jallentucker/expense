@@ -1,4 +1,4 @@
-package com.catalyst.tla_expense.service_test;
+package com.catalyst.tla_expense.validation;
 
 import org.junit.Before;
 import org.junit.Test;

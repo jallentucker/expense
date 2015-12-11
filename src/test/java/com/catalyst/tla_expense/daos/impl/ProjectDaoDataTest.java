@@ -1,4 +1,4 @@
-package com.catalyst.tla_expense.daos;
+package com.catalyst.tla_expense.daos.impl;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;

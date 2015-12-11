@@ -22,8 +22,8 @@ public class LogoutTest {
 	
 	@Test
 	public void doesItLogOutWhenYouClickTheLogOutButton(){
-		driver.findElement(By.id("username")).sendKeys("dummy");
-		driver.findElement(By.id("password")).sendKeys("password1");
+		driver.findElement(By.id("username")).sendKeys("tla@te.st");
+		driver.findElement(By.id("password")).sendKeys("Password1!");
 		driver.findElement(By.id("loginSubmit")).click();
 		driver.get("http://localhost:8080/#/home");
 		driver.findElement(By.id("logout_button")).click();

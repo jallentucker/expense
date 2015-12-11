@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
@@ -32,11 +34,16 @@ public void checkThatThePageGetsTheTitle(){
 @Test
 public void checkThatValidUserNameAndPasswordNavigatesToHomePage(){
     LoginPage login = new LoginPage(driver);
-    login.sendKeys(By.id("username"), "dummy");
-    login.sendKeys(By.id("password"), "password1");
+    login.sendKeys(By.id("username"), "tla@te.st");
+    login.sendKeys(By.id("password"), "Password1!");
     login.click(By.id("loginSubmit"));
+    
+    new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='createProjectBtn']")));
+    
     String actualURL = login.getUrl();
     assertEquals("http://localhost:8080/#/home", actualURL);
+    
+    
 }
 
 }
