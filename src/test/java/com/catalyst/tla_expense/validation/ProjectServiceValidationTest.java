@@ -1,4 +1,4 @@
-package com.catalyst.tla_expense.service_test;
+package com.catalyst.tla_expense.validation;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
