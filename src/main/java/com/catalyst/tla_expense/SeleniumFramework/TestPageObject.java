@@ -1,22 +1,26 @@
 package com.catalyst.tla_expense.SeleniumFramework;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.After;
 import org.junit.Before;
 
 
 public abstract class TestPageObject {
     protected WebDriver driver;
-    SeleniumSettings seleniumSettings;
-    @Before
-    public void beforeAllSeleniumTests(){
-        seleniumSettings = new SeleniumSettings();
-        driver = seleniumSettings.getDriver();
-    }
-    @After
-    public void afterAllSeleniumTests(){
-        driver.quit();
-    }
+	@Before
+	public void setUp() {
+		
+		System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
+				
+		// Create a new instance of the html unit driver
+		driver = new ChromeDriver();
+	}
+	@After
+	public void tearDown() throws Exception {
+		driver.close();
+		driver.quit();
+	}
 }
 
 

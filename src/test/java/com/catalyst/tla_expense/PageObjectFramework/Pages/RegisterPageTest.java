@@ -2,11 +2,12 @@ package com.catalyst.tla_expense.PageObjectFramework.Pages;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
-import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
 public class RegisterPageTest extends TestPageObject{
@@ -39,17 +40,22 @@ public class RegisterPageTest extends TestPageObject{
 	@Test
 	public void checkThatValidUserNameAndPasswordNavigatesToLoginPageAndCanUseToLogin(){
 		 RegisterPage register = new RegisterPage(driver);
-		 register.sendKeys(By.id("registerUsername"), "tla@catalyst.com");
-		 register.sendKeys(By.id("registerPassword"), "Pass1234$");
-		 register.sendKeys(By.id("confirmPassword"), "Pass1234$");
+		 register.sendKeys(By.id("registerUsername"), "tla@te.st");
+		 register.sendKeys(By.id("registerPassword"), "Password1!");
+		 register.sendKeys(By.id("confirmPassword"), "Password1!");
+	        //wait 5 secs for username to be entered
+	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("registerSubmit"));
 		 register.goTo("http://localhost:8080/login");
-		 register.sendKeys(By.id("username"), "tla@catalyst.com");
-		 register.sendKeys(By.id("password"), "Pass1234$");
+	        //wait 5 secs for username to be entered
+	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		 register.sendKeys(By.id("username"), "tla@te.st");
+		 register.sendKeys(By.id("password"), "Password1!");       
+		 	//wait 5 secs for username to be entered
+	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("loginSubmit"));
 		 String actualURL = register.getUrl();
 		 assertEquals("http://localhost:8080/#/home", actualURL);
-	    
 	}
 
 }
