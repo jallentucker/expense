@@ -67,7 +67,7 @@ public class CreateReportPageTest extends TestPageObject
 		registerUser();
 		CreateReportPage report = new CreateReportPage(driver);
 		report.click(By.id("ReportCancel"));
-		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		String actualURL = report.getUrl();
 		assertEquals("http://localhost:8080/#/home", actualURL);
 	}
