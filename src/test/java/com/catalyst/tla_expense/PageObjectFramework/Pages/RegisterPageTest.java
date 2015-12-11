@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
@@ -38,7 +40,7 @@ public class RegisterPageTest extends TestPageObject{
 	}
 
 	@Test
-	public void checkThatValidUserNameAndPasswordNavigatesToLoginPageAndCanUseToLogin(){
+	public void checkThatValidUserNameAndPasswordRegisterNavigatesToLoginPageAndCanUseToLogin(){
 		 RegisterPage register = new RegisterPage(driver);
 		 register.sendKeys(By.id("registerUsername"), "tla@te.st");
 		 register.sendKeys(By.id("registerPassword"), "Password1!");
@@ -54,6 +56,9 @@ public class RegisterPageTest extends TestPageObject{
 		 	//wait 5 secs for username to be entered
 	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("loginSubmit"));
+		 
+		 new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='createProjectBtn']")));
+		 
 		 String actualURL = register.getUrl();
 		 assertEquals("http://localhost:8080/#/home", actualURL);
 	}
