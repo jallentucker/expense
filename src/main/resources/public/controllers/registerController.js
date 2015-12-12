@@ -41,15 +41,29 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 			$scope.passwordsDiffer = false;
 		}
 	};
-	$scope.validateEmail = function(email, persist) {
-		if (!validationFactory.validateField(emailRegex, persist, email)) {
+	$scope.validateEmailOnBlur = function(email) {
+		if (email !== undefined && !validationFactory.validateField(emailRegex, email)) {
 			$scope.emailIsInvalid = true;
 		} else {
 			$scope.emailIsInvalid = false;
 		}
 	};
-	$scope.validatePassword = function(password, persist) {
-		if (!validationFactory.validateField(passwordRegex, persist, password)) {
+	$scope.validateEmailOnSubmit = function(email) {
+		if (!validationFactory.validateField(emailRegex, email)) {
+			$scope.emailIsInvalid = true;
+		} else {
+			$scope.emailIsInvalid = false;
+		}
+	};
+	$scope.validatePasswordOnBlur = function(password) {
+		if (password !== undefined && !validationFactory.validateField(passwordRegex, password)) {
+			$scope.passwordIsInvalid = true;
+		} else {
+			$scope.passwordIsInvalid = false;
+		}
+	};
+	$scope.validatePasswordOnSubmit = function(password) {
+		if (!validationFactory.validateField(passwordRegex, password)) {
 			$scope.passwordIsInvalid = true;
 		} else {
 			$scope.passwordIsInvalid = false;
@@ -57,8 +71,8 @@ angular.module('myApp').controller('registerCtrl', ['$scope', 'usersFactory', 'v
 	};
 	$scope.validateUser = function(user) {
 		$scope.confirmPassword(user.userPassword, user.confirmUserPassword);
-		$scope.validateEmail(user.userEmail, true);
-		$scope.validatePassword(user.userPassword, true);
+		$scope.validateEmailOnSubmit(user.userEmail);
+		$scope.validatePasswordOnSubmit(user.userPassword);
 		if ($scope.passwordsDiffer || $scope.emailIsInvalid || $scope.passwordIsInvalid) {
 			return false;
 		} else {
