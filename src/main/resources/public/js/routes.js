@@ -9,7 +9,7 @@
         var createProject = {
             name:'createProject',
             url:'/createProject',
-            templateUrl:'/templates/createproject.html',
+            templateUrl:'/../templates/createproject.html',
             controller:'projectCtrl'
         };
         $stateProvider.state(createProject);
@@ -17,7 +17,7 @@
         var home = {
                 name:'home',
                 url:'/home',
-                templateUrl:'/templates/home.html',
+                templateUrl:'/../templates/home.html',
                 controller:'homeCtrl'
          };
          $stateProvider.state(home);
@@ -25,7 +25,7 @@
          var createReport = {
         		 name: 'createReport',
         		 url: '/createReport',
-        		 templateUrl: '/templates/createReport.html',
+        		 templateUrl: '/../templates/createReport.html',
         		 controller: 'createReportController'
          };
          $stateProvider.state(createReport);
@@ -33,7 +33,7 @@
          var login = {
         		 name:'login',
                  url:'/login',
-                 templateUrl:'/loginpage.html',
+                 templateUrl:'/../../loginpage.html',
                  controller:'homeCtrl'
          }
          $stateProvider.state(login);
