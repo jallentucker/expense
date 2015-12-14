@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LogoutTest {
 
@@ -22,11 +24,11 @@ public class LogoutTest {
 	
 	@Test
 	public void doesItLogOutWhenYouClickTheLogOutButton(){
-		driver.findElement(By.id("username")).sendKeys("tla@te.st");
+		driver.findElement(By.id("username")).sendKeys("dummy@gmail.com");
 		driver.findElement(By.id("password")).sendKeys("Password1!");
 		driver.findElement(By.id("loginSubmit")).click();
 		driver.get("http://localhost:8080/#/home");
-		driver.findElement(By.id("logout_button")).click();
+		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button"))).click();
 		driver.get("http://localhost:8080/#/createProject");
 		
 		String expUrl = "http://localhost:8080/login#/createProject";
