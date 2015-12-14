@@ -1,0 +1,23 @@
+#registerBtn, #loginBtn{
+	float: right;
+}
+a{
+text-decoration:none;
+color:#000000;
+}
+a:hover .btn-group { text-decoration: none }
+
+#reportNotes {
+	max-width: 100%;
+    width: 100%;
+}
+
+.btn {
+	margin-left: 10px;
+}
+
+body {
+	padding:1%;
+	margin: 1%;
+	margin-bottom: 5%;
+}

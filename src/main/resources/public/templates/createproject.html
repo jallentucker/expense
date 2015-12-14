@@ -1,0 +1,21 @@
+<div class="container">
+		<div class="page-header">
+			<h3>Create New Project</h3>
+		</div>
+		<div class="row">
+			<form role="form">
+					<div class="form-group">
+						<label for="InputProjectName">Enter Project Name</label>
+						<div class="input-group">
+							<input type="text" class="form-control" ng-model = "project.projectName" name="InputProjectName" id="Projectname" placeholder="Enter Project" required>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+						</div>
+						<div class="validationError" ng-show="projectNameIsInvalid">
+							<p>Please enter a project name.</p>
+						</div>
+					</div>
+					<button name="submit" id="ProjectSubmit" ng-click=createProject(project) class="btn btn-success pull-right">Create</button>
+					<button name="cancel" id="ProjectCancel" class="btn btn-success pull-right" ui-sref="home">Cancel</button>
+			</form>
+		</div>
+	</div>

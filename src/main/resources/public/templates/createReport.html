@@ -1,0 +1,58 @@
+<div>
+		<div class = "container">
+			<div class="page-header">
+			<h3> Create a Report for Expense Reimbursement </h3>
+			</div>
+			<div class="row">
+				<div class="col-lg-2"></div>
+					<form role="form">
+						<div class="col-lg-5">
+							<div class="well well-sm">
+							<div class="form-group">
+								<label for="InputReportName"> Enter name of the Report:</label>
+								<div class="input-group">
+									<input id="reportName" type="text" class="form-control" name="report-name" ng-model="report.reportName" placeholder="Report Name" required>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+							
+							<!-- <div class="form-group">
+								<div>
+									<select ng-model="selectedProject" name="report-project" ng-options="project.projectName for project in ProjectList" 
+										class="btn btn-default" aria-haspopup="true" aria-expanded="true">
+										<option value="">Select a Project</option>
+									</select>
+								</div>
+							</div>
+							 <div class="form-group">
+								<label for="ReimbursementStartDate"> Enter Start Date:</label>
+								<div class="input-group" >
+									<input  type="date" data-date-format="MM/dd/yyyy" id="datetimepicker" class="form-control" name="report-startDate" ng-model="report.startDate">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						
+							<div class="form-group">
+								<label for="ReimbursementEndDate"> Enter End Date:</label>
+								<div class="input-group">
+									<input type="date" class="form-control" name="report-endDate" ng-model="report.endDate">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="NotesInput"> Notes: </label>
+								<div class="input-group">
+									<textarea id="reportNotes" class="form-control custom-control" name="report-notes" ng-model="report.reportNotes" rows="5" placeholder="Enter comments or notes"></textarea>
+								</div>
+							</div> -->
+							
+							<div>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-success pull-right">Create</button>
+								<button name="cancel" id="ReportCancel" class="btn btn-success pull-right" ui-sref="home">Cancel</button>
+							</div>		
+						  </div>
+						</div>
+					</form>
+				</div>
+		</div>
+</div>
