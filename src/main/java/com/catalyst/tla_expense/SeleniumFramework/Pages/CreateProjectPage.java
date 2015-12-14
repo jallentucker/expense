@@ -15,7 +15,7 @@ public class CreateProjectPage extends PageObject {
 	
     public CreateProjectPage(WebDriver driver) {
 		super(driver);
-        goTo("http://localhost:8080/home");
+        goTo(URL + "home");
 
     }
     public void clickOnCatalogToEnableUpdate(){
