@@ -5,15 +5,15 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="js/app.js"></script>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="controllers/registerController.js"></script>
-	<script src="factories/registerFactory.js"></script>
-	<script src="factories/usersFactory.js"></script>
-	<script src="factories/validationFactory.js"></script>
+	<script src="js/controllers/registerController.js"></script>
+	<script src="js/factories/registerFactory.js"></script>
+	<script src="js/factories/usersFactory.js"></script>
+	<script src="js/factories/validationFactory.js"></script>
+	<script src="values/regexValues.js"></script>
+	<script src="js/factories/validationFactory.js"></script>
 	<script src="values/regexValues.js"></script>
 	<!--<link href="toastr.css" rel="stylesheet"/>
 	<script src="toastr.js"></script>-->
-	<script src="factories/validationFactory.js"></script>
-	<script src="values/regexValues.js"></script>
 	
 	<!-- Your scripts here -->
 </head>
@@ -21,7 +21,6 @@
 	<h1>Expense Report Application</h1>
 	<div class="container">
 		<div class="page-header">
-			<button id="loginBtn"><a href="/login">Login to Your New Account</a></button>
 			<h3>Register a New Expense account </h3>
 		</div>
 		<div class="row">
@@ -66,7 +65,8 @@
 						</div>
 						</div>
 					</div>
-					<button name="submit" id="registerSubmit" class="btn btn-success pull-right" ng-click="addUser(user)">Create</button>
+						<button name="submit" id="registerSubmit" class="btn btn-success pull-right" ng-click="addUser(user)">Create</button>
+						<button name="cancel" id="RegisterCancel" class="btn btn-danger pull-right" ui-sref="login">Cancel</button>
 					</div>
 					<div class="error" id="registerError"></div>
 				</div>
