@@ -13,7 +13,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     
     $scope.createReport = function(report, selectedProject){
     		report.user = $scope.currentUser;
-           // report.project = selectedProject;
+            report.project = selectedProject;
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
