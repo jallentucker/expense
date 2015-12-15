@@ -13,13 +13,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-<<<<<<< HEAD:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/CreateProjectPageEvaluation.java
-public class CreateProjectPageEvaluation {
-=======
 import com.catalyst.tla_expense.utility.SeleniumConstants;
 
-public class CreateProjectPageTest {
->>>>>>> Constant_Localhost:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/CreateProjectPageTest.java
+public class CreateProjectPageEvaluation {
 
 	private WebDriver driver;
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
