@@ -20,4 +20,8 @@ public class LineItemTypeServiceImpl implements LineItemTypeService {
 		return lineItemTypeDao.getAllLineItemTypes();
 	}
 
+	public void setLineItemTypeDao(LineItemTypeDao lineItemTypeDao) {
+		this.lineItemTypeDao = lineItemTypeDao;
+	}
+
 }

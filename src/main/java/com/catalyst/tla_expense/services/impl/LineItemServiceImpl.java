@@ -38,4 +38,9 @@ public class LineItemServiceImpl implements LineItemService {
 		
 	}
 
+	public void setLineItemDao(LineItemDao lineItemDao) {
+		this.lineItemDao = lineItemDao;
+	}
+
+	
 }
