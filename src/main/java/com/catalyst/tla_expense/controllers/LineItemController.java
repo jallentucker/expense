@@ -25,21 +25,45 @@ public class LineItemController {
 	@Autowired
 	LineItemService lineItemService;
 	
+	
+	/**
+	 * GET
+	 * Returns a list of all line items
+	 * @author cmiller
+	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.GET)
 	public List<LineItem> getAllLineItems(){
 		return lineItemService.getAllLineItems();
 	}
 	
+	/**
+	 * POST
+	 * Sends a Line Item to the service layer
+	 * @param LineItem
+	 * @author cmiller
+	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
 	public void addLineItem(@RequestBody LineItem lineItem){
 		lineItemService.addLineItem(lineItem);
 	}
 	
+	/**
+	 * DELETE
+	 * Sends a Line Item Id to the service layer
+	 * @param LineItemId
+	 * @author cmiller
+	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT + "/{lineItemId}", method = RequestMethod.DELETE)
 	public void deleteLineItemById(@PathVariable Integer lineItemId){
 		lineItemService.deleteLineItemById(lineItemId);
 	}
 	
+	/**
+	 * PUT
+	 * Sends a Line Item to the service layer
+	 * @param LineItem
+	 * @author cmiller
+	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.PUT)
 	public void updateLineItem(@RequestBody LineItem lineItem){
 		lineItemService.updateLineItem(lineItem);

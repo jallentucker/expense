@@ -10,13 +10,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
 import com.catalyst.tla_expense.services.impl.UserServiceImpl;
 import com.catalyst.tla_expense.validation.UserServiceValidation;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class UserServiceImplTest {
 	
