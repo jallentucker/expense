@@ -11,7 +11,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     			$scope.currentUser = error;
     	});
     
-    $scope.createReport = function(report, selectedProject){
+    $scope.createReport = function(report, selectedProject, lineItemTypes){
     		report.user = $scope.currentUser;
             report.project = selectedProject;
             if(report.reportName.length > 2) {
@@ -39,6 +39,31 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
 			$scope.ProjectList = result;
 		});
 	}
+	
+	/*$scope.lineTypesList = function(){
+        lineTypesListFactory.getTypes().then(
+            function(success){
+                $scope.result = success;
+            },
+            function(error){
+                $scope.result = error;
+            }
+        );
+    }*/
+	
+	$scope.lineItemsList = null;
+	$scope.fillLineItemsList = function() {
+		$http({
+			method: 'GET',
+			url: '/lineItemType',
+			data: {}
+		}).success(function(result) {
+			$scope.LineItemsList = result;
+		});
+	}
+	
+
 	$scope.fillProjectList();
+	$scope.fillLineItemsList();
 }])
     
