@@ -15,7 +15,7 @@ import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
 
 
-public class LoginPageTest extends TestPageObject{
+public class LoginPageEvaluation extends TestPageObject{
 
 @Test
 public void checkThatItGoesToTheRightPage(){

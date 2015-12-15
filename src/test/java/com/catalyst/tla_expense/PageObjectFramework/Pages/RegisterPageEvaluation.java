@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
-public class RegisterPageTest extends TestPageObject{
+public class RegisterPageEvaluation extends TestPageObject{
 	
 	
 	@Test
