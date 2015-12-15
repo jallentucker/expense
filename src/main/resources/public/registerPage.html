@@ -4,6 +4,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="js/app.js"></script>
+	<script src="js/routes.js"></script>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/controllers/registerController.js"></script>
 	<script src="js/factories/usersFactory.js"></script>
@@ -43,13 +44,10 @@
 							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 						</div>
 						<div class="validationError" ng-show="passwordIsInvalid">
-							<p>Please enter a valid password. Must have at least:</p>
-							<ul>
-								<li>8 characters</li>
-								<li>1 capital character</li>
-								<li>1 special characters</li>
-								<li>1 number</li>
-							</ul>
+							<p>Please enter a valid password. Must have at least:
+							<br/>
+							8 characters, 1 capital character, 1 special characters and 1 number
+							</p>
 						</div>
 						</div>
 						<div>
@@ -64,7 +62,7 @@
 						</div>
 					</div>
 						<button name="submit" id="registerSubmit" class="btn btn-success pull-right" ng-click="addUser(user)">Create</button>
-						<button name="cancel" id="RegisterCancel" class="btn btn-danger pull-right" ui-sref="login">Cancel</button>
+						<button name="cancel" id="RegisterCancel" class="btn btn-danger pull-right"><a href="/login">Cancel</a></button>
 					</div>
 					<div class="error" id="registerError"></div>
 				</div>
