@@ -16,7 +16,7 @@ public abstract class PageObject {
 	protected String title;
 	protected static By body = By.xpath("//body");
 	protected static By xpathTitle = By.xpath("//title");
-	protected static String URL = "http://localhost:8080/";
+	protected static String URL = "http://localhost:8080";
 	
 	public PageObject(WebDriver driver){
 		this.driver = driver;
