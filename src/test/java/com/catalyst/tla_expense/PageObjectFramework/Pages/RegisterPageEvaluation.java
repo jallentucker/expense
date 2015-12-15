@@ -37,7 +37,7 @@ public class RegisterPageEvaluation extends TestPageObject{
 	    String actualEmailError = register.getInnerHtml(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[1]/div[2]/p"));
 	    String actualURL = register.getUrl();
 	    assertEquals("Passwords do not match.",actualConfirmPasswordError);
-	    assertEquals("Please enter a valid password. Must have at least: 8 characters, 1 capital character, 1 special characters and 1 number.",actualEnterPasswordError);
+	    assertEquals("Please enter a valid password. Must have at least:",actualEnterPasswordError);
 	    assertEquals("Please enter a valid email address.",actualEmailError);
 	    assertEquals((URL + "/register#/home"), actualURL);
 	}
