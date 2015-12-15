@@ -52,8 +52,8 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/user/post", "/css/**", "/js/**", "/controllers/**", "/factories/**", 
-        			"/templates/**", "/values/**", "/register**")//these end pont/file/folder locations
+        	.antMatchers("/user/post", "/css/**", "/js/**", "/js/controllers/registerController.js", 
+        			"/js/values/**", "/register**")//these end pont/file/folder locations
         		.permitAll()//are allowed to be visited by anyone. 
         		.anyRequest()
         		.authenticated()
