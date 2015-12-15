@@ -13,9 +13,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.catalyst.tla_expense.utility.SeleniumConstants;
+
 public class CreateProjectPageEvaluation {
 
 	private WebDriver driver;
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
 	
 	@Before
 	public void setUp() {
@@ -28,7 +32,7 @@ public class CreateProjectPageEvaluation {
 	
 	@Before
 	public void logIn(){
-		driver.get("http://localhost:8080/");
+		driver.get(URL);
 
 		WebElement element = driver.findElement(By.id("username"));
         element.sendKeys("tla@te.st");
@@ -41,7 +45,7 @@ public class CreateProjectPageEvaluation {
         
         element.submit();
         
-        driver.get("http://localhost:8080/#/home");
+        driver.get(URL + "/#/home");
 	}
 	
 	@Test
@@ -54,7 +58,7 @@ public class CreateProjectPageEvaluation {
 		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Projectname']")));
         
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals("http://localhost:8080/#/createProject", URL );
+        Assert.assertEquals((URL +"/#/createProject"), URL );
     	
     }
 	
@@ -74,7 +78,7 @@ public class CreateProjectPageEvaluation {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, "http://localhost:8080/#/home" );
+        Assert.assertEquals(URL, (URL + "/#/home"));
 		
 	}
 	
