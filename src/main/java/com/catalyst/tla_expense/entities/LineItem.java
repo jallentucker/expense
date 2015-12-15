@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "line_item", schema = "public")
@@ -20,7 +21,8 @@ public class LineItem {
 
 	@Column(name = "monetary_amount")
 	private double monetaryAmount;
-
+	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "line_item_type_id")
 	private LineItemType lineItemType;

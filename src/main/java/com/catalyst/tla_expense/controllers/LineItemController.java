@@ -41,9 +41,10 @@ public class LineItemController {
 	 * Sends a Line Item to the service layer
 	 * @param LineItem
 	 * @author cmiller
+	 * @throws Exception 
 	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
-	public void addLineItem(@RequestBody LineItem lineItem){
+	public void addLineItem(@RequestBody LineItem lineItem) throws Exception{
 		lineItemService.addLineItem(lineItem);
 	}
 	
