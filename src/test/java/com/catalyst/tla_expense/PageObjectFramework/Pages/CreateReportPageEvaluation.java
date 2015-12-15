@@ -11,9 +11,11 @@ import org.openqa.selenium.support.ui.Select;
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.CreateReportPage;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
+import com.catalyst.tla_expense.utility.SeleniumConstants;
 
 public class CreateReportPageEvaluation extends TestPageObject
 {
+<<<<<<< HEAD
 	public static String generateString()
 	{
 		Random rng = new Random();
@@ -27,6 +29,11 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		return new String(text);
 	}
+=======
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
+	
+>>>>>>> a425eeabe5b20aa25007dbd73fb4390bf2f1f995
 	public void registerUser(){
 	    RegisterPage register = new RegisterPage(driver);
 	    register.sendKeys(By.id("registerUsername"), "dummy@dummy.com");
@@ -35,7 +42,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	    
 	    register.click(By.id("registerSubmit"));
-	    register.goTo("http://localhost:8080/login");
+	    register.goTo(URL + "/login");
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         
         register.sendKeys(By.id("username"), "dummy@dummy.com");
@@ -50,7 +57,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		registerUser();
 		CreateReportPage report = new CreateReportPage(driver);
 		String actualURL = report.getUrl();
-		assertEquals("http://localhost:8080/#/createReport", actualURL);
+		assertEquals((URL + "/#/createReport"), actualURL);
 	}
 	
 	@Test
@@ -61,7 +68,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		report.click(By.id("ReportSubmit"));
 		
 		String actualURL = report.getUrl();
-		assertEquals("http://localhost:8080/#/createReport", actualURL);
+		assertEquals((URL + "/#/createReport"), actualURL);
 	}
 	
 	@Test
@@ -75,7 +82,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		report.click(By.id("ReportSubmit"));
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		String actualURL = report.getUrl();
-		assertEquals("http://localhost:8080/#/home", actualURL);
+		assertEquals((URL + "/#/home"), actualURL);
 	}
 	
 	@Test
@@ -85,7 +92,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		report.click(By.id("ReportCancel"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		String actualURL = report.getUrl();
-		assertEquals("http://localhost:8080/#/home", actualURL);
+		assertEquals((URL + "/#/home"), actualURL);
 	}
 	
 	@Test 
