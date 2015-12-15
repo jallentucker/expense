@@ -10,14 +10,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-<<<<<<< HEAD:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LogouteEvaluation.java
-public class LogouteEvaluation {
-=======
 import com.catalyst.tla_expense.utility.SeleniumConstants;
 
-public class LogoutTest {
->>>>>>> Constant_Localhost:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LogoutTest.java
+
+public class LogouteEvaluation {
 
 	private WebDriver driver;
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();

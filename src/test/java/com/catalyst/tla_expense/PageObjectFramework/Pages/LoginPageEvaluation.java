@@ -11,14 +11,9 @@ import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
 import com.catalyst.tla_expense.utility.SeleniumConstants;
 
-public class LoginPageTest extends TestPageObject {
-
-<<<<<<< HEAD:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LoginPageEvaluation.java
 public class LoginPageEvaluation extends TestPageObject{
-=======
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
 	public String URL = seleniumConstants.getUrl();
->>>>>>> Constant_Localhost:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LoginPageTest.java
 
 	@Test
 	public void checkThatItGoesToTheRightPage() {
