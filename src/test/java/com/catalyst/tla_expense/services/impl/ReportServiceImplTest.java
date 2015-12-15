@@ -9,35 +9,38 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import com.catalyst.tla_expense.daos.ReportDao;
+import com.catalyst.tla_expense.entities.Project;
 import com.catalyst.tla_expense.entities.Report;
-import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.impl.ReportServiceImpl;
+import com.catalyst.tla_expense.validation.ProjectServiceValidation;
+import com.catalyst.tla_expense.validation.ReportServiceValidation;
 
 public class ReportServiceImplTest {
 
 	private ReportServiceImpl target;
 	private ReportDao mockReportDao;
+	private ReportServiceValidation mockReportServiceValidation;
 	
 	@Before 
 	public void setup() {
 		target = new ReportServiceImpl();
 		mockReportDao = mock(ReportDao.class);
-		target.setReportDao(mockReportDao);
 	}
 	
 	@Test
-	public void testAddReportWithValidReport() throws Exception {
-		Report report = new Report();
-		report.setReportName("Test Report");
+	public void testCreateReportWhenIsValidReturnsTrue() throws Exception {
+		target.setReportDao(mockReportDao);
+		target.setReportServiceValidation(mockReportServiceValidation);
 		
-		target.createReport(report);
-		verify(mockReportDao, times(1)).createReport(report);
+		Report report = new Report();
+		
+		when(mockReportServiceValidation.reportName(report)).thenReturn(true);
+		boolean expected = true;
+		boolean actual = target.createReport(report);
+		assertEquals(expected, actual);
 	}	
 	
 	/**
