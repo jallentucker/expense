@@ -1,6 +1,5 @@
 package com.catalyst.tla_expense.SeleniumFramework;
 
-import java.net.URL;
 import java.util.Collection;
 
 
@@ -9,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.catalyst.tla_expense.utility.SeleniumConstants;
+
 
 public abstract class PageObject {
     private WebDriver driver;
@@ -16,7 +17,9 @@ public abstract class PageObject {
 	protected String title;
 	protected static By body = By.xpath("//body");
 	protected static By xpathTitle = By.xpath("//title");
-	protected static String URL = "http://localhost:8080";
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	
+	public String URL = seleniumConstants.getUrl();
 	
 	public PageObject(WebDriver driver){
 		this.driver = driver;
