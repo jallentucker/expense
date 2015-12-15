@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import com.catalyst.tla_expense.daos.StatusDao;
+import com.catalyst.tla_expense.entities.Report;
 import com.catalyst.tla_expense.entities.Status;
 import static org.mockito.Mockito.when;
 
@@ -20,7 +22,6 @@ public class StatusServiceImplTest {
 	public void setup() {
 		target = new StatusServiceImpl();
 		mockStatusDao = mock(StatusDao.class);
-		target.setStatusDao(mockStatusDao);
 	}
 	
 	/**
@@ -32,6 +33,15 @@ public class StatusServiceImplTest {
 		List<Status> expected = new ArrayList<>();
 		when(mockStatusDao.getStatuses()).thenReturn(expected);
 		List<Status> actual = target.getStatuses();
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testThatGetStatusByIdWorks() {
+		target.setStatusDao(mockStatusDao);
+		Status expected = new Status();
+		when(mockStatusDao.getStatusById(anyInt())).thenReturn(expected);
+		Status actual = target.getStatusById(2);
 		assertEquals(expected, actual);
 	}
 }

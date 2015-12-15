@@ -34,9 +34,9 @@ public class StatusController {
 	 * @param statusName
 	 * @return matching status
 	 */
-	@RequestMapping(value="/status/{name}", method=RequestMethod.GET)
-	public Status getStatusByName(@PathVariable String statusName) {
-		return statusService.getStatusByName(statusName);
+	@RequestMapping(value="/status/{id}", method=RequestMethod.GET)
+	public Status getStatusByName(@PathVariable int id) {
+		return statusService.getStatusById(id);
 	}
 
 }

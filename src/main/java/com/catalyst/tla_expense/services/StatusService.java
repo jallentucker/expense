@@ -17,6 +17,6 @@ public interface StatusService {
 	 * @param statusName
 	 * @return status with matching name
 	 */
-	public Status getStatusByName(String statusName);
+	public Status getStatusById(int id);
 
 }

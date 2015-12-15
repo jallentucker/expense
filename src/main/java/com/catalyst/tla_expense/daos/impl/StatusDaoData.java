@@ -39,11 +39,10 @@ public class StatusDaoData implements StatusDao {
 	 * @param statusName
 	 * @return status with matching name
 	 */
-	@Override
-	public Status getStatusByName(String statusName) {
+	public Status getStatusById(int id) {
 			return em
-				.createQuery("SELECT c FROM Status c WHERE c.statusType = :n", Status.class)
-				.setParameter("n", statusName)
+				.createQuery("SELECT c FROM Status c WHERE c.statusId = :n", Status.class)
+				.setParameter("n", id)
 				.getSingleResult();
 	}
 }
