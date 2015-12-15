@@ -8,3 +8,12 @@ INSERT INTO status(status_type) VALUES ('Under Review');
 
 INSERT INTO project(project_name, approver_id) VALUES ('pie maker', 1);
 INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 2);
+
+INSERT INTO line_item_type(line_item_type) VALUES ('Mileage');
+INSERT INTO line_item_type(line_item_type) VALUES ('Per Diem');
+INSERT INTO line_item_type(line_item_type) VALUES ('Lodging');
+INSERT INTO line_item_type(line_item_type) VALUES ('Travel');
+INSERT INTO line_item_type(line_item_type) VALUES ('Meals');
+INSERT INTO line_item_type(line_item_type) VALUES ('Entertainment');
+INSERT INTO line_item_type(line_item_type) VALUES ('Parking');
+INSERT INTO line_item_type(line_item_type) VALUES ('Other');

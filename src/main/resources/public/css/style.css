@@ -37,4 +37,9 @@ body {
 	 position:relative;
     top:50%; 
     left:47%;
+.validationError {
+	color: red;
+}
+label{
+ font-family: "Times New Roman", Times, serif;
 }

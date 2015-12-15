@@ -8,7 +8,7 @@ public class CreateReportPage extends PageObject {
 
 	public CreateReportPage(WebDriver driver) {
 		super(driver);
-		goTo("http://localhost:8080/#/createReport");
+		goTo( URL + "/#/createReport");
 	}
 	
 }

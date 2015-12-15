@@ -11,15 +11,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
+import com.catalyst.tla_expense.utility.SeleniumConstants;
 
-public class RegisterPageTest extends TestPageObject{
+public class RegisterPageEvaluation extends TestPageObject{
 	
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
 	
 	@Test
 	public void checkThatItGoesToTheRightPage(){
 	    RegisterPage register = new RegisterPage(driver);
 	    String actualURL = register.getUrl();
-	    assertEquals("http://localhost:8080/register", actualURL);
+	    assertEquals((URL + "/register#/home"), actualURL);
 	}
 
 	@Test
@@ -34,9 +37,9 @@ public class RegisterPageTest extends TestPageObject{
 	    String actualEmailError = register.getInnerHtml(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[1]/div[2]/p"));
 	    String actualURL = register.getUrl();
 	    assertEquals("Passwords do not match.",actualConfirmPasswordError);
-	    assertEquals("Please enter a valid password. Must have at least:",actualEnterPasswordError);
+	    assertEquals("Please enter a valid password. Must have at least: 8 characters, 1 capital character, 1 special characters and 1 number.",actualEnterPasswordError);
 	    assertEquals("Please enter a valid email address.",actualEmailError);
-	    assertEquals("http://localhost:8080/register", actualURL);
+	    assertEquals((URL + "/register#/home"), actualURL);
 	}
 
 	@Test
@@ -48,7 +51,7 @@ public class RegisterPageTest extends TestPageObject{
 	        //wait 5 secs for username to be entered
 	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("registerSubmit"));
-		 register.goTo("http://localhost:8080/login");
+		 register.goTo(URL + "/login");
 	        //wait 5 secs for username to be entered
 	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.sendKeys(By.id("username"), "tla@te.st");
@@ -60,7 +63,7 @@ public class RegisterPageTest extends TestPageObject{
 		 new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='createProjectBtn']")));
 		 
 		 String actualURL = register.getUrl();
-		 assertEquals("http://localhost:8080/#/home", actualURL);
+		 assertEquals((URL + "/#/home"), actualURL);
 	}
 
 }
