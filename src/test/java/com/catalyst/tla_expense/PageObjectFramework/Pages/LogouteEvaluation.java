@@ -11,15 +11,23 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+<<<<<<< HEAD:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LogouteEvaluation.java
 public class LogouteEvaluation {
+=======
+import com.catalyst.tla_expense.utility.SeleniumConstants;
+
+public class LogoutTest {
+>>>>>>> Constant_Localhost:src/test/java/com/catalyst/tla_expense/PageObjectFramework/Pages/LogoutTest.java
 
 	private WebDriver driver;
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
 	
 	@Before
 	public void setUp(){
 		System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/");
+		driver.get(URL);
 	}
 	
 	@Test
@@ -27,11 +35,11 @@ public class LogouteEvaluation {
 		driver.findElement(By.id("username")).sendKeys("dummy@gmail.com");
 		driver.findElement(By.id("password")).sendKeys("Password1!");
 		driver.findElement(By.id("loginSubmit")).click();
-		driver.get("http://localhost:8080/#/home");
+		driver.get(URL + "/#/home");
 		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button"))).click();
-		driver.get("http://localhost:8080/#/createProject");
+		driver.get(URL + "/#/createProject");
 		
-		String expUrl = "http://localhost:8080/login#/createProject";
+		String expUrl = (URL + "/login#/createProject");
 		String actualUrl = driver.getCurrentUrl();
 		assertEquals(expUrl, actualUrl);
 	}
