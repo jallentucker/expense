@@ -36,6 +36,9 @@ public class StatusServiceImplTest {
 		assertEquals(expected, actual);
 	}
 	
+	/**
+	 * Tests that getStatusById() calls the dao method of the same name
+	 */
 	@Test
 	public void testThatGetStatusByIdWorks() {
 		target.setStatusDao(mockStatusDao);
