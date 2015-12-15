@@ -39,10 +39,9 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void checkThatReportWasSubmitted() {
 		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
 		report.sendKeys(By.id("reportName"), generateString);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		dropdown.selectByIndex(1);
+		new Select (driver.findElement(By.id("projectDropDown"))).selectByIndex(1);
 		report.click(By.id("ReportSubmit"));
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		String actualURL = report.getUrl();
