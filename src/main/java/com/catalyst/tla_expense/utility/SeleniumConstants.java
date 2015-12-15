@@ -4,11 +4,11 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
-import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
-public class SeleniumConstants extends TestPageObject {
+public class SeleniumConstants {
 
 	public static final String URL = "http://localhost:8080";
 
@@ -30,7 +30,7 @@ public class SeleniumConstants extends TestPageObject {
 		return new String(text);
 	}
 	
-	public void registerUser(){
+	public void registerUser(WebDriver driver){
 	    RegisterPage register = new RegisterPage(driver);
 	    register.sendKeys(By.id("registerUsername"), "dummy@dummy.com");
 	    register.sendKeys(By.id("registerPassword"), "Password1!");

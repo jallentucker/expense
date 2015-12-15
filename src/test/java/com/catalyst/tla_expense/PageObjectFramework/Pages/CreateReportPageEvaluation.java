@@ -14,12 +14,11 @@ public class CreateReportPageEvaluation extends TestPageObject
 {
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
 	public String URL = seleniumConstants.getUrl();
-	public String generateString = SeleniumConstants.generateString();
-	
+	public String generateString = SeleniumConstants.generateString();	
 	
 	@Test
 	public void checkThatItGoesToTheRightPage() {
-		seleniumConstants.registerUser();
+		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/createReport"), actualURL);
@@ -27,7 +26,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatWhitespaceDoesNotGetAdded() {
-		seleniumConstants.registerUser();
+		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), "        ");
 		report.click(By.id("ReportSubmit"));
@@ -38,7 +37,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatReportWasSubmitted() {
-		seleniumConstants.registerUser();
+		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
 		report.sendKeys(By.id("reportName"), generateString);
@@ -52,7 +51,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatCancelButtonWorks() {
-		seleniumConstants.registerUser();
+		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.click(By.id("ReportCancel"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -62,7 +61,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test 
 	public void checkThatAReportIsntSubmittedWithoutAProject() {
-		seleniumConstants.registerUser();
+		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), generateString);
 		report.click(By.id("ReportSubmit"));
