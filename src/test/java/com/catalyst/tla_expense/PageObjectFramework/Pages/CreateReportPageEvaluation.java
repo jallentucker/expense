@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -15,7 +16,9 @@ import com.catalyst.tla_expense.utility.SeleniumConstants;
 
 public class CreateReportPageEvaluation extends TestPageObject
 {
-<<<<<<< HEAD
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
+	
 	public static String generateString()
 	{
 		Random rng = new Random();
@@ -29,11 +32,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		return new String(text);
 	}
-=======
-	public SeleniumConstants seleniumConstants = new SeleniumConstants();
-	public String URL = seleniumConstants.getUrl();
-	
->>>>>>> a425eeabe5b20aa25007dbd73fb4390bf2f1f995
+
 	public void registerUser(){
 	    RegisterPage register = new RegisterPage(driver);
 	    register.sendKeys(By.id("registerUsername"), "dummy@dummy.com");
@@ -103,6 +102,6 @@ public class CreateReportPageEvaluation extends TestPageObject
 		report.click(By.id("ReportSubmit"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		String actualURL = report.getUrl();
-		assertEquals("http://localhost:8080/#/createReport", actualURL);
+		assertEquals((URL + "/#/createReport"), actualURL);
 	}
 }
