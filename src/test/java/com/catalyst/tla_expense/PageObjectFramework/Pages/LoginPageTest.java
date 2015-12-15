@@ -34,7 +34,7 @@ public void checkThatThePageGetsTheTitle(){
 @Test
 public void checkThatValidUserNameAndPasswordNavigatesToHomePage(){
     LoginPage login = new LoginPage(driver);
-    login.sendKeys(By.id("username"), "tla@te.st");
+    login.sendKeys(By.id("username"), "dummy@gmail.com");
     login.sendKeys(By.id("password"), "Password1!");
     login.click(By.id("loginSubmit"));
     
