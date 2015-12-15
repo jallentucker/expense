@@ -39,7 +39,7 @@ public class RegisterPageEvaluation extends TestPageObject{
 	    assertEquals("Passwords do not match.",actualConfirmPasswordError);
 	    assertEquals("Please enter a valid password. Must have at least:",actualEnterPasswordError);
 	    assertEquals("Please enter a valid email address.",actualEmailError);
-	    assertEquals((URL + "/register#/home"), actualURL);
+	    assertEquals((URL + "/register"), actualURL);
 	}
 
 	@Test
