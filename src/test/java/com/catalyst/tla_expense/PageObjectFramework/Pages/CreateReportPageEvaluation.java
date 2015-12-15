@@ -12,7 +12,7 @@ import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.CreateReportPage;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
-public class CreateReportPageTest extends TestPageObject
+public class CreateReportPageEvaluation extends TestPageObject
 {
 	public void registerUser(){
 	    RegisterPage register = new RegisterPage(driver);
