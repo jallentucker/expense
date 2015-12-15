@@ -10,5 +10,5 @@ public class CreateReportPage extends PageObject {
 		super(driver);
 		goTo("http://localhost:8080/#/createReport");
 	}
-
+	
 }

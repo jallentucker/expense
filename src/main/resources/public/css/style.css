@@ -5,6 +5,10 @@ a{
 text-decoration:none;
 color:#000000;
 }
+a #RegisterCancel{
+text-decoration:none;
+color:#ffffff;
+}
 a:hover{ text-decoration: none;
 color:#000000; }
 
@@ -21,4 +25,16 @@ body {
 	padding:1%;
 	margin: 1%;
 	margin-bottom: 5%;
+}
+#addLineitemForm{
+	 border: 1px solid #222;
+    background: #fff;
+    border-radius: 5px;
+}
+#lineitemBtn{
+	background-color: #000000;
+	color: #ffffff;
+	 position:relative;
+    top:50%; 
+    left:47%;
 }

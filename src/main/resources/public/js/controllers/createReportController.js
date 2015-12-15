@@ -1,5 +1,6 @@
 
-angular.module('myApp').controller('createReportController',['$scope', '$http', 'createReportFactory', function($scope, $http, createReportFactory){
+angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', function($scope, $compile, $element, $http, createReportFactory){
+
 	$scope.report = {};
 	$scope.selectedProject = {};
 	
@@ -40,5 +41,19 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
 		});
 	}
 	$scope.fillProjectList();
+	
+		$scope.addLineitem = function(){
+			$scope.count++;
+			newElement = $compile("<br/><lineitem></lineitem><br/>")($scope)
+			$element.parent().append(newElement)
+		}
+		$scope.count = 1;
+		$scope.lineitem = {};
+		$scope.lineitem.name = "Line Item";
+		$scope.lineitem.values = ["Mileage", "Per Diem", "Lodging", "Travel", "Meals", "Entertainment", "Parking", "Other"];
+	 	$scope.lineitem.value = null;
+	 	$scope.lineitem.money = 0;
 }])
+
+
     

@@ -71,4 +71,7 @@ public class CreateReportPageTest extends TestPageObject
 		String actualURL = report.getUrl();
 		assertEquals("http://localhost:8080/#/home", actualURL);
 	}
+	
+	public dropdownWithAllProjectsDisplayed
+
 }
