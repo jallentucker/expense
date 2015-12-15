@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 /**
  * @author Jmiller
  * This is base Spring Security class. All security configuration goes here
@@ -50,8 +51,8 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/user/post", "/css/**", "/js/**", "/templates/**", 
-        			"/js/values/**", "/register**")//these end pont/file/folder locations
+        	.antMatchers("/user/post", "/css/**", "/js/app.js", "/js/controllers/registerController.js", 
+        			"/js/values/regexValues.js", "/js/factories/usersFactory.js", "/js/factories/validationFactory.js", "/register**")//these end point/file/folder locations
         		.permitAll()//are allowed to be visited by anyone. 
         		.anyRequest()
         		.authenticated()
