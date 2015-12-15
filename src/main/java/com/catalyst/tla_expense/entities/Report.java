@@ -33,23 +33,23 @@ public class Report {
 	@Column(name = "report_name", unique=true, length=150)
 	private String reportName;
 	
-	/**
-	 * Required field to add the start date in which reimbursement began
-	 * being recorded
-	 */
-	//@NotNull
-	@Column(name="start_date",columnDefinition="DATE")
-	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date startDate;
-	
-	/**
-	 * Required field to add the end date in which reimbursement period
-	 * ended.
-	 */
-	//@NotNull
-	@Column(name="end_date",columnDefinition="DATE")
-	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date endDate;
+//	/**
+//	 * Required field to add the start date in which reimbursement began
+//	 * being recorded
+//	 */
+//	//@NotNull
+//	@Column(name="start_date",columnDefinition="DATE")
+//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+//	private Date startDate;
+//	
+//	/**
+//	 * Required field to add the end date in which reimbursement period
+//	 * ended.
+//	 */
+//	//@NotNull
+//	@Column(name="end_date",columnDefinition="DATE")
+//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+//	private Date endDate;
 	
 	/**
 	 * Joins the report table with the user table via user_id
@@ -75,25 +75,25 @@ public class Report {
 	@JoinColumn(name="status_id")
 	private Status status;
 	
-	/**
-	 * Placeholder for the approver to add a reject reason so that users
-	 * can correct their mistake
-	 */
-	@Column(name="reject_reason", length=255)
-	private String rejectReason;
+//	/**
+//	 * Placeholder for the approver to add a reject reason so that users
+//	 * can correct their mistake
+//	 */
+//	@Column(name="reject_reason", length=255)
+//	private String rejectReason;
 	
-	/**
-	 * Placeholder for a user to add notes if they desire
-	 */
-	@Column(name="notes", length=255)
-	private String reportNotes;
-
-	/**
-	 * Placeholder to generate the date a report was approved
-	 */
-	@Column(name="approved_date", columnDefinition="DATE")
-	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date approvedDate;
+//	/**
+//	 * Placeholder for a user to add notes if they desire
+//	 */
+//	@Column(name="notes", length=255)
+//	private String reportNotes;
+//
+//	/**
+//	 * Placeholder to generate the date a report was approved
+//	 */
+//	@Column(name="approved_date", columnDefinition="DATE")
+//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+//	private Date approvedDate;
 	
 	/**
 	 * Generates a time stamp for when the report is submitted
@@ -137,29 +137,29 @@ public class Report {
 		this.user = user;
 	}
 
-	public String getRejectReason() {
-		return rejectReason;
-	}
-
-	public void setRejectReason(String rejectReason) {
-		this.rejectReason = rejectReason;
-	}
-
-	public String getReportNotes() {
-		return reportNotes;
-	}
-
-	public void setReportNotes(String reportNotes) {
-		this.reportNotes = reportNotes;
-	}
-
-	public Date getApprovedDate() {
-		return approvedDate;
-	}
-
-	public void setApprovedDate(Date approvedDate) {
-		this.approvedDate = approvedDate;
-	}
+//	public String getRejectReason() {
+//		return rejectReason;
+//	}
+//
+//	public void setRejectReason(String rejectReason) {
+//		this.rejectReason = rejectReason;
+//	}
+//
+//	public String getReportNotes() {
+//		return reportNotes;
+//	}
+//
+//	public void setReportNotes(String reportNotes) {
+//		this.reportNotes = reportNotes;
+//	}
+//
+//	public Date getApprovedDate() {
+//		return approvedDate;
+//	}
+//
+//	public void setApprovedDate(Date approvedDate) {
+//		this.approvedDate = approvedDate;
+//	}
 
 	public Date getReportDate() {
 		return reportDate;

@@ -24,7 +24,7 @@ public class StatusController {
 	 * Retrieves all statuses in the database
 	 * @return full list of stored statuses
 	 */
-	@RequestMapping(value="/getAllStatuses", method=RequestMethod.GET)
+	@RequestMapping(value="/status", method=RequestMethod.GET)
 	public List<Status> getStatuses() {
 		return statusService.getStatuses();
 	}
@@ -34,7 +34,7 @@ public class StatusController {
 	 * @param statusName
 	 * @return matching status
 	 */
-	@RequestMapping(value="/getSingleCondition/{name}", method=RequestMethod.GET)
+	@RequestMapping(value="/status/{name}", method=RequestMethod.GET)
 	public Status getStatusByName(@PathVariable String statusName) {
 		return statusService.getStatusByName(statusName);
 	}

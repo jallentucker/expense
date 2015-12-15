@@ -32,30 +32,12 @@ public class ReportServiceImplTest {
 	}
 	
 	@Test
-	public void testAddReportWithValidReport() {
+	public void testAddReportWithValidReport() throws Exception {
 		Report report = new Report();
 		report.setReportName("Test Report");
 		
 		target.createReport(report);
 		verify(mockReportDao, times(1)).createReport(report);
-	}
-	
-	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
-	{
-		
-		Report report = new Report();
-		Status status = new Status();
-		report.setReportName("Test Report Test Report");
-		status.setStatusType("approved");
-		
-	
-		
-		Date approvedDate = report.getApprovedDate();
-		Date expected = new Date();
-		
-		target.editReport(report);
-		System.out.println(expected + " & " + approvedDate);
-		assertEquals(expected, approvedDate);
 	}	
 	
 	/**
@@ -81,4 +63,23 @@ public class ReportServiceImplTest {
 		Report actual = target.getReport(2);
 		assertEquals(expected, actual);
 	}
+	
+//	@Test
+//	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
+//	{
+//		
+//		Report report = new Report();
+//		Status status = new Status();
+//		report.setReportName("Test Report Test Report");
+//		status.setStatusType("approved");
+//		
+//	
+//		
+//		Date approvedDate = report.getApprovedDate();
+//		Date expected = new Date();
+//		
+//		target.editReport(report);
+//		System.out.println(expected + " & " + approvedDate);
+//		assertEquals(expected, approvedDate);
+//	}
 }

@@ -28,8 +28,10 @@ public interface ReportService {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @return 
+	 * @throws Exception 
 	 */
-	public void createReport(Report report);
+	public boolean createReport(Report report) throws Exception;
 	
 	/**
 	 * Edits a selected report and updates it in the database.
