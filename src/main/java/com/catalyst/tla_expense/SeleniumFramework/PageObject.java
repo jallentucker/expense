@@ -18,7 +18,6 @@ public abstract class PageObject {
 	protected static By body = By.xpath("//body");
 	protected static By xpathTitle = By.xpath("//title");
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
-	
 	public String URL = seleniumConstants.getUrl();
 	
 	public PageObject(WebDriver driver){

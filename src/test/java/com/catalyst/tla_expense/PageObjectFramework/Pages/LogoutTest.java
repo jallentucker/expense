@@ -11,15 +11,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.catalyst.tla_expense.utility.SeleniumConstants;
+
 public class LogoutTest {
 
 	private WebDriver driver;
+	public SeleniumConstants seleniumConstants = new SeleniumConstants();
+	public String URL = seleniumConstants.getUrl();
 	
 	@Before
 	public void setUp(){
 		System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/");
+		driver.get(URL);
 	}
 	
 	@Test
@@ -27,11 +31,11 @@ public class LogoutTest {
 		driver.findElement(By.id("username")).sendKeys("dummy@gmail.com");
 		driver.findElement(By.id("password")).sendKeys("Password1!");
 		driver.findElement(By.id("loginSubmit")).click();
-		driver.get("http://localhost:8080/#/home");
+		driver.get(URL + "/#/home");
 		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button"))).click();
-		driver.get("http://localhost:8080/#/createProject");
+		driver.get(URL + "/#/createProject");
 		
-		String expUrl = "http://localhost:8080/login#/createProject";
+		String expUrl = (URL + "/login#/createProject");
 		String actualUrl = driver.getCurrentUrl();
 		assertEquals(expUrl, actualUrl);
 	}
