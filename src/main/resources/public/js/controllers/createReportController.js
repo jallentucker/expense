@@ -71,19 +71,16 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		$scope.lineitems=[];
 		$scope.count = 0;
 		$scope.addLineitem = function(){
-			var myEl = angular.element( document.querySelector( '#lineitems' ) );
-			myEl.remove();
 			$scope.count++;
-			$scope.lineitem = {};
-			$scope.lineitem.name = "lineitem" + $scope.count;
-			$scope.lineitem.lineItem = {};
-			$scope.lineitem.lineItem.LineItemType = {};
-			$scope.lineitem.lineItem.LineItemType.lineItemType = null;
-		 	$scope.lineitem.lineItem.monetaryAmount = null;
+			$scope.lineItem = {};
+			$scope.lineItem.lineItemType = {};
+			$scope.lineItem.lineItemType.lineItemType;
+		 	$scope.lineItem.monetaryAmount;
 			$scope.lineitems.push($scope.lineitem);
 			$scope.fillLineItemsList();
 			newElement = $compile("<br/><lineitem></lineitem><br/>{{lineitems}}")($scope)
 			$element.parent().append(newElement)
+			
 		}
 		
 }])
