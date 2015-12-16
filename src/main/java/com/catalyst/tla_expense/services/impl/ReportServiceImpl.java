@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.catalyst.tla_expense.daos.ReportDao;
 import com.catalyst.tla_expense.entities.Report;
 import com.catalyst.tla_expense.services.ReportService;
-import com.catalyst.tla_expense.validation.ReportServiceValidation;
 
 @Service
 public class ReportServiceImpl implements ReportService {
@@ -14,28 +13,47 @@ public class ReportServiceImpl implements ReportService {
 	@Autowired
 	private ReportDao reportDao;
 	
-	//@Autowired
-	private ReportServiceValidation reportServiceValidation;
+//	@Autowired
+//	private ReportServiceValidation reportServiceValidation;
 	
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
 	 */
-	
 	@Override
-	public boolean createReport(Report report) throws Exception {
-		try{
-			boolean result = false;
-			boolean valid = reportServiceValidation.reportName(report);
-			if(valid){
-				result = true;
-				reportDao.createReport(report);
-			}
-			return result;
-		}catch(Exception e){
-			throw new Exception(e.getMessage());
+	public void createReport(Report report) {
+		
+		String reportName = report.getReportName();
+		
+		/**
+		 * Checks to see if the entered report name is greater
+		 * than 3 characters and there's no whitespace.
+		 */
+		if(reportName.trim().length() > 2)
+		{
+			reportName.toLowerCase();
+			report.setReportName(reportName);
+			this.reportDao.createReport(report);
+		}
+		else{
+			System.out.println("Report name doesn't meet requirements.");
 		}
 	}
+	
+//	@Override
+//	public boolean createReport(Report report) throws Exception {
+//		try{
+//			boolean result = false;
+//			boolean valid = reportServiceValidation.reportName(report);
+//			if(valid){
+//				result = true;
+//				reportDao.createReport(report);
+//			}
+//			return result;
+//		}catch(Exception e){
+//			throw new Exception(e.getMessage());
+//		}
+//	}
 	
 	/**
 	 * Retrieves a single report by id
@@ -100,7 +118,7 @@ public class ReportServiceImpl implements ReportService {
 		this.reportDao = reportDao;
 	}
 	
-	public void setReportServiceValidation(ReportServiceValidation reportServiceValidation) {
-		this.reportServiceValidation = reportServiceValidation;
-	}
+//	public void setReportServiceValidation(ReportServiceValidation reportServiceValidation) {
+//		this.reportServiceValidation = reportServiceValidation;
+//	}
 }

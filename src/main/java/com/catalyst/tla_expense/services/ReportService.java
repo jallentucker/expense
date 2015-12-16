@@ -31,7 +31,7 @@ public interface ReportService {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public boolean createReport(Report report) throws Exception;
+	public void createReport(Report report);
 	
 	/**
 	 * Edits a selected report and updates it in the database.
