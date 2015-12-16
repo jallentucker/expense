@@ -76,7 +76,11 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 	
-	
+	/**
+	 * Used by autowire to allow 
+	 * spring security to query the database
+	 * @param datasource
+	 */
 	public void setDatasource(DataSource datasource){
 		this.datasource = datasource;
 	}
