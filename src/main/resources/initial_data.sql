@@ -20,6 +20,3 @@ INSERT INTO line_item_type(line_item_type) VALUES ('Meals');
 INSERT INTO line_item_type(line_item_type) VALUES ('Entertainment');
 INSERT INTO line_item_type(line_item_type) VALUES ('Parking');
 INSERT INTO line_item_type(line_item_type) VALUES ('Other');
-
-INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 1);
-

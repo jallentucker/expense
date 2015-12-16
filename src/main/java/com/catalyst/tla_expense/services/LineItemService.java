@@ -18,8 +18,10 @@ public interface LineItemService {
 	 * Sends a Line Item to the dao layer
 	 * @param LineItem
 	 * @author cmiller
+	 * @return 
+	 * @throws Exception 
 	 */
-	public void addLineItem(LineItem lineItem);
+	public boolean addLineItem(LineItem lineItem) throws Exception;
 
 	/**
 	 * DELETE
