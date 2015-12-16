@@ -26,7 +26,7 @@ public class ReportDaoData implements ReportDao {
 	 * @return a single report
 	 */
 	public Report getReport(int id) {
-		return em.createQuery("SELECT c FROM Report c WHERE c.id = :id", Report.class)
+		return em.createQuery("SELECT c FROM report c WHERE c.id = :id", Report.class)
 				.setParameter("id", id)
 				.getSingleResult();
 	}
@@ -35,13 +35,14 @@ public class ReportDaoData implements ReportDao {
 	 * Retrieves all the reports in the database
 	 * @return List<report> of all reports
 	 */
+	@Override
 	public List<Report> getAllReports(){
-		return em.createQuery("SELECT e FROM Report e ORDER BY e.reportId", Report.class)
+		return em.createQuery("SELECT e FROM report e ORDER BY e.reportId", Report.class)
 				.getResultList();
 	}
 	
 	/**
-	 * Adds a new report that's been created to the database
+	 * Adds a new report that's been created to the database ORDER BY e.reportId
 	 * @param report added to database
 	 */
 	public void createReport(Report report) {

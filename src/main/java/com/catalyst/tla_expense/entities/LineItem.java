@@ -26,6 +26,20 @@ public class LineItem {
 	@ManyToOne
 	@JoinColumn(name = "line_item_type_id")
 	private LineItemType lineItemType;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "report_id")
+	private Report report;
+
+	
+	public Report getReport() {
+		return report;
+	}
+
+	public void setReport(Report report) {
+		this.report = report;
+	}
 
 	public int getLineItemId() {
 		return lineItemId;
