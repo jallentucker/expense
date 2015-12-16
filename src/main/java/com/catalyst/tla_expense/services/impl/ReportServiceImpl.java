@@ -14,8 +14,28 @@ public class ReportServiceImpl implements ReportService {
 	@Autowired
 	private ReportDao reportDao;
 	
-	@Autowired
-	ReportServiceValidation reportServiceValidation;
+	//@Autowired
+	private ReportServiceValidation reportServiceValidation;
+	
+	/**
+	 * Adds a new report that's been created to the database
+	 * @param report added to database
+	 */
+	
+	@Override
+	public boolean createReport(Report report) throws Exception {
+		try{
+			boolean result = false;
+			boolean valid = reportServiceValidation.reportName(report);
+			if(valid){
+				result = true;
+				reportDao.createReport(report);
+			}
+			return result;
+		}catch(Exception e){
+			throw new Exception(e.getMessage());
+		}
+	}
 	
 	/**
 	 * Retrieves a single report by id
@@ -43,26 +63,6 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public void deleteReport(int id) {
 		this.reportDao.deleteReport(id);	
-	}
-
-	/**
-	 * Adds a new report that's been created to the database
-	 * @param report added to database
-	 */
-	
-	@Override
-	public boolean createReport(Report report) throws Exception {
-		try{
-			boolean result = false;
-			boolean valid = reportServiceValidation.reportName(report);
-			if(valid){
-				result = true;
-				reportDao.createReport(report);
-			}
-			return result;
-		}catch(Exception e){
-			throw new Exception(e.getMessage());
-		}
 	}
 	
 	/**

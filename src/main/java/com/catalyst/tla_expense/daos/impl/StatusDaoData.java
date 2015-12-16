@@ -29,7 +29,7 @@ public class StatusDaoData implements StatusDao {
 	@Override
 	public List<Status> getStatuses() {
 			return em.
-				createQuery("SELECT e FROM Status e ORDER BY e.statusId", Status.class).
+				createQuery("SELECT e FROM status e ORDER BY e.statusId", Status.class).
 				getResultList();
 	}
 
@@ -41,7 +41,7 @@ public class StatusDaoData implements StatusDao {
 	 */
 	public Status getStatusById(int id) {
 			return em
-				.createQuery("SELECT c FROM Status c WHERE c.statusId = :n", Status.class)
+				.createQuery("SELECT c FROM status c WHERE c.statusId = :n", Status.class)
 				.setParameter("n", id)
 				.getSingleResult();
 	}

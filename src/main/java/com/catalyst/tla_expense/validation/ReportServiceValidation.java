@@ -9,14 +9,15 @@ import com.catalyst.tla_expense.entities.Report;
 
 
 public class ReportServiceValidation {
+	
 	@Autowired
-	ReportDao reportDao;
+	private ReportDao reportDao;
 
 	public boolean reportName(Report report) throws Exception{
 		boolean result = true;
 		try{
 			String reportName = report.getReportName().trim();
-			if(reportName.equals("")){
+			if(reportName.equals("") || reportName.length() < 2){
 				result = false;
 			}
 			
@@ -35,7 +36,7 @@ public class ReportServiceValidation {
 		}
 	}
 
-	public void setProjectDao(ReportDao projectDao) {
+	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
 	}
 }
