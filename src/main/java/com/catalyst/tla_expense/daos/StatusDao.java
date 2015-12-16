@@ -13,9 +13,9 @@ public interface StatusDao {
 	public List<Status> getStatuses();
 	
 	/**
-	 * Search Statuses by name and returns the Status if found
-	 * @param statusName
-	 * @return status with matching name
+	 * Search Statuses by id and returns the Status if found
+	 * @param statusId
+	 * @return status with matching id
 	 */
 	public Status getStatusById(int id);
 

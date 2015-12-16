@@ -11,11 +11,10 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     			$scope.currentUser = error;
     	});
     
-    
-    $scope.submitReport = function(report, selectedProject, selectedStatus){
+    $scope.submitReport = function(report, selectedProject){
     		report.user = $scope.currentUser;
             report.project = selectedProject;
-            report.status = selectedStatus;
+            report.status = {statusName: "submitted"};
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
@@ -49,7 +48,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
 			url: '/status',
 			data: {}
 		}).success(function(result) {
-			$scope.ProjectList = result;
+			$scope.StatusList = result;
 		});
 	}
 	

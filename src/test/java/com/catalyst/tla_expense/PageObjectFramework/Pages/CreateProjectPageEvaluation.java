@@ -2,14 +2,10 @@ package com.catalyst.tla_expense.PageObjectFramework.Pages;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -32,7 +28,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Projectname']")));
        
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals((seleniumConstants.URL + "/#/createProject"), URL );
+        Assert.assertEquals((URL + "/#/createProject"), URL );
     	
     }
 	
@@ -57,7 +53,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String aURL = driver.getCurrentUrl();
-        Assert.assertEquals(aURL, (seleniumConstants.URL  + "/#/home"));
+        Assert.assertEquals(aURL, (URL  + "/#/home"));
 		
 	}
 	
@@ -75,7 +71,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, (seleniumConstants.URL  + "/#/home"));
+        Assert.assertEquals(URL, (URL  + "/#/home"));
 	}
 	
 	@Test
@@ -114,6 +110,6 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String aURL = driver.getCurrentUrl();
-        Assert.assertEquals(aURL, (seleniumConstants.URL  + "/#/createProject"));
+        Assert.assertEquals(aURL, (URL  + "/#/createProject"));
 	}
 }

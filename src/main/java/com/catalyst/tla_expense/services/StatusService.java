@@ -13,9 +13,9 @@ public interface StatusService {
 	public List<Status> getStatuses();
 	
 	/**
-	 * Search Statuses by name and return the Status if found
-	 * @param statusName
-	 * @return status with matching name
+	 * Search Statuses by id and return the Status if found
+	 * @param statusId
+	 * @return status with matching id
 	 */
 	public Status getStatusById(int id);
 
