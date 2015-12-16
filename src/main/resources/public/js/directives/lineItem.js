@@ -11,6 +11,11 @@ angular.module('myApp').directive('lineitem', function() {
    //restrict = E, signifies that directive is Element directive
    directive.restrict = 'E';
    
+   //scope is used to distinguish each student element based on criteria.
+   directive.scope = {
+      lineitem : "=name"
+   }
+   
    //template replaces the complete element with its text. 
    directive.template =
 	   '<form class="container" id="lineitems" class="form-inline" role="form">\
@@ -20,16 +25,16 @@ angular.module('myApp').directive('lineitem', function() {
         		    </div>\
         		    <div class="col-sm-4">\
         		      <label>Expense Type:</label>\
-	   				<select class="form-control" class="lineItemType" ng-model="lineitems[count].lineItem.ineItemType.lineItemType">\
+	   				<select class="form-control" class="lineItemType" ng-model="lineitem.lineItem.ineItemType.lineItemType">\
 	   					<option value="">Select your Expense Type</option>\
-       					<option ng-repeat="value in lineItemsList" value="{{value.lineItemType}}">\
+       					<option ng-repeat="value in lineitem.lineItemsList" value="{{value.lineItemType}}">\
            					{{value.lineItemType}}\
            				</option>\
            			</select>\
        		      </div>\
         		      <div class="form-group col-sm-4">\
         		      <label>Expense Amount:</label>\
-        		      <input type="text" class="form-control" class="monetaryAmount" format="currency" ng-model="lineitems[count].lineItem.monetaryAmount" placeholder="$0.00">\
+        		      <input type="text" class="form-control" class="monetaryAmount" format="currency" ng-model="lineitem.lineItem.monetaryAmount" placeholder="$0.00">\
         		     </div>\
         		  </div>\
         		  <div class="row">\
