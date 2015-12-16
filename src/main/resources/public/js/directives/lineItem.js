@@ -16,20 +16,20 @@ angular.module('myApp').directive('lineitem', function() {
 	   '<form class="container" id="addLineitemForm" class="form-inline" role="form">\
         		  <div class="row">\
         		     <div class="form-group col-sm-4">\
-        		      <label><h3>{{lineitem.name}}</h3></label>\
+        		      <label><h3>{{name}}</h3></label>\
         		    </div>\
         		    <div class="col-sm-4">\
         		      <label>Expense Type:</label>\
-	   				<select class="form-control" ng-model="lineitem.value">\
+	   				<select class="form-control" ng-model="lineItem.LineItemType.lineItemType">\
 	   					<option value="">Select your Expense Type</option>\
-       					<option ng-repeat="value in lineitem.values" value="{{value}}">\
-           					{{value}}\
+       					<option ng-repeat="value in lineItemsList" value="{{value.lineItemType}}">\
+           					{{value.lineItemType}}\
            				</option>\
            			</select>\
        		      </div>\
         		      <div class="form-group col-sm-4">\
         		      <label>Expense Amount:</label>\
-        		      <input type="text" class="form-control" id="monetaryValue" format="currency" ng-model="lineitem.money"placeholder={{lineitem.money|currency}}>\
+        		      <input type="text" class="form-control" id="monetaryAmount" format="currency" ng-model="lineitem.monetaryAmount" placeholder="$0.00">\
         		     </div>\
         		  </div>\
         		  <div class="row">\

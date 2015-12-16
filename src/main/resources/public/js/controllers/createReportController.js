@@ -59,25 +59,25 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 			url: '/lineItemType',
 			data: {}
 		}).success(function(result) {
-			$scope.LineItemsList = result;
+			$scope.lineItemsList = result;
 		});
 	}
 	
 
 	$scope.fillProjectList();
-	
+	$scope.fillLineItemsList();
 		$scope.addLineitem = function(){
 			$scope.count++;
+			$scope.fillLineItemsList();
 			newElement = $compile("<br/><lineitem></lineitem><br/>")($scope)
 			$element.parent().append(newElement)
 		}
 		$scope.count = 1;
+		$scope.name = "Line Item";
 		$scope.lineitem = {};
-		$scope.lineitem.name = "Line Item";
-		$scope.lineitem.values = ["Mileage", "Per Diem", "Lodging", "Travel", "Meals", "Entertainment", "Parking", "Other"];
-	 	$scope.lineitem.value = null;
-	 	$scope.lineitem.money = 0;
-	$scope.fillLineItemsList();
+		$scope.lineitem.LineItemType = {};
+		$scope.lineitem.LineItemType.lineItemType = "Line Item";
+	 	$scope.lineitem.monetaryAmount = null;
 }])
 
 
