@@ -13,7 +13,7 @@ angular.module('myApp').directive('lineitem', function() {
    
    //template replaces the complete element with its text. 
    directive.template =
-	   '<form class="container" class="lineitems" class="form-inline" role="form">\
+	   '<form class="container" id="lineitems" class="form-inline" role="form">\
         		  <div class="row">\
         		     <div class="form-group col-sm-4">\
         		      <label><h3>Add Line Items</h3></label>\

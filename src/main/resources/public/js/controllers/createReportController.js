@@ -71,6 +71,8 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		$scope.lineitems=[];
 		$scope.count = 0;
 		$scope.addLineitem = function(){
+			var myEl = angular.element( document.querySelector( '#lineitems' ) );
+			myEl.remove();
 			$scope.count++;
 			$scope.lineitem = {};
 			$scope.lineitem.name = "lineitem" + $scope.count;
