@@ -33,6 +33,36 @@ public class Report {
 	@Column(name = "report_name", unique=true, length=150)
 	private String reportName;
 	
+	/**
+	 * Generates a time stamp for when the report is submitted
+	 */
+	@Column (name="report_date", columnDefinition="DATE")
+	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
+	private Date reportDate = new Date();
+	
+	/**
+	 * Joins the report table with the user table via user_id
+	 */
+	@NotNull
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	/**
+	 * Joins the report table with the project table via project_id
+	 */
+	@NotNull
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name="project_id")
+	private Project project;
+
+	/**
+	 * Joins the report table with the status table via status_id
+	 */
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@JoinColumn(name="status_id")
+	private Status status;
+	
 //	/**
 //	 * Required field to add the start date in which reimbursement began
 //	 * being recorded
@@ -50,30 +80,6 @@ public class Report {
 //	@Column(name="end_date",columnDefinition="DATE")
 //	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 //	private Date endDate;
-	
-	/**
-	 * Joins the report table with the user table via user_id
-	 */
-	@NotNull
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	/**
-	 * Joins the report table with the project table via project_id
-	 */
-	//@NotNull
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-	@JoinColumn(name="project_id")
-	private Project project;
-
-	/**
-	 * Joins the report table with the status table via status_id
-	 */
-	//@NotNull
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-	@JoinColumn(name="status_id")
-	private Status status;
 	
 //	/**
 //	 * Placeholder for the approver to add a reject reason so that users
@@ -94,13 +100,7 @@ public class Report {
 //	@Column(name="approved_date", columnDefinition="DATE")
 //	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 //	private Date approvedDate;
-	
-	/**
-	 * Generates a time stamp for when the report is submitted
-	 */
-	@Column (name="report_date", columnDefinition="DATE")
-	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-	private Date reportDate = new Date();
+
 
 	/**
 	 * Getters and setters
@@ -136,6 +136,21 @@ public class Report {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public Date getReportDate() {
+		return reportDate;
+	}
+
+	public void setReportDate(Date reportDate) {
+		this.reportDate = reportDate;
+	}
+
+	public String getReportName() {
+		return reportName;
+	}
+
+	public void setReportName(String reportName) {
+		this.reportName = reportName;
+	}	
 
 //	public String getRejectReason() {
 //		return rejectReason;
@@ -160,20 +175,4 @@ public class Report {
 //	public void setApprovedDate(Date approvedDate) {
 //		this.approvedDate = approvedDate;
 //	}
-
-	public Date getReportDate() {
-		return reportDate;
-	}
-
-	public void setReportDate(Date reportDate) {
-		this.reportDate = reportDate;
-	}
-
-	public String getReportName() {
-		return reportName;
-	}
-
-	public void setReportName(String reportName) {
-		this.reportName = reportName;
-	}	
 }

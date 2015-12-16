@@ -10,7 +10,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     		function(error){
     			$scope.currentUser = error;
     	});
-    
+
     $scope.submitReport = function(report, selectedProject){
     		report.user = $scope.currentUser;
             report.project = selectedProject;
@@ -40,19 +40,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
 			$scope.ProjectList = result;
 		});
 	}
-
-	$scope.StatusList = null;
-	$scope.fillStatusList = function() {
-		$http({
-			method: 'GET',
-			url: '/status',
-			data: {}
-		}).success(function(result) {
-			$scope.StatusList = result;
-		});
-	}
-	
 	$scope.fillProjectList();
-	$scope.fillStatusList();
 }])
     
