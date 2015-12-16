@@ -22,7 +22,7 @@ public class LineItemValidationTest {
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType("type");
+		lineItemType.setLineItemTypeId(1);
 		
 		lineItem.setMonetaryAmount(2.4);
 		lineItem.setLineItemType(lineItemType);
@@ -35,7 +35,7 @@ public class LineItemValidationTest {
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType("type");
+		lineItemType.setLineItemTypeId(1);
 		
 		lineItem.setLineItemType(lineItemType);
 		lineItem.setMonetaryAmount(0);
@@ -48,7 +48,6 @@ public class LineItemValidationTest {
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType(null);
 		
 		lineItem.setLineItemType(lineItemType);
 		lineItem.setMonetaryAmount(2.35);
@@ -56,17 +55,15 @@ public class LineItemValidationTest {
 		target.validateLineItem(lineItem);
 	}
 	
-	@Test
-	public void testValidateLineItemWithInvalidLineItemType() throws Exception{
+	@Test (expected=Exception.class)
+	public void testValidateLineItemWithNullLineItemTypeAndNullMonetaryAmount() throws Exception{
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType("");
 		
 		lineItem.setLineItemType(lineItemType);
-		lineItem.setMonetaryAmount(2.35);
 		
-		assertFalse(target.validateLineItem(lineItem));
+		target.validateLineItem(lineItem);
 	}
 	
 	@Test
@@ -74,29 +71,26 @@ public class LineItemValidationTest {
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType("type");
+		lineItemType.setLineItemTypeId(1);
 		lineItem.setLineItemType(lineItemType);
 		
 		assertTrue(target.validateLineItemType(lineItem));
 	}
 	
-	@Test
-	public void testValidateLineItemTypeWithInvalidLineItemType() throws Exception{
+	@Test (expected=Exception.class)
+	public void testValidateLineItemTypeWithInvalidMonetaryAmount() throws Exception{
 		LineItem lineItem = new LineItem();
 		
-		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType("");
-		lineItem.setLineItemType(lineItemType);
+		lineItem.setMonetaryAmount(0);
 		
-		assertFalse(target.validateLineItemType(lineItem));
+		target.validateLineItemType(lineItem);
 	}
 	
 	@Test (expected=Exception.class)
-	public void testValidateLineItemTypeWithNullLineItemType() throws Exception{
+	public void testValidateLineItemTypeWithLineItemTypeThatDoesNotExist() throws Exception{
 		LineItem lineItem = new LineItem();
 		
 		LineItemType lineItemType = new LineItemType();
-		lineItemType.setLineItemType(null);
 		
 		lineItem.setLineItemType(lineItemType);
 		

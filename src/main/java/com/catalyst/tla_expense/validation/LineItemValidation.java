@@ -13,17 +13,14 @@ public class LineItemValidation {
 	}
 
 	public boolean validateLineItemType(LineItem lineItem) throws Exception {
-		try {
 			boolean result = true;
 			LineItemType lineItemType = lineItem.getLineItemType();
-			String lineItemTypeString = lineItemType.getLineItemType();
-			if(lineItemTypeString.equals("")){
+			int lineItemTypeId = lineItemType.getLineItemTypeId();
+			if(lineItemTypeId == 0){
 				result = false;
+				throw new Exception("Not a line item type");
 			}
 			return result;
-		} catch (NullPointerException e) {
-			throw new Exception("Line Item Type is Null");
-		}
 	}
 
 	public boolean validateLineItemMonetaryAmount(LineItem lineItem) throws Exception {
