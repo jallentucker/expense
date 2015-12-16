@@ -68,4 +68,5 @@ public class CreateReportPageEvaluation extends TestPageObject
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/createReport"), actualURL);
 	}
+	
 }
