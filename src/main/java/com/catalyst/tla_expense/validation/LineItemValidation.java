@@ -9,7 +9,7 @@ import com.catalyst.tla_expense.entities.LineItemType;
 public class LineItemValidation {
 
 	public boolean validateLineItem(LineItem lineItem) throws Exception {
-		return validateLineItemType(lineItem) && validateLineItemMonetaryAmount(lineItem);
+		return validateLineItemType(lineItem) && validateLineItemMonetaryAmount(lineItem) && validateLineItemProject(lineItem);
 	}
 
 	public boolean validateLineItemType(LineItem lineItem) throws Exception {
@@ -29,6 +29,16 @@ public class LineItemValidation {
 		if (monetaryAmount == 0) {
 			result = false;
 			throw new Exception("Monetary Amount cannot be 0");
+		}
+		return result;
+	}
+	
+	public boolean validateLineItemProject(LineItem lineItem) throws Exception{
+		boolean result = true;
+		int projectId = lineItem.getReport().getReportId();
+		if(projectId == 0){
+			result = false;
+			throw new Exception("Project is not specified");
 		}
 		return result;
 	}
