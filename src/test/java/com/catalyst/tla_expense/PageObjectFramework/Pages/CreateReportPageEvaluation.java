@@ -1,6 +1,8 @@
 package com.catalyst.tla_expense.PageObjectFramework.Pages;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -9,6 +11,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
+import com.catalyst.tla_expense.SeleniumFramework.PageObject;
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.CreateReportPage;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
@@ -33,27 +36,10 @@ public class CreateReportPageEvaluation extends TestPageObject
 		return new String(text);
 	}
 
-	public void registerUser(){
-	    RegisterPage register = new RegisterPage(driver);
-	    register.sendKeys(By.id("registerUsername"), "dummy@dummy.com");
-	    register.sendKeys(By.id("registerPassword"), "Password1!");
-	    register.sendKeys(By.id("confirmPassword"), "Password1!");
-	    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	    
-	    register.click(By.id("registerSubmit"));
-	    register.goTo(URL + "/login");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        
-        register.sendKeys(By.id("username"), "dummy@dummy.com");
-		register.sendKeys(By.id("password"), "Password1!"); 
-		
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		register.click(By.id("loginSubmit"));
-	}
 	
 	@Test
 	public void checkThatItGoesToTheRightPage() {
-		registerUser();
+		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/createReport"), actualURL);
@@ -61,7 +47,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatWhitespaceDoesNotGetAdded() {
-		registerUser();
+		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), "        ");
 		report.click(By.id("ReportSubmit"));
@@ -72,21 +58,21 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatReportWasSubmitted() {
-		registerUser();
+		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
 		report.sendKeys(By.id("reportName"), generateString());
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		dropdown.selectByIndex(1);
 		report.click(By.id("ReportSubmit"));
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		report.find(By.id("logout_button"));
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/home"), actualURL);
 	}
 	
 	@Test
 	public void checkThatCancelButtonWorks() {
-		registerUser();
+		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.click(By.id("ReportCancel"));
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -96,7 +82,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test 
 	public void checkThatAReportIsntSubmittedWithoutAProject() {
-		registerUser();
+		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), generateString());
 		report.click(By.id("ReportSubmit"));
@@ -110,52 +96,100 @@ public class CreateReportPageEvaluation extends TestPageObject
 
 	@Test 
 	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
-
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+		boolean submitBtnFound = true;
+		try{
+			//just need submit button id
+			report.find(By.id(""));
+			submitBtnFound = true;
+		}
+		catch(Exception E){
+			submitBtnFound = false;
+		}
+		finally{
+			assertFalse(submitBtnFound);
+		}
 	}
 
 	@Test 
 	public void whenReportValidAndSavedClickedSubmitBtnDisplayed() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
-
-	}
-
-	@Test 
-	public void whenReportInvalidAndSavedClickedSubmitBtnNotDisplayed() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+		
+		/*
+		 * need to create valid report
+		 * with line items and adding name and clicking related project
+		 */
+		
+		report.click(By.id("SaveBtn"));
+		boolean elementFound = false;
+		try{
+			//just need submit button id
+			report.find(By.id(""));
+			elementFound = false;
+		}
+		catch(Exception E){
+			elementFound = true;
+		}
+		finally{
+			assertTrue(elementFound);
+		}
 
 	}
 
 	@Test 
 	public void whenReportSavedAndClickSubmitBtnThenReportPersistedAndRedirectedToHome() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
-
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+		/*
+		 * need to create valid report
+		 * with line items and adding name and clicking related project
+		 */
+		
+		//need to find ids os save and submit buttons
+		report.click(By.id("SaveBtn"));
+		report.click(By.id("SubmitBtn"));
+		report.find(By.id("logout_button"));
+		String actualUrl = report.getUrl();
+		String expectedURL = "http://localhost:8080/#/home";
+		assertEquals(expectedURL, actualUrl);
 	}
 
-	@Test 
-	public void whenEditingSavedReportSubmitBtnDisappears() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
-
-	}
 
 	//testing card 24--saving a report
 
 	@Test 
 	public void whenAddedLineItemThenSaveBtnAppears() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+
+		/*
+		 * need to create valid report
+		 * with line items and adding name and clicking related project
+		 */
+		
+		boolean elementFound = false;
+		try{
+			//just need submit button id
+			report.find(By.id(""));
+			elementFound = false;
+		}
+		catch(Exception E){
+			elementFound = true;
+		}
+		finally{
+			assertTrue(elementFound);
+		}
 
 	}
 
 	@Test 
-	public void whenNotSelectingAnyDropboxesErrorMessageDisplays() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
+	public void whenNotSelectingAnyDropboxesAndClickSaveErrorMessageDisplays() {
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+		
+		
 
 	}
 
@@ -163,15 +197,15 @@ public class CreateReportPageEvaluation extends TestPageObject
 
 	@Test 
 	public void lineItemButtonPresentAndClickingPresentsLineItemRow() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
 
 	}
 
 	@Test 
 	public void lineItemRowContainsDropDownOfTypesAndInputOfMonetaryAmount() {
-	seleniumConstants.registerUser(driver);
-	CreateReportPage report = new CreateReportPage(driver);
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
 
 	}
 }

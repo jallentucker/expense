@@ -16,7 +16,7 @@ public class LogouteEvaluation extends TestPageObject {
 	
 	@Test
 	public void doesItLogOutWhenYouClickTheLogOutButton(){
-		seleniumConstants.registerUser(driver);
+		seleniumConstants.loginUser(driver);
 		driver.get(URL + "/#/home");
 		new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button"))).click();
 		driver.get(URL + "/#/createProject");

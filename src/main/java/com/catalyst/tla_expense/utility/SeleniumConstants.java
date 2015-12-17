@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
 public class SeleniumConstants {
@@ -30,22 +31,19 @@ public class SeleniumConstants {
 		return new String(text);
 	}
 	
-	public void registerUser(WebDriver driver){
-	    RegisterPage register = new RegisterPage(driver);
-	    register.sendKeys(By.id("registerUsername"), "dummy@dummy.com");
-	    register.sendKeys(By.id("registerPassword"), "Password1!");
-	    register.sendKeys(By.id("confirmPassword"), "Password1!");
-	    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-	    
-	    register.click(By.id("registerSubmit"));
-	    register.goTo(URL + "/login");
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        
-        register.sendKeys(By.id("username"), "dummy@dummy.com");
+	public void loginUser(WebDriver driver){
+	    LoginPage register = new LoginPage(driver);
+        register.sendKeys(By.id("username"), "dummy@gmail.com");
 		register.sendKeys(By.id("password"), "Password1!"); 
 		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		register.click(By.id("loginSubmit"));
+	}
+	
+	
+	
+	public void login(WebDriver driver){
+		
 	}
 
 }
