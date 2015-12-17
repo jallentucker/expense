@@ -5,8 +5,8 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-2"></div>
-					<form role="form" class="form-inline" name="reportForm">
-						<div class="col-lg-5">
+					<form role="form" name="reportForm">
+						<div class="col-lg-6">
 							<div class="well well-sm">
 							<div class="form-group" >
 								<label for="InputReportName"> Enter name of the Report:</label>
@@ -34,14 +34,14 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Expense Type:</label>
-                                            <select class="form-control" class="lineItemType" ng-model="expenseType[$index]">
+                                            <select class="form-control" class="lineItemType" ng-model="expenseType[$index]" required>
                                                 <option value="">Select your Expense Type</option>
                                             <option ng-repeat="value in result" ng-value="{{value.lineItemTypeId}}">{{value.lineItemType}}</option>                                            
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label>Expense Amount:</label>
-                                            <input type="number" min="0" step="0.01" class="form-control currency" ng-model="monetary[$index]"  placeholder="$0.00">
+                                            <input type="number" min="0" step="0.01" class="form-control currency" ng-model="monetary[$index]"  placeholder="$0.00" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -49,8 +49,8 @@
                                 </form>
                             </div>
                          <div>
-							<button type="submit" name="submit" ng-hide="" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes, 2)" class="btn btn-success pull-right">Submit</button>
-							<button type="submit" name="save" ng-hide="reportForm.$invalid" id="ReportSave" ng-click="createReport(report, selectedProject, lineItemTypes, 4)" class="btn btn-info pull-right">Save</button>
+							<button type="submit" name="submit" ng-show="showSubmitBtn" id="ReportSubmit" ng-click="" class="btn btn-success pull-right">Submit</button>
+							<button type="submit" name="save" ng-hide="reportForm.$invalid" id="ReportSave" ng-click="createReport(report, selectedProject, lineItemTypes, 4); submitFlag()" class="btn btn-info pull-right">Save</button>
 							<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 						</div>
 		</div>

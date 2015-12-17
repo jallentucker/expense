@@ -4,7 +4,19 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     $scope.monetary= [];
     $scope.expenseType = [];
 	$scope.report = {};
-	
+	$scope.showSubmitBtn = false;
+	$scope.submitFlag = function(){
+		if($scope.ReportSave.hide == true) return false;
+		
+		$scope.showSubmitBtn = true;
+		return true;
+	};
+	$scope.hideSubmit = function(){
+		if($scope.ReportSave.hide == true)
+			$scope.showSubmitBtn = false;
+			return false;
+		return true;
+	}
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
     			$scope.currentUser = success.data;
@@ -14,7 +26,8 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.reqDropdown = function() {
-    	if($scope.selectedProject && $scope.selectedProject.projectId) return false;
+    	if($scope.selectedProject && $scope.selectedProject.projectId &&
+    			$scope.expenseType[$index] && $scope.expenseType[$index].lineItemTypeId) return false;
     	return true;
     }
    
