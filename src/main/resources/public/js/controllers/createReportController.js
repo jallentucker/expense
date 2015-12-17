@@ -38,7 +38,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
                             var id = lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
-                                 $scope.lineItemArray[i].lineItemId = id;
+                                 console.log("SUCCESS!");
                              },
                             function(error){
                                 console.log(error);
