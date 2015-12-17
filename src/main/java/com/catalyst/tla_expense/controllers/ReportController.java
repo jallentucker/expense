@@ -44,10 +44,11 @@ public class ReportController {
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
 	 * @throws Exception 
+	 * @return 
 	 */
 	@RequestMapping(value = "/report/post", method = RequestMethod.POST)
-	public void addReport(@RequestBody Report report) throws Exception {
-		this.reportService.createReport(report);
+	public int addReport(@RequestBody Report report) {
+		return this.reportService.createReport(report);
 	}
 	
 	/**

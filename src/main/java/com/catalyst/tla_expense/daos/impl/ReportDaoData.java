@@ -42,11 +42,18 @@ public class ReportDaoData implements ReportDao {
 	}
 	
 	/**
-	 * Adds a new report that's been created to the database
+	 * Adds a new report that's been created to the database ORDER BY e.reportId
 	 * @param report added to database
+	 * @return 
 	 */
-	public void createReport(Report report) {
+	public int createReport(Report report) {
 		em.merge(report);
+		Report reportReturn = em.createQuery("SELECT r FROM report r WHERE r.reportName = :reportName AND r.project = :projectId", Report.class)
+		.setParameter("reportName", report.getReportName())
+		.setParameter("projectId", report.getProject())
+		.getSingleResult();
+		return reportReturn.getReportId();
+
 	}
 	
 	/**
