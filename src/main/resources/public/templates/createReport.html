@@ -18,13 +18,13 @@
 							
 							<div class="form-group">
 								<div>
-									<select ng-model="selectedProject" name="report-project" ng-options="project.projectName for project in ProjectList" 
+									<select ng-model="selectedProject" id="projectDropDown" name="report-project" ng-options="project.projectName for project in ProjectList" 
 										class="btn btn-default" aria-haspopup="true" aria-expanded="true">
 										<option value="">Select a Project</option>
 									</select>
 								</div>
 							</div>
-							 <!--<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="ReimbursementStartDate"> Enter Start Date:</label>
 								<div class="input-group" >
 									<input  type="date" data-date-format="MM/dd/yyyy" id="datetimepicker" class="form-control" name="report-startDate" ng-model="report.startDate">
@@ -47,8 +47,8 @@
 							</div> -->
 							
 							<div>
-								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-success pull-right">Submit</button>
-								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-info pull-right">Save</button>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="submitReport(report, selectedProject)" class="btn btn-success pull-right">Submit</button>
+								<!--  <button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-info pull-right">Save</button> -->
 								<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 							</div>		
 						  </div>

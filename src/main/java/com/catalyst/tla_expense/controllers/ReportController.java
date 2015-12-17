@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.catalyst.tla_expense.entities.Report;
-import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.ReportService;
 
 @RestController
@@ -44,9 +43,10 @@ public class ReportController {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/report/post", method = RequestMethod.POST)
-	public void addReport(@RequestBody Report report) {
+	public void addReport(@RequestBody Report report) throws Exception {
 		this.reportService.createReport(report);
 	}
 	
@@ -67,17 +67,4 @@ public class ReportController {
 	public void editReport(@RequestBody Report report){
 		this.reportService.editReport(report);
 	}
-	
-	@RequestMapping(value="/dummy", method=RequestMethod.GET)
-	public void dummyData() {
-		
-		Report report = new Report();
-		Status status = new Status();
-		
-		report.setReportName("blue");
-		status.setStatusType("approved");
-		
-		this.reportService.createReport(report);
-	}
-	
 }

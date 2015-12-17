@@ -13,7 +13,6 @@ import com.catalyst.tla_expense.utility.SeleniumConstants;
 
 public abstract class PageObject {
     private WebDriver driver;
-	private String url;
 	protected String title;
 	protected static By body = By.xpath("//body");
 	protected static By xpathTitle = By.xpath("//title");

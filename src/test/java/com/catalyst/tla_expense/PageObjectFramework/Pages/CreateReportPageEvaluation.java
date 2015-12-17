@@ -104,4 +104,74 @@ public class CreateReportPageEvaluation extends TestPageObject
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/createReport"), actualURL);
 	}
+	
+
+	//testing card 23--submitting a report
+
+	@Test 
+	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void whenReportValidAndSavedClickedSubmitBtnDisplayed() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void whenReportInvalidAndSavedClickedSubmitBtnNotDisplayed() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void whenReportSavedAndClickSubmitBtnThenReportPersistedAndRedirectedToHome() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void whenEditingSavedReportSubmitBtnDisappears() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	//testing card 24--saving a report
+
+	@Test 
+	public void whenAddedLineItemThenSaveBtnAppears() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void whenNotSelectingAnyDropboxesErrorMessageDisplays() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	//testing card 25--adding line item to report
+
+	@Test 
+	public void lineItemButtonPresentAndClickingPresentsLineItemRow() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
+
+	@Test 
+	public void lineItemRowContainsDropDownOfTypesAndInputOfMonetaryAmount() {
+	seleniumConstants.registerUser(driver);
+	CreateReportPage report = new CreateReportPage(driver);
+
+	}
 }

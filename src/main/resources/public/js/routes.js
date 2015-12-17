@@ -29,13 +29,5 @@
         		 controller: 'createReportController'
          };
          $stateProvider.state(createReport);
-         
-         var login = {
-        		 name:'login',
-                 url:'/login',
-                 templateUrl:'/loginpage.html',
-                 controller:'homeCtrl'
-         }
-         $stateProvider.state(login);
 	}
 })();

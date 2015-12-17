@@ -34,8 +34,8 @@ public class StatusServiceImpl implements StatusService {
 	 * @return status with matching name
 	 */
 	@Override
-	public Status getStatusByName(String statusName) {
-		return statusDao.getStatusByName(statusName);
+	public Status getStatusById(int id) {
+		return statusDao.getStatusById(id);
 	}
 
 }

@@ -28,6 +28,8 @@ public interface ReportService {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @return 
+	 * @throws Exception 
 	 */
 	public void createReport(Report report);
 	

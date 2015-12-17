@@ -10,10 +10,11 @@ angular.module('myApp').controller('createReportController',['$scope', '$http', 
     		function(error){
     			$scope.currentUser = error;
     	});
-    
-    $scope.createReport = function(report, selectedProject){
+
+    $scope.submitReport = function(report, selectedProject){
     		report.user = $scope.currentUser;
             report.project = selectedProject;
+            report.status = {statusName: "submitted"};
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
