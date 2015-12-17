@@ -1,5 +1,6 @@
 
-angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', function($scope, $compile, $element, $http, createReportFactory){
+angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory){
+                                                             
     $scope.test= [];
     $scope.expenseType = [];
 	$scope.report = {};
@@ -28,11 +29,18 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                                         'lineItemTypeId' : $scope.expenseType[i]
                                 },
                                 'monetaryAmount' : $scope.test[i],
-                                'report' : success.data
+                                'report' : {
+                                        'reportId' : success.data
+                                }
                             };
                             $scope.lineItemArray.push(lineItemObj);
                         }
-                        console.log($scope.lineItemArray);
+                        
+                        for(var i = 0; i <$scope.lineItemArray.length; i++){
+                            lineItemFactory.postLineItem($scope.lineItemArray[i]);
+                        }
+                        
+                        //console.log($scope.lineItemArray);
                         //window.location = "/#/home";
                     },
                     function(error){
@@ -58,7 +66,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 	$scope.lineTypesList = function(){
         lineTypesListFactory.getTypes().then(
             function(success){
-                $scope.result = success;
+                $scope.result = success.data;
             },
             function(error){
                 $scope.result = error;
