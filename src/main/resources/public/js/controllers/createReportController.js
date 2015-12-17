@@ -14,7 +14,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.reqDropdown = function() {
-    	if($scope.selectedProject && $scope.selectedProject.projectName) return false;
+    	if($scope.selectedProject && $scope.selectedProject.projectId) return false;
     	return true;
     }
     
