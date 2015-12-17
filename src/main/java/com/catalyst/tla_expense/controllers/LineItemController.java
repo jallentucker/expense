@@ -44,8 +44,8 @@ public class LineItemController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
-	public void addLineItem(@RequestBody LineItem lineItem) throws Exception{
-		lineItemService.addLineItem(lineItem);
+	public int addLineItem(@RequestBody LineItem lineItem) throws Exception{
+		return lineItemService.addLineItem(lineItem);
 	}
 	
 	/**

@@ -22,13 +22,12 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	
     }
     
-    $scope.createReport = function(status) {
-    	
-    }
+
    
     $scope.createReport = function(report, selectedProject, lineItemTypes, status){
     		report.user = $scope.currentUser;
-            report.project = selectedProject;
+            report.project = {};
+            report.project.projectId = selectedProject;
             report.status = {statusId: status};
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
@@ -48,13 +47,28 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                             $scope.lineItemArray.push(lineItemObj);
                         }
                         
+                        report.reportId = success.data;
+                        
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            lineItemFactory.postLineItem($scope.lineItemArray[i]);
+                            lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
+                             function(success){
+                                 $scope.postLineItemSuccess = success.data;
+                             },
+                            function(error){
+                                console.log(error);
+                            })
                         }
                         if (status == 2)
                         	{
                         		window.location = "/#/home";
                         	}
+                        console.log($scope.lineItemArray);
+                        $scope.lineItemArray = [];
+                        $scope.lineItems = [];
+                        $scope.monetary= [];
+                        $scope.expenseType = [];
+                       // console.log($scope.monetary);
+                       // console.log($scope.expenseType);
                     },
                     function(error){
                         $scope.createReportResult = error;
@@ -62,6 +76,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
             }
             else {
             	console.log("Name didn't meet requirements");
+
             }
         }
 
