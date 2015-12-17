@@ -36,4 +36,16 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
             $scope.projectNameIsInvalid = false;
         }
     };
+    
+    
+    $scope.types = function(){
+        typesFactory.getTypes().then(
+            function(success){
+                $scope.result = success;
+            },
+            function(error){
+                $scope.result = error;
+            }
+        );
+    };
 }])

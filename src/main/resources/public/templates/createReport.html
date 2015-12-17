@@ -5,10 +5,10 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-2"></div>
-					<form role="form">
+					<form role="form" id="reportForm">
 						<div class="col-lg-5">
 							<div class="well well-sm">
-							<div class="form-group">
+							<div class="form-group" >
 								<label for="InputReportName"> Enter name of the Report:</label>
 								<div class="input-group">
 									<input id="reportName" type="text" class="form-control" name="report-name" ng-model="report.reportName" placeholder="Report Name" required>
@@ -18,13 +18,20 @@
 							
 							<div class="form-group">
 								<div>
-									<select ng-model="selectedProject" id="projectDropDown" name="report-project" ng-options="project.projectName for project in ProjectList" 
-										class="btn btn-default" aria-haspopup="true" aria-expanded="true">
+									<select ng-model="selectedProject" id="projectDropDown" name="report-project" 
+										class="btn btn-default" aria-haspopup="true" aria-expanded="true" required>
 										<option value="">Select a Project</option>
+										<option ng-repeat="value in projectName" ng-value="{{value.projectId}}">{{value.projectName}}</option> 
 									</select>
 								</div>
 							</div>
-							<!-- <div class="form-group">
+
+
+					
+							<div>
+						        <!--<button type="submit" ng-hide ="reqLineItem()"  name="submit" id="ReportSubmit" ng-click="addLineItems(lineItem)" class="btn btn-success pull-right">Submit</button>-->
+								<button type="submit" ng-hide="reportForm.$invalid || reqDropdown()" name="save" id="ReportSave" ng-click="createReport(report, selectedProject, 4)" class="btn btn-info pull-right">Save</button>			
+							 <!--<div class="form-group">
 								<label for="ReimbursementStartDate"> Enter Start Date:</label>
 								<div class="input-group" >
 									<input  type="date" data-date-format="MM/dd/yyyy" id="datetimepicker" class="form-control" name="report-startDate" ng-model="report.startDate">
@@ -47,13 +54,40 @@
 							</div> -->
 							
 							<div>
-								<button type="submit" name="submit" id="ReportSubmit" ng-click="submitReport(report, selectedProject)" class="btn btn-success pull-right">Submit</button>
-								<!--  <button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-info pull-right">Save</button> -->
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes)" class="btn btn-success pull-right">Submit</button>
+								<!-- <button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes)" class="btn btn-info pull-right">Save</button> -->
+
 								<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 							</div>		
-						  </div>
+                            <br/>
+				            <br/>
+				            <button  id="lineitemBtn" ng-click="addLineitem()" class="btn btn-primary">Add Line Item</button>
+                            <div ng-repeat="a in lineItems track by $index">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4"> <br>
+                                            <label><h3>Add Line Items</h3></label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Expense Type:</label>
+                                            <select class="form-control" class="lineItemType" ng-model="expenseType[$index]">
+                                                <option value="">Select your Expense Type</option>
+                                            <option ng-repeat="value in result" ng-value="{{value.lineItemTypeId}}">{{value.lineItemType}}</option>                                            
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label>Expense Amount:</label>
+                                            <input type="text" class="form-control" class="monetaryAmount" format="currency" ng-model="monetary[$index]"  placeholder="$0.00">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                         <div>
+							<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes, 2)" class="btn btn-success pull-right">Submit</button>
+							<button type="submit" name="save" ng-hide="reportForm.$invalid" id="ReportSave" ng-click="createReport(report, selectedProject, lineItemTypes, 4)" class="btn btn-info pull-right">Save</button>
+							<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 						</div>
-					</form>
-				</div>
 		</div>
 </div>

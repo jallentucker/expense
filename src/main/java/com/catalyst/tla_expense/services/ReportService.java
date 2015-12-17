@@ -31,7 +31,7 @@ public interface ReportService {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public void createReport(Report report);
+	public int createReport(Report report);
 	
 	/**
 	 * Edits a selected report and updates it in the database.

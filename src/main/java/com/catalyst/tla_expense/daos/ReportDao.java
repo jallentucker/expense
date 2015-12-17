@@ -23,8 +23,9 @@ public interface ReportDao {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @return 
 	 */
-	public void createReport(Report report);
+	public int createReport(Report report);
 	
 	/**
 	 * Deletes a report from the database 
