@@ -24,7 +24,9 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     }
     
     $scope.createReport = function(report, selectedProject, lineItemTypes){
-    		report.user = $scope.currentUser;
+    		//console.log($scope.monetary);
+            //console.log($scope.expenseType);
+            report.user = $scope.currentUser;
             report.project = selectedProject;
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
@@ -44,17 +46,26 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                             $scope.lineItemArray.push(lineItemObj);
                         }
                         
+                        report.reportId = success.data;
+                        
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            var id = lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
+                            lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
-                                 $scope.lineItemArray[i].lineItemId = id;
+                                 $scope.postLineItemSuccess = success.data;
                              },
                             function(error){
                                 console.log(error);
                             })
                         }
                         console.log($scope.lineItemArray);
-                        window.location = "/#/home";
+                        $scope.lineItemArray = [];
+                        $scope.lineItems = [];
+                        $scope.monetary= [];
+                        $scope.expenseType = [];
+                       // console.log($scope.monetary);
+                       // console.log($scope.expenseType);
+                       // window.location = "/#/home";
+                        
                     },
                     function(error){
                         $scope.createReportResult = error;
