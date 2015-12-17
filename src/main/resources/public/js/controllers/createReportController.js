@@ -1,7 +1,7 @@
 
-angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory){
+angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', 'lineTypeListFactory', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory, lineTypeListFactory){
                                                              
-    $scope.test= [];
+    $scope.monetary= [];
     $scope.expenseType = [];
 	$scope.report = {};
 	$scope.selectedProject = {};
@@ -15,7 +15,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.createReport = function(report, selectedProject, lineItemTypes){
-        console.log($scope.test);
     		report.user = $scope.currentUser;
             report.project = selectedProject;
             if(report.reportName.length > 2) {
@@ -28,7 +27,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                                 'lineItemType':{
                                         'lineItemTypeId' : $scope.expenseType[i]
                                 },
-                                'monetaryAmount' : $scope.test[i],
+                                'monetaryAmount' : $scope.monetary[i],
                                 'report' : {
                                         'reportId' : success.data
                                 }
@@ -39,9 +38,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
                             lineItemFactory.postLineItem($scope.lineItemArray[i]);
                         }
-                        
-                        //console.log($scope.lineItemArray);
-                        //window.location = "/#/home";
+                        window.location = "/#/home";
                     },
                     function(error){
                         $scope.createReportResult = error;
@@ -63,8 +60,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		});
 	}
 	
-	$scope.lineTypesList = function(){
-        lineTypesListFactory.getTypes().then(
+	$scope.lineTypesList = lineTypeListFactory.getType().then(
             function(success){
                 $scope.result = success.data;
             },
@@ -72,7 +68,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                 $scope.result = error;
             }
         );
-    }
 	
 	$scope.lineItemsList = null;
 	$scope.fillLineItemsList = function() {
@@ -96,56 +91,9 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
         $scope.lineItemArray = [];
 		$scope.count = 0;
 		$scope.addLineitem = function(){
-            
-            
-            
-            
-           console.log($scope.test)
-           console.log($scope.expenseType);
-                
             $scope.lineItems.push($scope.lineItem);
-
-			/*$scope.count++;
-			$scope.lineitem ={};
-			//$scope.lineitem.lineItemType = {};
-			//$scope.lineitem.lineItemType.lineItemType = null;
-			//$scope.lineitem.lineItem.lineItemType.lineItemType = null;
-		 	//$scope.lineitem.monetaryAmount = null;
-			$scope.lineitems.push($scope.lineitem.lineItem);
-			$scope.fillLineItemsList();
-			$scope.lineitem.lineItemsList = $scope.lineItemsList;
-			newElement = $compile("<br/><lineitem name='lineitem'></lineitem><br/>{{lineitems}}")($scope)
-			$element.parent().append(newElement)*/
-			
 		}
 		
-        /*$scope.clickTest = function(){
-            for(var i = 0; i < $scope.expenseType.length; i++){
-                var lineItemObj = {
-                        'lineItemType':{
-                                'lineItemTypeId' : $scope.expenseType[i]
-                        },
-                        'monetaryAmount' : $scope.test[i],
-                        'report' : 
-                };
-                //console.log($scope.test[i]);
-                //lineItemObj.monetaryAmount = $scope.test[i];
-                //lineItemObj.lineItemType.lineItemTypeId = $scope.expenseType[i];
-                $scope.lineItemArray.push(lineItemObj);
-                //$scope.lineItemArray[i] = $scope.lineItemObj;
-                
-            }
-            console.log($scope.lineItemArray);
-        }
-        /*$scope.addLineItemRow = function(){
-            do the append.
-            
-            '<div class="lineItem'+count+'">'
-            
-            for(var i = 0; i <count; i++){
-                angular.element('lineItem'+i).
-            }
-        }*/
 }])
 
 
