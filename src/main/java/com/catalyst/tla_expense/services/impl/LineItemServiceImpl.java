@@ -25,15 +25,13 @@ public class LineItemServiceImpl implements LineItemService {
 	}
 
 	@Override
-	public boolean addLineItem(LineItem lineItem) throws Exception {
+	public int addLineItem(LineItem lineItem) throws Exception {
 		boolean result = false;
 		boolean valid = lineItemValidation.validateLineItem(lineItem);
 		if(valid){
-			result = true;
-			lineItemDao.addLineItem(lineItem);
+			return lineItemDao.addLineItem(lineItem);
 		}
-		return result;
-		
+		return -1;
 	}
 
 	@Override

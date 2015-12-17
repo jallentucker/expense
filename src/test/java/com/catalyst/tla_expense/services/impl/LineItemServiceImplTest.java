@@ -1,5 +1,6 @@
 package com.catalyst.tla_expense.services.impl;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.verify;
@@ -7,6 +8,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.times;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import com.catalyst.tla_expense.daos.LineItemDao;
 import com.catalyst.tla_expense.entities.LineItem;
@@ -37,14 +39,14 @@ public class LineItemServiceImplTest {
 	public void testAddLineItemWhenValid() throws Exception{
 		LineItem lineItem = new LineItem();
 		when(mockLineItemValidation.validateLineItem(lineItem)).thenReturn(true);
-		assertTrue(target.addLineItem(lineItem));
+		Assert.assertTrue(target.addLineItem(lineItem) >= 0);
 	}
 	
 	@Test
 	public void testAddLineItemWhenInvalid() throws Exception{
 		LineItem lineItem = new LineItem();
 		when(mockLineItemValidation.validateLineItem(lineItem)).thenReturn(false);
-		assertFalse(target.addLineItem(lineItem));
+		Assert.assertFalse((target.addLineItem(lineItem)) >= 0);
 	}
 	
 	@Test

@@ -24,8 +24,16 @@ public class LineItemDaoImpl implements LineItemDao {
 	}
 
 	@Override
-	public void addLineItem(LineItem lineItem) {
+	public int addLineItem(LineItem lineItem) {
 		em.merge(lineItem);
+		
+		LineItem lineItemReturn = em.createQuery("SELECT l FROM LineItem l WHERE l.report = :reportId AND l.monetaryAmount = :monetaryAmount AND l.lineItemType = :lineItemTypeId", LineItem.class)
+				.setParameter("reportId", lineItem.getReport())
+				.setParameter("monetaryAmount", lineItem.getMonetaryAmount())
+				.setParameter("lineItemTypeId", lineItem.getLineItemType())
+				.getSingleResult();
+		
+		return lineItemReturn.getLineItemId();
 	}
 
 	@Override
@@ -37,7 +45,7 @@ public class LineItemDaoImpl implements LineItemDao {
 	@Override
 	public void updateLineItem(LineItem lineItem) {
 		em.merge(lineItem);
-
+		
 	}
 
 	private LineItem getLineItemById(Integer lineItemId) {

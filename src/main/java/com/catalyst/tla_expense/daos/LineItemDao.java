@@ -19,7 +19,7 @@ public interface LineItemDao {
 	 * @param LineItem
 	 * @author cmiller
 	 */
-	public void addLineItem(LineItem lineItem);
+	public int addLineItem(LineItem lineItem);
 
 	/**
 	 * DELETE
@@ -34,6 +34,7 @@ public interface LineItemDao {
 	 * Sends a Line Item to the databased to be merged with another line item
 	 * @param LineItem
 	 * @author cmiller
+	 * @return 
 	 */
 	public void updateLineItem(LineItem lineItem);
 

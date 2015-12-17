@@ -17,14 +17,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	if($scope.selectedProject && $scope.selectedProject.projectId) return false;
     	return true;
     }
-    
-    $scope.reqLineItem = function() {
-    	
-    }
-    
-    $scope.createReport = function(status) {
-    	
-    }
    
     $scope.createReport = function(report, selectedProject, lineItemTypes, status){
     		report.user = $scope.currentUser;
@@ -49,12 +41,16 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         }
                         
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            lineItemFactory.postLineItem($scope.lineItemArray[i]);
+                            var id = lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
+                             function(success){
+                                 console.log("SUCCESS!");
+                             },
+                            function(error){
+                                console.log(error);
+                            })
                         }
-                        if (status == 2)
-                        	{
-                        		window.location = "/#/home";
-                        	}
+                        console.log($scope.lineItemArray);
+                        window.location = "/#/home";
                     },
                     function(error){
                         $scope.createReportResult = error;
