@@ -5,6 +5,10 @@ a{
 text-decoration:none;
 color:#000000;
 }
+a #RegisterCancel{
+text-decoration:none;
+color:#ffffff;
+}
 a:hover{ text-decoration: none;
 color:#000000; }
 
@@ -22,6 +26,20 @@ body {
 	margin: 1%;
 	margin-bottom: 5%;
 }
+#lineitems{
+	 border: 1px solid #222;
+    background: #fff;
+    border-radius: 5px;
+}
+#lineitemBtn{
+	background-color: #000000;
+	color: #ffffff;
+	 position:relative;
+    top:50%; 
+    left:47%;
 .validationError {
 	color: red;
+}
+label{
+ font-family: "Times New Roman", Times, serif;
 }

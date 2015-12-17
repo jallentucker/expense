@@ -46,8 +46,8 @@ public class ReportController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/report/post", method = RequestMethod.POST)
-	public void addReport(@RequestBody Report report) throws Exception {
-		this.reportService.createReport(report);
+	public int addReport(@RequestBody Report report) {
+		return this.reportService.createReport(report);
 	}
 	
 	/**

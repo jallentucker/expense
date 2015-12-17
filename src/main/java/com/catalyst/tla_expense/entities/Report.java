@@ -44,7 +44,7 @@ public class Report {
 	 * Joins the report table with the user table via user_id
 	 */
 	@NotNull
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne//(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
 	

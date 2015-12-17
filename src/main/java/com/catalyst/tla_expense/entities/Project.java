@@ -34,7 +34,7 @@ public class Project {
 
 	// Link to user table by id
 	@NotNull
-	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne//(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "approver_id", referencedColumnName="user_id")
 	private User user;
 

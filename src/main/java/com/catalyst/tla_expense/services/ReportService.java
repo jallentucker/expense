@@ -29,9 +29,12 @@ public interface ReportService {
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
 	 * @return 
+<<<<<<< HEAD
 	 * @throws Exception 
+=======
+>>>>>>> 2caacdab543bb5d1d598d1740a0abdff2da7a1ad
 	 */
-	public void createReport(Report report);
+	public int createReport(Report report);
 	
 	/**
 	 * Edits a selected report and updates it in the database.

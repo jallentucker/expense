@@ -1,6 +1,5 @@
 package com.catalyst.tla_expense.PageObjectFramework.Pages;
 
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -45,16 +44,16 @@ public class CreateProjectPageEvaluation extends TestPageObject {
         element.sendKeys(generateString);
 		
         //wait 5 secs for project name to be entered
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
         //finds the submit button and clicks it
         WebElement element1 = driver.findElement(By.id("ProjectSubmit"));
         element1.click();
-		
+       
+        new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button")));
 		//checks to make sure you end up on the correct page after a successful submit
 		String aURL = driver.getCurrentUrl();
         Assert.assertEquals(aURL, (URL  + "/#/home"));
-		
 	}
 	
 	@Test
@@ -86,12 +85,11 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		WebElement element = driver.findElement(By.id("Projectname"));
         element.sendKeys(generateString);
 		
-        //wait 5 secs for project name to be entered
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
         //finds the submit button and clicks it
         WebElement element1 = driver.findElement(By.id("ProjectSubmit"));
         element1.click();
+        
+        new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button")));
         
         driver.get(URL + "/#/createProject");
 		
@@ -100,9 +98,6 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		//finds project name field and enters a string
 		WebElement element3 = driver.findElement(By.id("Projectname"));
         element3.sendKeys(generateString);
-		
-        //wait 5 secs for project name to be entered
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
         //finds the submit button and clicks it
         WebElement element4 = driver.findElement(By.id("ProjectSubmit"));

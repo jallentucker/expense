@@ -24,15 +24,70 @@
 									</select>
 								</div>
 							</div>
+<<<<<<< HEAD
 					
 							<div>
 						        <!--<button type="submit" ng-hide ="reqLineItem()"  name="submit" id="ReportSubmit" ng-click="addLineItems(lineItem)" class="btn btn-success pull-right">Submit</button>-->
 								<button type="submit" ng-hide="reportForm.$invalid || reqDropdown()" name="save" id="ReportSave" ng-click="createReport(report, selectedProject, 4)" class="btn btn-info pull-right">Save</button>
+=======
+							
+							 <!--<div class="form-group">
+								<label for="ReimbursementStartDate"> Enter Start Date:</label>
+								<div class="input-group" >
+									<input  type="date" data-date-format="MM/dd/yyyy" id="datetimepicker" class="form-control" name="report-startDate" ng-model="report.startDate">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+						
+							 <div class="form-group">
+								<label for="ReimbursementEndDate"> Enter End Date:</label>
+								<div class="input-group">
+									<input type="date" class="form-control" name="report-endDate" ng-model="report.endDate">
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="NotesInput"> Notes: </label>
+								<div class="input-group">
+									<textarea id="reportNotes" class="form-control custom-control" name="report-notes" ng-model="report.reportNotes" rows="5" placeholder="Enter comments or notes"></textarea>
+								</div>
+							</div> -->
+							
+							<div>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes)" class="btn btn-success pull-right">Submit</button>
+								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes)" class="btn btn-info pull-right">Save</button>
+>>>>>>> 2caacdab543bb5d1d598d1740a0abdff2da7a1ad
 								<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
+                                <button ng-click = "clickTest()">Test</button>
 							</div>		
-						  </div>
-						</div>
-					</form>
-				</div>
+                            <br/>
+				            <br/>
+				            <button  id="lineitemBtn" ng-click="addLineitem()" class="btn">Add Line Item</button>
+                            <div ng-repeat="a in lineItems track by $index">
+                                <form class="container" id="lineitems" class="form-inline" role="form">
+                                    <div class="row">
+                                        <div class="form-group col-sm-4">
+                                            <label><h3>Add Line Items</h3></label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <label>Expense Type:</label>
+                                            <select class="form-control" class="lineItemType" ng-model="expenseType[$index]" ng-value="a.lineItemType.lineItemType" ng-options="value.lineItemType for lineItemType in lineTypesList">
+                                            <option value="">Select your Expense Type</option>
+                                            <option ng-value="1">option1</option>
+                                            <option ng-value="2">option2</option>
+                                            </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-4">
+                                            <label>Expense Amount:</label>
+                                            <input type="text" class="form-control" class="monetaryAmount" format="currency" ng-model="test[$index]"  placeholder="$0.00">
+                                            {{a}}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    </div>
+                                </form>
+                            </div>
+				
 		</div>
 </div>

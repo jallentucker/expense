@@ -17,45 +17,6 @@ public class ReportServiceImpl implements ReportService {
 //	private ReportServiceValidation reportServiceValidation;
 	
 	/**
-	 * Adds a new report that's been created to the database
-	 * @param report added to database
-	 */
-	@Override
-	public void createReport(Report report) {
-		
-		String reportName = report.getReportName();
-		
-		/**
-		 * Checks to see if the entered report name is greater
-		 * than 3 characters and there's no whitespace.
-		 */
-		if(reportName.trim().length() > 2)
-		{
-			reportName.toLowerCase();
-			report.setReportName(reportName);
-			this.reportDao.createReport(report);
-		}
-		else{
-			System.out.println("Report name doesn't meet requirements.");
-		}
-	}
-	
-//	@Override
-//	public boolean createReport(Report report) throws Exception {
-//		try{
-//			boolean result = false;
-//			boolean valid = reportServiceValidation.reportName(report);
-//			if(valid){
-//				result = true;
-//				reportDao.createReport(report);
-//			}
-//			return result;
-//		}catch(Exception e){
-//			throw new Exception(e.getMessage());
-//		}
-//	}
-	
-	/**
 	 * Retrieves a single report by id
 	 * @param id
 	 * @return a single report
@@ -81,6 +42,32 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public void deleteReport(int id) {
 		this.reportDao.deleteReport(id);	
+	}
+
+	/**
+	 * Adds a new report that's been created to the database
+	 * @param report added to database
+	 * @return 
+	 */
+	@Override
+	public int createReport(Report report) {
+		
+		String reportName = report.getReportName();
+		
+		/**
+		 * Checks to see if the entered report name is greater
+		 * than 3 characters and there's no whitespace.
+		 */
+		if(reportName.trim().length() > 2)
+		{
+			reportName.toLowerCase();
+			report.setReportName(reportName);
+			return this.reportDao.createReport(report);
+		}
+		else{
+			System.out.println("Report name doesn't meet requirements.");
+			return 0;
+		}
 	}
 	
 	/**
