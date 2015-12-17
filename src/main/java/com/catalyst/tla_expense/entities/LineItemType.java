@@ -34,6 +34,4 @@ public class LineItemType {
 	public void setLineItemType(String lineItemType) {
 		this.lineItemType = lineItemType;
 	}
-	
-	
 }

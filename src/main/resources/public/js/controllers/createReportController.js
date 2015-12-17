@@ -36,8 +36,15 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         }
                         
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            lineItemFactory.postLineItem($scope.lineItemArray[i]);
+                            var id = lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
+                             function(success){
+                                 $scope.lineItemArray[i].lineItemId = id;
+                             },
+                            function(error){
+                                console.log(error);
+                            })
                         }
+                        console.log($scope.lineItemArray);
                         window.location = "/#/home";
                     },
                     function(error){
