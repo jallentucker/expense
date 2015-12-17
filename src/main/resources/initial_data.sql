@@ -6,8 +6,11 @@ INSERT INTO status(status_type) VALUES ('Rejected');
 INSERT INTO status(status_type) VALUES ('Saved');
 INSERT INTO status(status_type) VALUES ('Under Review');
 
+INSERT INTO report(report_name, user_id) VALUES ('Dummy Report', 1);
+
+
 INSERT INTO project(project_name, approver_id) VALUES ('pie maker', 1);
-INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 2);
+
 
 INSERT INTO line_item_type(line_item_type) VALUES ('Mileage');
 INSERT INTO line_item_type(line_item_type) VALUES ('Per Diem');

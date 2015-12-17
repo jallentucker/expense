@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.catalyst.tla_expense.SeleniumFramework.TestPageObject;
 import com.catalyst.tla_expense.SeleniumFramework.Pages.CreateReportPage;
@@ -43,7 +45,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		new Select (driver.findElement(By.id("projectDropDown"))).selectByIndex(1);
 		report.click(By.id("ReportSubmit"));
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button")));
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/home"), actualURL);
 	}
@@ -62,10 +64,12 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void checkThatAReportIsntSubmittedWithoutAProject() {
 		seleniumConstants.registerUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		
 		report.sendKeys(By.id("reportName"), generateString);
 		report.click(By.id("ReportSubmit"));
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
 		String actualURL = report.getUrl();
 		assertEquals((URL + "/#/createReport"), actualURL);
 	}
+	
 }

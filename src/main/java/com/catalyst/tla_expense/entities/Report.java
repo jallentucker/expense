@@ -71,7 +71,7 @@ public class Report {
 	 * Joins the report table with the status table via status_id
 	 */
 	//@NotNull
-	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="status_id")
 	private Status status;
 	
