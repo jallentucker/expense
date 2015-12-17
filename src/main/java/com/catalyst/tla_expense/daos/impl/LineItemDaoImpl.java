@@ -27,13 +27,13 @@ public class LineItemDaoImpl implements LineItemDao {
 	public int addLineItem(LineItem lineItem) {
 		em.merge(lineItem);
 		
-		LineItem lineItemReturn = em.createQuery("SELECT l FROM LineItem l WHERE l.report = :reportId AND l.monetaryAmount = :monetaryAmount AND l.lineItemType = :lineItemTypeId", LineItem.class)
+		/*LineItem lineItemReturn = em.createQuery("SELECT l FROM LineItem l WHERE l.report = :reportId AND l.monetaryAmount = :monetaryAmount AND l.lineItemType = :lineItemTypeId", LineItem.class)
 				.setParameter("reportId", lineItem.getReport())
 				.setParameter("monetaryAmount", lineItem.getMonetaryAmount())
 				.setParameter("lineItemTypeId", lineItem.getLineItemType())
-				.getSingleResult();
+			.getSingleResult();*/
 		
-		return lineItemReturn.getLineItemId();
+		return 0;//lineItemReturn.getLineItemId();
 	}
 
 	@Override

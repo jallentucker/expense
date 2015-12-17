@@ -27,7 +27,9 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Projectname']")));
        
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals((URL + "/#/createProject"), URL );
+
+        Assert.assertEquals((SeleniumConstants.URL + "/#/createProject"), URL );
+
     	
     }
 	
@@ -53,6 +55,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
         new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.id("logout_button")));
 		//checks to make sure you end up on the correct page after a successful submit
 		String aURL = driver.getCurrentUrl();
+
         Assert.assertEquals(aURL, (URL  + "/#/home"));
 	}
 	
@@ -70,7 +73,9 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String URL = driver.getCurrentUrl();
-        Assert.assertEquals(URL, (URL  + "/#/home"));
+
+        Assert.assertEquals(URL, (SeleniumConstants.URL  + "/#/home"));
+
 	}
 	
 	@Test
@@ -105,6 +110,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 		
 		//checks to make sure you end up on the correct page after a successful submit
 		String aURL = driver.getCurrentUrl();
-        Assert.assertEquals(aURL, (URL  + "/#/createProject"));
+
+        Assert.assertEquals(aURL, (SeleniumConstants.URL  + "/#/createProject"));
 	}
 }
