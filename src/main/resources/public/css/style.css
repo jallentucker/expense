@@ -26,17 +26,7 @@ body {
 	margin: 1%;
 	margin-bottom: 5%;
 }
-#lineitems{
-	 border: 1px solid #222;
-    background: #fff;
-    border-radius: 5px;
-}
-#lineitemBtn{
-	background-color: #000000;
-	color: #ffffff;
-	 position:relative;
-    top:50%; 
-    left:47%;
+
 .validationError {
 	color: red;
 }

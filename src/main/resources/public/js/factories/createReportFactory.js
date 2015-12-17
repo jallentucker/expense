@@ -1,10 +1,13 @@
 angular.module('myApp').factory('createReportFactory',['$http', function($http){
-    return{
+    return{ 
     	createReport: function(report){
             return $http.post('report/post', report);
         },
     	getCurrentUser: function(){
     		return $http.get("user/getCurrent")
-    	}
+    	},
+ 		getProjects: function(){
+		    return $http.get("/project/get");
+		 }
     }	
-}]);
+}]); 
