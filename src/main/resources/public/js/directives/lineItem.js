@@ -25,9 +25,10 @@ angular.module('myApp').directive('lineitem', function() {
         		    </div>\
         		    <div class="col-sm-4">\
         		      <label>Expense Type:</label>\
-	   				<select class="form-control" class="lineItemType" ng-model="lineitem.lineItem.ineItemType.lineItemType">\
+	   				<select class="form-control" class="lineItemType" ng-model="lineItem.lineItemType.lineItemType">\
 	   					<option value="">Select your Expense Type</option>\
        					<option ng-repeat="value in lineitem.lineItemsList" value="{{value.lineItemType}}">\
+                            {{lineItem}}\
            					{{value.lineItemType}}\
            				</option>\
            			</select>\

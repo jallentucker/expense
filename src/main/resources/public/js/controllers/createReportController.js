@@ -1,6 +1,7 @@
 
 angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', function($scope, $compile, $element, $http, createReportFactory){
-
+    $scope.test= [];
+    $scope.expenseType = [];
 	$scope.report = {};
 	$scope.selectedProject = {};
 	
@@ -13,13 +14,26 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.createReport = function(report, selectedProject, lineItemTypes){
+        console.log($scope.test);
     		report.user = $scope.currentUser;
             report.project = selectedProject;
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
                         $scope.createReportResult = success;
-                        window.location = "/#/home";
+                        
+                        for(var i = 0; i < $scope.expenseType.length; i++){
+                            var lineItemObj = {
+                                'lineItemType':{
+                                        'lineItemTypeId' : $scope.expenseType[i]
+                                },
+                                'monetaryAmount' : $scope.test[i],
+                                'report' : success.data
+                            };
+                            $scope.lineItemArray.push(lineItemObj);
+                        }
+                        console.log($scope.lineItemArray);
+                        //window.location = "/#/home";
                     },
                     function(error){
                         $scope.createReportResult = error;
@@ -68,23 +82,62 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 	$scope.fillLineItemsList();
 	
 	
-		$scope.lineitems=[];
+		$scope.lineItems=[];
+        $scope.lineItem= {};
+    
+        $scope.lineItemArray = [];
 		$scope.count = 0;
 		$scope.addLineitem = function(){
-			$scope.count++;
+            
+            
+            
+            
+           console.log($scope.test)
+           console.log($scope.expenseType);
+                
+            $scope.lineItems.push($scope.lineItem);
+
+			/*$scope.count++;
 			$scope.lineitem ={};
-			$scope.lineitem.lineItem = {};
-			$scope.lineitem.lineItem.lineItemType = {};
-			$scope.lineitem.lineItem.lineItemType.lineItemType = null;
-		 	$scope.lineitem.lineItem.monetaryAmount = null;
+			//$scope.lineitem.lineItemType = {};
+			//$scope.lineitem.lineItemType.lineItemType = null;
+			//$scope.lineitem.lineItem.lineItemType.lineItemType = null;
+		 	//$scope.lineitem.monetaryAmount = null;
 			$scope.lineitems.push($scope.lineitem.lineItem);
 			$scope.fillLineItemsList();
 			$scope.lineitem.lineItemsList = $scope.lineItemsList;
 			newElement = $compile("<br/><lineitem name='lineitem'></lineitem><br/>{{lineitems}}")($scope)
-			$element.parent().append(newElement)
+			$element.parent().append(newElement)*/
 			
 		}
 		
+        /*$scope.clickTest = function(){
+            for(var i = 0; i < $scope.expenseType.length; i++){
+                var lineItemObj = {
+                        'lineItemType':{
+                                'lineItemTypeId' : $scope.expenseType[i]
+                        },
+                        'monetaryAmount' : $scope.test[i],
+                        'report' : 
+                };
+                //console.log($scope.test[i]);
+                //lineItemObj.monetaryAmount = $scope.test[i];
+                //lineItemObj.lineItemType.lineItemTypeId = $scope.expenseType[i];
+                $scope.lineItemArray.push(lineItemObj);
+                //$scope.lineItemArray[i] = $scope.lineItemObj;
+                
+            }
+            console.log($scope.lineItemArray);
+        }
+        /*$scope.addLineItemRow = function(){
+            do the append.
+            
+            '<div class="lineItem'+count+'">'
+            
+            for(var i = 0; i <count; i++){
+                angular.element('lineItem'+i).
+            }
+        }*/
 }])
 
 

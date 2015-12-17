@@ -59,9 +59,10 @@ public class ReportServiceImpl implements ReportService {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @return 
 	 */
 	@Override
-	public void createReport(Report report) {
+	public int createReport(Report report) {
 		
 		String reportName = report.getReportName();
 		
@@ -73,10 +74,11 @@ public class ReportServiceImpl implements ReportService {
 		{
 			reportName.toLowerCase();
 			report.setReportName(reportName);
-			this.reportDao.createReport(report);
+			return this.reportDao.createReport(report);
 		}
 		else{
 			System.out.println("Report name doesn't meet requirements.");
+			return 0;
 		}
 	}
 	

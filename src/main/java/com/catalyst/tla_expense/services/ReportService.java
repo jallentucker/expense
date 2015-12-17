@@ -28,8 +28,9 @@ public interface ReportService {
 	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
+	 * @return 
 	 */
-	public void createReport(Report report);
+	public int createReport(Report report);
 	
 	/**
 	 * Edits a selected report and updates it in the database.
