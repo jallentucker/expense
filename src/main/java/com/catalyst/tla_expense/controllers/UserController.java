@@ -43,5 +43,6 @@ public class UserController {
 	@RequestMapping(value=EndpointConstants.USER_ENDPOINT, method = RequestMethod.POST)
 	public void createUser(@RequestBody User user){
 		userService.createUser(user);
+		System.out.println("Made it to the end point!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 }

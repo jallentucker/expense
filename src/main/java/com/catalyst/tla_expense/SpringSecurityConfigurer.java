@@ -69,7 +69,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeRequests()
-        	.antMatchers("/user/post", "/css/**", "/js/app.js", "/js/controllers/registerController.js", 
+        	.antMatchers("/user", "/css/**", "/js/app.js", "/js/controllers/registerController.js", 
         			"/js/values/regexValues.js", "/js/factories/usersFactory.js", "/js/factories/validationFactory.js", "/register**")
         		.permitAll()
         		.anyRequest()

@@ -42,6 +42,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public void createUser(User user) {
 		em.merge(user);
+		System.out.println("user made it to the DB!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 
 	@Override
