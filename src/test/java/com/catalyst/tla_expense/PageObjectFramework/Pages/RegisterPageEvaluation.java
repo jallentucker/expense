@@ -49,17 +49,13 @@ public class RegisterPageEvaluation extends TestPageObject{
 		 register.sendKeys(By.id("registerPassword"), "Password1!");
 		 register.sendKeys(By.id("confirmPassword"), "Password1!");
 	        //wait 5 secs for username to be entered
-	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("registerSubmit"));
 	        //wait 5 secs for username to be entered
-	        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		 register.sendKeys(By.id("username"), "tla@te.st");
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
-	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		 register.click(By.id("loginSubmit"));
 		 
-		 new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='createProjectBtn']")));
 		 
 		 String actualURL = register.getUrl();
 		 assertEquals((URL + "/#/home"), actualURL);
