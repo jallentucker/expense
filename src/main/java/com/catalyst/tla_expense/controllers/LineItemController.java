@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.tla_expense.entities.LineItem;
 import com.catalyst.tla_expense.services.LineItemService;
+import com.catalyst.tla_expense.utility.EndpointConstants;
 
 /**
  * Line Item Controller class. Has end points for POST, PUT, DELETE, and GET.
@@ -19,8 +20,6 @@ import com.catalyst.tla_expense.services.LineItemService;
  */
 @RestController
 public class LineItemController {
-
-	private static final String LINE_ITEM_ENDPOINT = "/lineItem";
 	
 	@Autowired
 	LineItemService lineItemService;
@@ -31,7 +30,7 @@ public class LineItemController {
 	 * Returns a list of all line items
 	 * @author cmiller
 	 */
-	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.GET)
+	@RequestMapping(value=EndpointConstants.LINE_ITEM_ENDPOINT, method = RequestMethod.GET)
 	public List<LineItem> getAllLineItems(){
 		return lineItemService.getAllLineItems();
 	}
@@ -43,7 +42,7 @@ public class LineItemController {
 	 * @author cmiller
 	 * @throws Exception 
 	 */
-	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
+	@RequestMapping(value=EndpointConstants.LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
 	public int addLineItem(@RequestBody LineItem lineItem) throws Exception{
 		return lineItemService.addLineItem(lineItem);
 	}
@@ -54,7 +53,7 @@ public class LineItemController {
 	 * @param LineItemId
 	 * @author cmiller
 	 */
-	@RequestMapping(value=LINE_ITEM_ENDPOINT + "/{lineItemId}", method = RequestMethod.DELETE)
+	@RequestMapping(value=EndpointConstants.LINE_ITEM_ENDPOINT + "/{lineItemId}", method = RequestMethod.DELETE)
 	public void deleteLineItemById(@PathVariable Integer lineItemId){
 		lineItemService.deleteLineItemById(lineItemId);
 	}
@@ -65,7 +64,7 @@ public class LineItemController {
 	 * @param LineItem
 	 * @author cmiller
 	 */
-	@RequestMapping(value=LINE_ITEM_ENDPOINT, method = RequestMethod.PUT)
+	@RequestMapping(value=EndpointConstants.LINE_ITEM_ENDPOINT, method = RequestMethod.PUT)
 	public void updateLineItem(@RequestBody LineItem lineItem){
 		lineItemService.updateLineItem(lineItem);
 	}

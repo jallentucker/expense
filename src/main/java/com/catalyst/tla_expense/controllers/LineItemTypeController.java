@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.tla_expense.entities.LineItemType;
 import com.catalyst.tla_expense.services.LineItemTypeService;
+import com.catalyst.tla_expense.utility.EndpointConstants;
 
 /**
  * Line Item Controller class. Has end point for GET.
- * 
  * @author cmiller
  */
+
 @RestController
 public class LineItemTypeController {
-
-	private static final String LINE_ITEM__TYPE_ENDPOINT = "/lineItemType";
 	
 	@Autowired
 	LineItemTypeService lineItemTypeService;
@@ -28,7 +27,7 @@ public class LineItemTypeController {
 	 * Returns a list of all line item types
 	 * @author cmiller
 	 */
-	@RequestMapping(value=LINE_ITEM__TYPE_ENDPOINT, method = RequestMethod.GET)
+	@RequestMapping(value=EndpointConstants.LINE_ITEM__TYPE_ENDPOINT, method = RequestMethod.GET)
 	public List<LineItemType> getAllLineItemTypes(){
 		return lineItemTypeService.getAllLineItemTypes();
 	}

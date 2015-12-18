@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.catalyst.tla_expense.entities.Status;
 import com.catalyst.tla_expense.services.StatusService;
+import com.catalyst.tla_expense.utility.EndpointConstants;
 
 @RestController
 public class StatusController {
@@ -24,7 +26,7 @@ public class StatusController {
 	 * Retrieves all statuses in the database
 	 * @return full list of stored statuses
 	 */
-	@RequestMapping(value="/status", method=RequestMethod.GET)
+	@RequestMapping(value=EndpointConstants.STATUS_ENDPOINT, method=RequestMethod.GET)
 	public List<Status> getStatuses() {
 		return statusService.getStatuses();
 	}
@@ -34,7 +36,7 @@ public class StatusController {
 	 * @param statusName
 	 * @return matching status
 	 */
-	@RequestMapping(value="/status/{id}", method=RequestMethod.GET)
+	@RequestMapping(value=EndpointConstants.STATUS_ENDPOINT+"/{id}", method=RequestMethod.GET)
 	public Status getStatusByName(@PathVariable int id) {
 		return statusService.getStatusById(id);
 	}
