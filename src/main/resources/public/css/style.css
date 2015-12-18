@@ -30,6 +30,19 @@ body {
 .validationError {
 	color: red;
 }
+
 label{
  font-family: "Times New Roman", Times, serif;
+}
+
+#savedStatus {
+	font-style: italic;
+	font-weight: bold;
+	margin-left: 20%;
+	margin-bottom: 8%;
+	color: green;
+}
+
+#newLineItem {
+	font-size: 165%;
 }

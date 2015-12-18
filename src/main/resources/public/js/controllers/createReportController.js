@@ -14,9 +14,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		}
 	}
 	
-	$scope.submitFlag = function(){
-		showSubmitBtn = true;
-	};
 	
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
