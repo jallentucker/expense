@@ -4,7 +4,6 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
     
     $scope.getCurrentUser = projectFactory.getCurrentUser().then(
     		function(success){
-    			console.log(success.data);
     			$scope.currentUser = success.data;
     		},
     		function(error){
