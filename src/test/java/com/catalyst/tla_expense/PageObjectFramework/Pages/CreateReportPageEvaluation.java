@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -205,6 +206,31 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void lineItemButtonPresentAndClickingPresentsLineItemRow() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		
+		boolean btnPresent = false;
+		boolean lineitemPresent = false;
+		String lineitemActual = "";
+		try{
+			report.find(By.id("lineitemBtn"));
+			btnPresent = true;
+			report.click(By.id("lineitemBtn"));
+			report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]"));
+			lineitemPresent = true;
+			lineitemActual = report.getInnerHtml(By.id("lineitemBtn"));
+			
+		}
+		catch(Exception E){
+			btnPresent = false;
+			lineitemPresent = false;
+		}
+		finally{
+			
+			assertEquals("Add Line Item",lineitemActual);
+			assertTrue(btnPresent);
+			assertTrue(lineitemPresent);
+
+		}
+
 
 	}
 
@@ -212,6 +238,22 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void lineItemRowContainsDropDownOfTypesAndInputOfMonetaryAmount() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		
+		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select"))).getAllSelectedOptions();
+		ArrayList<String> selects = new ArrayList<String>();
+		for(WebElement select: selectedOptions){
+			selects.add(select.getText());
+		}
+		assertEquals("Select your Expense Type", selects.get(0));
+		assertEquals("Mileage", selects.get(1));
+		assertEquals("Per Diem", selects.get(2));
+		assertEquals("Lodging", selects.get(3));
+		/*assertEquals("Travel", selects.get(4));
+		assertEquals("Meals", selects.get(5));
+		assertEquals("Entertainment", selects.get(6));
+		assertEquals("Parking", selects.get(7));
+		assertEquals("Other", selects.get(8));*/
+
 
 	}
 }
