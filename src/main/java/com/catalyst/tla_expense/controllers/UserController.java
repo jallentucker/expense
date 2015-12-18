@@ -25,7 +25,7 @@ public class UserController {
 	
 	/**
 	 * GET
-	 * Url "/user/get
+	 * Url "/user
 	 * Returns a list of all users.
 	 * @author cmiller
 	 */
@@ -36,13 +36,12 @@ public class UserController {
 	
 	/**
 	 * POST
-	 * Url "/user/post
+	 * Url "/user
 	 * Sends a User through the layers and eventually persists in the dao.
 	 * @author cmiller
 	 */
 	@RequestMapping(value=EndpointConstants.USER_ENDPOINT, method = RequestMethod.POST)
 	public void createUser(@RequestBody User user){
 		userService.createUser(user);
-		System.out.println("Made it to the end point!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
 }
