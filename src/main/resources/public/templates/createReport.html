@@ -11,14 +11,14 @@
 							<div class="form-group" >
 								<label for="InputReportName"> Enter name of the Report:</label>
 								<div class="input-group">
-									<input id="reportName" type="text" class="form-control" name="report-name" ng-model="report.reportName" placeholder="Report Name" required>
+									<input ng-change = "onChange()" id="reportName" type="text" class="form-control" name="report-name" ng-model="report.reportName" placeholder="Report Name" required>
 									<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<div>
-									<select ng-model="selectedProject" id="projectDropDown" name="report-project" 
+									<select ng-change = "onChange()" ng-model="selectedProject" id="projectDropDown" name="report-project" 
 										class="btn btn-default" aria-haspopup="true" aria-expanded="true" required>
 										<option value="">Select a Project</option>
 										<option ng-repeat="value in projectName" ng-value="{{value.projectId}}">{{value.projectName}}</option> 
@@ -34,14 +34,14 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Expense Type:</label>
-                                            <select class="form-control" class="lineItemType" ng-model="expenseType[$index]" required>
+                                            <select ng-change = "onChange()" class="form-control" class="lineItemType" ng-model="expenseType[$index]" required>
                                                 <option value="">Select your Expense Type</option>
                                             <option ng-repeat="value in result" ng-value="{{value.lineItemTypeId}}">{{value.lineItemType}}</option>                                            
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-4">
                                             <label>Expense Amount:</label>
-                                            <input type="number" min="0" step="0.01" class="form-control currency" ng-model="monetary[$index]"  placeholder="$0.00" required>
+                                            <input ng-change = "onChange()" type="number" min="0" step="0.01" class="form-control currency" ng-model="monetary[$index]"  placeholder="$0.00" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -49,7 +49,7 @@
                                 </form>
                             </div>
                          <div>
-							<button type="submit" name="submit"  id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes, 2)" class="btn btn-success pull-right">Submit</button>
+							<button type="submit" name="submit" ng-hide = "submitBtnHide" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes, 2)" class="btn btn-success pull-right">Submit</button>
 							<button type="submit" name="save" ng-hide="reportForm.$invalid" id="ReportSave" ng-click="createReport(report, selectedProject, lineItemTypes, 4); submitFlag()" class="btn btn-info pull-right">Save</button>
 							<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 						</div>
