@@ -18,11 +18,17 @@ public class StatusController {
 	@Autowired
 	private StatusService statusService;
 	
+	/**
+	 * Used by Autowired to
+	 * set the service impl class
+	 * @param statusService
+	 */
 	public void setStatusService(StatusService statusService) {
 		this.statusService = statusService;
 	}
 	
 	/**
+	 * GET:
 	 * Retrieves all statuses in the database
 	 * @return full list of stored statuses
 	 */
@@ -32,6 +38,7 @@ public class StatusController {
 	}
 	
 	/**
+	 * GET:
 	 * Retrieves a status by name if in the database
 	 * @param statusName
 	 * @return matching status

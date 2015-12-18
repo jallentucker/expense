@@ -25,8 +25,10 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	 * Autowiring the database element
 	 * of Spring Security
 	 * 
+	 * DataSource is need for
+	 * Spring Security to log
+	 * you in. 
 	 */
-	
 	@Autowired
 	private DataSource datasource;
 	
@@ -49,6 +51,18 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	 * The antMatchers function takes end points
 	 * and file locations relative to public, and
 	 * removes security from them. 
+	 * 
+	 * .permitAll() defines the user 
+	 * classes allowed to visit
+	 * the predefined end points.
+	 * 
+	 *  .loginPage() defines the endpoint for the login page. 
+	 *  Makes sure there is an active endpoint defined
+	 *  in your controllers. 
+	 *  
+	 *  set the permissions on logout with .logout().permitsAll()
+	 *  
+	 *  csrf().disable disables cross site scripting. 
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
@@ -57,16 +71,16 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
         	.antMatchers("/user/post", "/css/**", "/js/app.js", "/js/controllers/registerController.js", 
         			"/js/values/regexValues.js", "/js/factories/usersFactory.js", "/js/factories/validationFactory.js", "/register**")
-        		.permitAll()//are allowed to be visited by anyone. 
+        		.permitAll()
         		.anyRequest()
         		.authenticated()
             	.and()
         .formLogin()
-            .loginPage("/login")//this specifies the custom login page end point
+            .loginPage("/login")
             	.permitAll()
             .and()
         .logout()                                    
-        	.permitAll()//this allows anywone that is logged in to be logged out. 
+        	.permitAll()
         .and()
         .csrf()
         .disable();
