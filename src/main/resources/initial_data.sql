@@ -9,8 +9,12 @@ INSERT INTO status(status_type) VALUES ('Under Review');
 INSERT INTO report(report_name, user_id) VALUES ('Dummy Report', 1);
 
 INSERT INTO project(project_name, approver_id) VALUES ('pie maker', 1);
+<<<<<<< HEAD
+INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 2);
+=======
 INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 1);
 
+>>>>>>> ET_23
 
 INSERT INTO line_item_type(line_item_type) VALUES ('Mileage');
 INSERT INTO line_item_type(line_item_type) VALUES ('Per Diem');
@@ -20,3 +24,7 @@ INSERT INTO line_item_type(line_item_type) VALUES ('Meals');
 INSERT INTO line_item_type(line_item_type) VALUES ('Entertainment');
 INSERT INTO line_item_type(line_item_type) VALUES ('Parking');
 INSERT INTO line_item_type(line_item_type) VALUES ('Other');
+<<<<<<< HEAD
+INSERT INTO project(project_name, approver_id) VALUES ('beef baster', 1);
+=======
+>>>>>>> ET_23

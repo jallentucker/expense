@@ -19,23 +19,22 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 	
 	@Test
     public void navigateToNewProject(){
-		seleniumConstants.registerUser(driver);
+		seleniumConstants.loginUser(driver);
 		driver.get(URL + "/#/home");
 		
 		driver.findElement(By.id("createProjectBtn")).click();
 		
-		new WebDriverWait(driver, 180).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='Projectname']")));
+		driver.findElement(By.id("ProjectCancel"));
        
         String URL = driver.getCurrentUrl();
-
-        Assert.assertEquals((SeleniumConstants.URL + "/#/createProject"), URL );
+        Assert.assertEquals(("http://localhost:8080/#/createProject"), URL );
 
     	
     }
 	
 	@Test
 	public void validNewProject(){
-		seleniumConstants.registerUser(driver);
+		seleniumConstants.loginUser(driver);
 		
 		driver.get(URL + "/#/createProject");
 		
@@ -61,7 +60,7 @@ public class CreateProjectPageEvaluation extends TestPageObject {
 	
 	@Test
 	public void cancelButton(){
-		seleniumConstants.registerUser(driver);
+		seleniumConstants.loginUser(driver);
 		
 		driver.get(URL + "/#/createProject");
 
@@ -70,17 +69,17 @@ public class CreateProjectPageEvaluation extends TestPageObject {
         //finds the submit button and clicks it
         WebElement element1 = driver.findElement(By.id("ProjectCancel"));
         element1.click();
-		
+		driver.findElement(By.id("logout_button"));
+
 		//checks to make sure you end up on the correct page after a successful submit
 		String URL = driver.getCurrentUrl();
-
-        Assert.assertEquals(URL, (SeleniumConstants.URL  + "/#/home"));
+        Assert.assertEquals(URL, ("http://localhost:8080/#/home"));
 
 	}
 	
 	@Test
 	public void duplicateProject(){
-		seleniumConstants.registerUser(driver);
+		seleniumConstants.loginUser(driver);
 		
 		driver.get(URL + "/#/createProject");
 		
