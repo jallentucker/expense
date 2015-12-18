@@ -18,7 +18,7 @@
 							
 							<div class="form-group">
 								<div>
-									<select ng-change = "onChange()" ng-model="selectedProject" id="projectDropDown" name="report-project" 
+									<select ng-change="onChange()" ng-model="selectedProject" id="projectDropDown" name="report-project" 
 										class="btn btn-default" aria-haspopup="true" aria-expanded="true" required>
 										<option value="">Select a Project</option>
 										<option ng-repeat="value in projectName" ng-value="{{value.projectId}}">{{value.projectName}}</option> 
@@ -26,15 +26,18 @@
 								</div>
 							</div>
                             <br/>
-				            <button  id="lineitemBtn" ng-click="addLineitem()" class="btn btn-primary">Add Line Item</button>
+							<div class="form-group form-inline">
+					            <button  id="lineitemBtn" ng-click="addLineitem()" class="btn btn-primary pull-left">Add Line Item</button> 
+					            <p class="pull-left" ng-hide = "submitBtnHide" id="savedStatus"> Line item has been saved. </p> <br>
+				            </div>
                             <div ng-repeat="a in lineItems track by $index">
                                     <div class="row">
                                         <div class="form-group col-sm-4"> <br>
-                                            <label><h3>Add Line Items</h3></label>
+                                            <label id="newLineItem">New Line Item:</label>
                                         </div>
                                         <div class="col-sm-4">
                                             <label>Expense Type:</label>
-                                            <select ng-change = "onChange()" class="form-control" class="lineItemType" ng-model="expenseType[$index]" required>
+                                            <select ng-change = "onChange()" class="form-control" ng-model="expenseType[$index]" required>
                                                 <option value="">Select your Expense Type</option>
                                             <option ng-repeat="value in result" ng-value="{{value.lineItemTypeId}}">{{value.lineItemType}}</option>                                            
                                             </select>
