@@ -2,10 +2,8 @@ package com.catalyst.tla_expense.entities;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +32,7 @@ public class Project {
 
 	// Link to user table by id
 	@NotNull
-	@ManyToOne//(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "approver_id", referencedColumnName="user_id")
 	private User user;
 
@@ -77,6 +75,4 @@ public class Project {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
-
 }
