@@ -5,6 +5,14 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     $scope.expenseType = [];
 	$scope.report = {};
 	$scope.showSubmitBtn = false;
+	$scope.submitBtnHide = true;
+	$scope.isClicked = false;
+	
+	$scope.onChange = function(){
+		if($scope.isClicked == true){
+			$scope.submitBtnHide = true;
+		}
+	}
 	
 	$scope.submitFlag = function(){
 		showSubmitBtn = true;
@@ -29,6 +37,9 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
             report.project = {};
             report.project.projectId = selectedProject;
             report.status = {statusId: status};
+            /*if(status == 4){
+            	$scope.saveBtnHide = true;
+            }*/
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
@@ -65,11 +76,17 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         	{
                         		window.location = "/#/home";
                         	}
+                        if(status == 4){
+                        	$scope.submitBtnHide = false;
+                        	$scope.isClicked = true;
+                        }
                         console.log($scope.lineItemArray);
                         $scope.lineItemArray = [];
                         $scope.lineItems = [];
+                        $scope.lineItems.push($scope.lineItem);
                         $scope.monetary= [];
                         $scope.expenseType = [];
+                        
                        // console.log($scope.monetary);
                        // console.log($scope.expenseType);
                     },
