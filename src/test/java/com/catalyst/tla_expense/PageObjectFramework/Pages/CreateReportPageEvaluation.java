@@ -118,6 +118,18 @@ public class CreateReportPageEvaluation extends TestPageObject
 	}
 
 	@Test 
+	public void Saved() {
+		seleniumConstants.loginUser(driver);
+		CreateReportPage report = new CreateReportPage(driver);
+		
+		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
+		report.sendKeys(By.id("reportName"), generateString());
+		dropdown1.selectByIndex(1);
+		report.click(By.id("lineitemBtn"));
+		report.click(By.id("lineitemBtn"));
+	}
+	
+	@Test 
 	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
