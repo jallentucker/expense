@@ -134,10 +134,10 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean elementFound = false;
 		try{
 			report.find(By.id("ReportSubmit"));
-			elementFound = false;
+			elementFound = true;
 		}
 		catch(Exception E){
-			elementFound = true;
+			elementFound = false;
 		}
 		finally{
 			assertTrue(elementFound);
@@ -172,10 +172,10 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean elementFound = false;
 		try{
 			report.find(By.id("ReportSave"));
-			elementFound = false;
+			elementFound = true;
 		}
 		catch(Exception E){
-			elementFound = true;
+			elementFound = false;
 		}
 		finally{
 			assertTrue(elementFound);
