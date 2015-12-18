@@ -116,8 +116,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
             $scope.lineItems.push($scope.lineItem);
 		}
 		
-		$scope.addLineitem()
-		
+		$scope.addLineitem();
 }])
 
 
