@@ -4,6 +4,11 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     $scope.monetary= [];
     $scope.expenseType = [];
 	$scope.report = {};
+	$scope.showSubmitBtn = false;
+	
+	$scope.submitFlag = function(){
+		showSubmitBtn = true;
+	};
 	
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
@@ -14,15 +19,10 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.reqDropdown = function() {
-    	if($scope.selectedProject && $scope.selectedProject.projectName) return false;
+    	if($scope.selectedProject && $scope.selectedProject.projectId && $scope.lineItems.length == 0 &&
+    			$scope.expenseType[$index] && $scope.expenseType[$index].lineItemTypeId) return false;
     	return true;
     }
-    
-    $scope.reqLineItem = function() {
-    	
-    }
-    
-
    
     $scope.createReport = function(report, selectedProject, lineItemTypes, status){
     		report.user = $scope.currentUser;
@@ -52,12 +52,15 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
                             lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
+                            	 console.log("SUCCESS!");
                                  $scope.postLineItemSuccess = success.data;
                              },
                             function(error){
                                 console.log(error);
                             })
                         }
+                        console.log($scope.lineItemArray);
+                        //window.location = "/#/home";
                         if (status == 2)
                         	{
                         		window.location = "/#/home";
@@ -106,6 +109,8 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		$scope.addLineitem = function(){
             $scope.lineItems.push($scope.lineItem);
 		}
+		
+		$scope.addLineitem()
 		
 }])
 
