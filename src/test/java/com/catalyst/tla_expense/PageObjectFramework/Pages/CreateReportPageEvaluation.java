@@ -239,21 +239,35 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		
-		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select"))).getAllSelectedOptions();
-		ArrayList<String> selects = new ArrayList<String>();
+		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select"))).getOptions();
+		String[] selects = new String[9];
+		int i = 0;
 		for(WebElement select: selectedOptions){
-			selects.add(select.getText());
+			selects[i] = select.getText();
+			i++;
 		}
-		assertEquals("Select your Expense Type", selects.get(0));
-		assertEquals("Mileage", selects.get(1));
-		assertEquals("Per Diem", selects.get(2));
-		assertEquals("Lodging", selects.get(3));
-		/*assertEquals("Travel", selects.get(4));
-		assertEquals("Meals", selects.get(5));
-		assertEquals("Entertainment", selects.get(6));
-		assertEquals("Parking", selects.get(7));
-		assertEquals("Other", selects.get(8));*/
-
+		assertEquals("Select your Expense Type", selects[0]);
+		assertEquals("Mileage", selects[1]);
+		assertEquals("Per Diem", selects[2]);
+		assertEquals("Lodging", selects[3]);
+		assertEquals("Travel", selects[4]);
+		assertEquals("Meals", selects[5]);
+		assertEquals("Entertainment", selects[6]);
+		assertEquals("Parking", selects[7]);
+		assertEquals("Other", selects[8]);
+		
+		boolean monetaryAmountInputFound = false;
+		try{
+		
+			report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[3]/input"));
+			monetaryAmountInputFound = true;
+		}
+		catch(Exception E){
+			monetaryAmountInputFound = false;
+		}
+		finally{
+			assertTrue(monetaryAmountInputFound);
+		}
 
 	}
 }
