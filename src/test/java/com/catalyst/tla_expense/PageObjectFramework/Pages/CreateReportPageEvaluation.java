@@ -95,12 +95,12 @@ public class CreateReportPageEvaluation extends TestPageObject
 		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 		dropdown1.selectByIndex(1);
 		report.click(By.id("lineitemBtn"));
-		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select")));
+		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
 		dropdown2.selectByIndex(1);
-		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[3]/input"),"55");
-		Select dropdown3 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
-		dropdown3.selectByIndex(1);
 		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input"),"55");
+		Select dropdown3 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[2]/select")));
+		dropdown3.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[3]/input"),"55");
 	}
 
 	
@@ -112,8 +112,8 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean submitBtnFound = true;
 		try{
 		
-			report.find(By.id("ReportSubmit"));
-			submitBtnFound = true;
+			submitBtnFound =  report.find(By.id("ReportSubmit")).isDisplayed();
+			
 		}
 		catch(Exception E){
 			submitBtnFound = false;
@@ -134,8 +134,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		boolean elementFound = false;
 		try{
-			report.find(By.id("ReportSubmit"));
-			elementFound = true;
+		elementFound =	report.find(By.id("ReportSubmit")).isDisplayed();
 		}
 		catch(Exception E){
 			elementFound = false;
@@ -172,8 +171,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		boolean elementFound = false;
 		try{
-			report.find(By.id("ReportSave"));
-			elementFound = true;
+			elementFound = report.find(By.id("ReportSave")).isDisplayed();
 		}
 		catch(Exception E){
 			elementFound = false;
@@ -184,7 +182,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 
 	}
 
-	@Test 
+	/*@Test 
 	public void whenNotSelectingAnyDropboxesAndClickSaveErrorMessageDisplays() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
@@ -198,7 +196,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		//now check for error messages
 		
 
-	}
+	}*/
 
 	//testing card 25--adding line item to report
 
@@ -211,11 +209,9 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean lineitemPresent = false;
 		String lineitemActual = "";
 		try{
-			report.find(By.id("lineitemBtn"));
-			btnPresent = true;
+			btnPresent = report.find(By.id("lineitemBtn")).isDisplayed();
 			report.click(By.id("lineitemBtn"));
-			report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]"));
-			lineitemPresent = true;
+			lineitemPresent = report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]")).isDisplayed();
 			lineitemActual = report.getInnerHtml(By.id("lineitemBtn"));
 			
 		}
@@ -239,7 +235,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		
-		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select"))).getOptions();
+		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select"))).getOptions();
 		String[] selects = new String[9];
 		int i = 0;
 		for(WebElement select: selectedOptions){
@@ -259,8 +255,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean monetaryAmountInputFound = false;
 		try{
 		
-			report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[3]/input"));
-			monetaryAmountInputFound = true;
+			monetaryAmountInputFound = report.find(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input")).isDisplayed();
 		}
 		catch(Exception E){
 			monetaryAmountInputFound = false;
