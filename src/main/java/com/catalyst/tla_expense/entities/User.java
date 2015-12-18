@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.catalyst.tla_expense.utility.RegexConstants;
 
 @Entity
 @Table(name="expense_user", schema="public")
@@ -29,7 +30,7 @@ public class User {
 	private String userPassword;
 
 	@NotNull 
-	@Pattern(regexp="^[a-zA-Z0-9._%+-]{1,}[@]{1}[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z]{2,}$")
+	@Pattern(regexp=RegexConstants.USER_EMAIl)
 	@Column(name="user_email", unique = true)
 	private String userEmail;
 	

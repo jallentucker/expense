@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.catalyst.tla_expense.entities.User;
 import com.catalyst.tla_expense.services.UserService;
+import com.catalyst.tla_expense.utility.EndpointConstants;
 
 /**
  * User Controller class. Has all the end points for Post, Put, Delete, Get.
@@ -28,7 +29,7 @@ public class UserController {
 	 * Returns a list of all users.
 	 * @author cmiller
 	 */
-	@RequestMapping(value="/user/get", method = RequestMethod.GET)
+	@RequestMapping(value=EndpointConstants.USER_ENDPOINT, method = RequestMethod.GET)
 	public  List<User> getAllUsers(){
 		return userService.getAllUsers();
 	}
@@ -39,7 +40,7 @@ public class UserController {
 	 * Sends a User through the layers and eventually persists in the dao.
 	 * @author cmiller
 	 */
-	@RequestMapping(value="/user/post", method = RequestMethod.POST)
+	@RequestMapping(value=EndpointConstants.USER_ENDPOINT, method = RequestMethod.POST)
 	public void createUser(@RequestBody User user){
 		userService.createUser(user);
 	}

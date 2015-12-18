@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+//Project imports
 import com.catalyst.tla_expense.entities.Report;
 import com.catalyst.tla_expense.services.ReportService;
+
+import com.catalyst.tla_expense.utility.EndpointConstants;
 
 @RestController
 public class ReportController {
@@ -26,7 +30,7 @@ public class ReportController {
 	 * @param id
 	 * @return a single report
 	 */
-	@RequestMapping(value = "/getSingleReport/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT+"/{id}", method = RequestMethod.GET)
 	public Report getReport(@PathVariable int id) {
 		return reportService.getReport(id);
 	}
@@ -46,7 +50,7 @@ public class ReportController {
 	 * @throws Exception 
 	 * @return 
 	 */
-	@RequestMapping(value = "/report/post", method = RequestMethod.POST)
+	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT, method = RequestMethod.POST)
 	public int addReport(@RequestBody Report report) {
 		return this.reportService.createReport(report);
 	}
@@ -55,7 +59,7 @@ public class ReportController {
 	 * Deletes a report from the database 
 	 * @param id 
 	 */
-	@RequestMapping(value = "/deleteReport/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT+"/{id}", method = RequestMethod.DELETE)
 	public void deleteReport(@PathVariable int id){
 		reportService.deleteReport(id);
 	}
@@ -64,7 +68,7 @@ public class ReportController {
 	 * Updates a report from the database
 	 * @param report updated in database
 	 */
-	@RequestMapping(value = "/editReport/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT+"/{id}", method = RequestMethod.PUT)
 	public void editReport(@RequestBody Report report){
 		this.reportService.editReport(report);
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.catalyst.tla_expense.daos.UserDao;
 import com.catalyst.tla_expense.entities.User;
+import com.catalyst.tla_expense.utility.RegexConstants;
 
 @Service
 public class UserServiceValidation {
@@ -19,7 +20,7 @@ public class UserServiceValidation {
 
 	public boolean validatePassword(User user) {
 		boolean result = false;
-		String passwordRegex = "^((?=.*\\d)(?=.*[A-Z])(?=.*[\\W]).{8,})$";
+		String passwordRegex = RegexConstants.PASSWORD;
 		String password = user.getUserPassword();
 		if(password.matches(passwordRegex)){
 			result = true;

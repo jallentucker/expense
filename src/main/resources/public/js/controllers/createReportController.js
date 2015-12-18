@@ -37,14 +37,11 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
             report.project = {};
             report.project.projectId = selectedProject;
             report.status = {statusId: status};
-            /*if(status == 4){
-            	$scope.saveBtnHide = true;
-            }*/
             if(report.reportName.length > 2) {
             	createReportFactory.createReport(report).then(
                     function(success){
                         $scope.createReportResult = success;
-                        
+                        report.reportId = success.data;
                         for(var i = 0; i < $scope.expenseType.length; i++){
                             var lineItemObj = {
                                 'lineItemType':{
@@ -63,7 +60,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
                             lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
-                            	 console.log("SUCCESS!");
                                  $scope.postLineItemSuccess = success.data;
                              },
                             function(error){
@@ -71,7 +67,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                             })
                         }
                         console.log($scope.lineItemArray);
-                        //window.location = "/#/home";
                         if (status == 2)
                         	{
                         		window.location = "/#/home";
@@ -86,9 +81,6 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         $scope.lineItems.push($scope.lineItem);
                         $scope.monetary= [];
                         $scope.expenseType = [];
-                        
-                       // console.log($scope.monetary);
-                       // console.log($scope.expenseType);
                     },
                     function(error){
                         $scope.createReportResult = error;

@@ -45,6 +45,10 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	
 	/**
 	 * The main configuration method for Spring Security.
+	 * 
+	 * The antMatchers function takes end points
+	 * and file locations relative to public, and
+	 * removes security from them. 
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
@@ -52,7 +56,7 @@ public class SpringSecurityConfigurer extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
         	.antMatchers("/user/post", "/css/**", "/js/app.js", "/js/controllers/registerController.js", 
-        			"/js/values/regexValues.js", "/js/factories/usersFactory.js", "/js/factories/validationFactory.js", "/register**")//these end point/file/folder locations
+        			"/js/values/regexValues.js", "/js/factories/usersFactory.js", "/js/factories/validationFactory.js", "/register**")
         		.permitAll()//are allowed to be visited by anyone. 
         		.anyRequest()
         		.authenticated()
