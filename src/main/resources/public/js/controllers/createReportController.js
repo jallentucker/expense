@@ -5,18 +5,11 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     $scope.expenseType = [];
 	$scope.report = {};
 	$scope.showSubmitBtn = false;
+	
 	$scope.submitFlag = function(){
-		if($scope.ReportSave.hide == true) return false;
-		
-		$scope.showSubmitBtn = true;
-		return true;
+		showSubmitBtn = true;
 	};
-	$scope.hideSubmit = function(){
-		if($scope.ReportSave.hide == true)
-			$scope.showSubmitBtn = false;
-			return false;
-		return true;
-	}
+	
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
     			$scope.currentUser = success.data;
@@ -26,7 +19,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
     	});
     
     $scope.reqDropdown = function() {
-    	if($scope.selectedProject && $scope.selectedProject.projectId &&
+    	if($scope.selectedProject && $scope.selectedProject.projectId && $scope.lineItems.length == 0 &&
     			$scope.expenseType[$index] && $scope.expenseType[$index].lineItemTypeId) return false;
     	return true;
     }
@@ -67,7 +60,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                             })
                         }
                         console.log($scope.lineItemArray);
-                        window.location = "/#/home";
+                        //window.location = "/#/home";
                         if (status == 2)
                         	{
                         		window.location = "/#/home";
@@ -116,6 +109,8 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
 		$scope.addLineitem = function(){
             $scope.lineItems.push($scope.lineItem);
 		}
+		
+		$scope.addLineitem()
 		
 }])
 
