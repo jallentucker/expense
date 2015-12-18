@@ -44,15 +44,14 @@ public class Report {
 	 * Joins the report table with the user table via user_id
 	 */
 	@NotNull
-	@ManyToOne//(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
-	//@NotNull
-	@ManyToOne//(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="project_id")
 	private Project project;
 
@@ -62,45 +61,6 @@ public class Report {
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="status_id")
 	private Status status;
-	
-//	/**
-//	 * Required field to add the start date in which reimbursement began
-//	 * being recorded
-//	 */
-//	//@NotNull
-//	@Column(name="start_date",columnDefinition="DATE")
-//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-//	private Date startDate;
-//	
-//	/**
-//	 * Required field to add the end date in which reimbursement period
-//	 * ended.
-//	 */
-//	//@NotNull
-//	@Column(name="end_date",columnDefinition="DATE")
-//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-//	private Date endDate;
-	
-//	/**
-//	 * Placeholder for the approver to add a reject reason so that users
-//	 * can correct their mistake
-//	 */
-//	@Column(name="reject_reason", length=255)
-//	private String rejectReason;
-	
-//	/**
-//	 * Placeholder for a user to add notes if they desire
-//	 */
-//	@Column(name="notes", length=255)
-//	private String reportNotes;
-//
-//	/**
-//	 * Placeholder to generate the date a report was approved
-//	 */
-//	@Column(name="approved_date", columnDefinition="DATE")
-//	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
-//	private Date approvedDate;
-
 
 	/**
 	 * Getters and setters
@@ -151,28 +111,4 @@ public class Report {
 	public void setReportName(String reportName) {
 		this.reportName = reportName;
 	}	
-
-//	public String getRejectReason() {
-//		return rejectReason;
-//	}
-//
-//	public void setRejectReason(String rejectReason) {
-//		this.rejectReason = rejectReason;
-//	}
-//
-//	public String getReportNotes() {
-//		return reportNotes;
-//	}
-//
-//	public void setReportNotes(String reportNotes) {
-//		this.reportNotes = reportNotes;
-//	}
-//
-//	public Date getApprovedDate() {
-//		return approvedDate;
-//	}
-//
-//	public void setApprovedDate(Date approvedDate) {
-//		this.approvedDate = approvedDate;
-//	}
 }
