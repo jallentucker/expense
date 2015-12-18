@@ -1,5 +1,5 @@
 
-angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', 'lineTypeListFactory', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory, lineTypeListFactory){
+angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', 'lineTypeListFactory', 'toastr', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory, lineTypeListFactory, toastr){
                                                              
     $scope.monetary= [];
     $scope.expenseType = [];
@@ -71,6 +71,7 @@ angular.module('myApp').controller('createReportController',['$scope', '$compile
                         if(status == 4){
                         	$scope.submitBtnHide = false;
                         	$scope.isClicked = true;
+                        	toastr.success('Success', 'Your Report Has Been Saved');
                         }
                         console.log($scope.lineItemArray);
                         $scope.lineItemArray = [];
