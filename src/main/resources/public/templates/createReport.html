@@ -25,6 +25,7 @@
 									</select>
 								</div>
 							</div>
+<<<<<<< HEAD
                             <br/>
 				            <button  id="lineitemBtn" ng-click="addLineitem()" class="btn btn-primary">Add Line Item</button>
                             <div ng-repeat="a in lineItems track by $index">
@@ -48,10 +49,10 @@
                                     </div>
                                 </form>
                             </div>
-							<div>
-								<button type="submit" name="submit" id="ReportSubmit" ng-click="createReport(report, selectedProject)" class="btn btn-success pull-right">Submit</button>
-								<button name="save" id="ReportSave" ng-click="createReport(report, selectedProject)" class="btn btn-info pull-right">Save</button>
-								<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
-							</div>		
-						  </div>
+                         <div>
+							<button type="submit" name="submit" ng-hide = "submitBtnHide" id="ReportSubmit" ng-click="createReport(report, selectedProject, lineItemTypes, 2)" class="btn btn-success pull-right">Submit</button>
+							<button type="submit" name="save" ng-hide="reportForm.$invalid" id="ReportSave" ng-click="createReport(report, selectedProject, lineItemTypes, 4); submitFlag()" class="btn btn-info pull-right">Save</button>
+							<button name="cancel" id="ReportCancel" class="btn btn-danger pull-right" ui-sref="home">Cancel</button>
 						</div>
+		</div>
+</div>
