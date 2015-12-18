@@ -27,19 +27,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
 	public String URL = seleniumConstants.getUrl();
 	public WebDriver webDriver;
-	public static String generateString()
-	{
-		Random rng = new Random();
-		String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		int length = 8;
-		char[] text = new char[length];
-		for(int i=0; i < length; i++)
-		{
-			text[i] = characters.charAt(rng.nextInt(characters.length()));
-		}
-		
-		return new String(text);
-	}
+	
 
 	
 	@Test
@@ -66,7 +54,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), generateString());
+		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		dropdown.selectByIndex(1);
 		report.click(By.id("ReportSubmit"));
@@ -90,7 +78,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void checkThatAReportIsntSubmittedWithoutAProject() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		report.sendKeys(By.id("reportName"), generateString());
+		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 
 		report.click(By.id("ReportSubmit"));
 		
@@ -103,31 +91,18 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	public void enterReportNameProjectLineitems(CreateReportPage report){
 		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), generateString());
+		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 		dropdown1.selectByIndex(1);
 		report.click(By.id("lineitemBtn"));
-		report.click(By.id("lineitemBtn"));
-		List<WebElement> expenseTypes = webDriver.findElements(By.className("lineItemType"));
-		List<WebElement> monetaryAmount = webDriver.findElements(By.className("monetaryAmount"));
-		Select dropdown2 = new Select(driver.findElement((By) expenseTypes.get(0)));
+		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[2]/select")));
 		dropdown2.selectByIndex(1);
-		report.sendKeys((By) monetaryAmount.get(0),"55");
-		Select dropdown3 = new Select(driver.findElement((By) expenseTypes.get(0)));
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[3]/div[1]/div[3]/input"),"55");
+		Select dropdown3 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
 		dropdown3.selectByIndex(1);
-		report.sendKeys((By) monetaryAmount.get(2),"55");
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input"),"55");
 	}
 
-	@Test 
-	public void Saved() {
-		seleniumConstants.loginUser(driver);
-		CreateReportPage report = new CreateReportPage(driver);
-		
-		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), generateString());
-		dropdown1.selectByIndex(1);
-		report.click(By.id("lineitemBtn"));
-		report.click(By.id("lineitemBtn"));
-	}
+	
 	
 	@Test 
 	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
@@ -154,7 +129,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		enterReportNameProjectLineitems(report);
 		
-		report.click(By.id("SaveBtn"));
+		report.click(By.id("ReportSave"));
 		
 		boolean elementFound = false;
 		try{
@@ -213,7 +188,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), generateString());
+		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 		dropdown1.selectByIndex(1);
 		report.click(By.id("lineitemBtn"));
 		report.click(By.id("lineitemBtn"));
