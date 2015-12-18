@@ -4,11 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +26,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 {
 	public SeleniumConstants seleniumConstants = new SeleniumConstants();
 	public String URL = seleniumConstants.getUrl();
-	
+	public WebDriver webDriver;
 	public static String generateString()
 	{
 		Random rng = new Random();
@@ -97,6 +100,22 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 
 	//testing card 23--submitting a report
+	
+	public void enterReportNameProjectLineitems(CreateReportPage report){
+		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
+		report.sendKeys(By.id("reportName"), generateString());
+		dropdown1.selectByIndex(1);
+		report.click(By.id("lineitemBtn"));
+		report.click(By.id("lineitemBtn"));
+		List<WebElement> expenseTypes = webDriver.findElements(By.className("lineItemType"));
+		List<WebElement> monetaryAmount = webDriver.findElements(By.className("monetaryAmount"));
+		Select dropdown2 = new Select(driver.findElement((By) expenseTypes.get(0)));
+		dropdown2.selectByIndex(1);
+		report.sendKeys((By) monetaryAmount.get(0),"55");
+		Select dropdown3 = new Select(driver.findElement((By) expenseTypes.get(0)));
+		dropdown3.selectByIndex(1);
+		report.sendKeys((By) monetaryAmount.get(2),"55");
+	}
 
 	@Test 
 	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
@@ -104,8 +123,8 @@ public class CreateReportPageEvaluation extends TestPageObject
 		CreateReportPage report = new CreateReportPage(driver);
 		boolean submitBtnFound = true;
 		try{
-			//just need submit button id
-			report.find(By.id(""));
+		
+			report.find(By.id("ReportSubmit"));
 			submitBtnFound = true;
 		}
 		catch(Exception E){
@@ -121,16 +140,13 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		
-		/*
-		 * need to create valid report
-		 * with line items and adding name and clicking related project
-		 */
+		enterReportNameProjectLineitems(report);
 		
 		report.click(By.id("SaveBtn"));
+		
 		boolean elementFound = false;
 		try{
-			//just need submit button id
-			report.find(By.id(""));
+			report.find(By.id("ReportSubmit"));
 			elementFound = false;
 		}
 		catch(Exception E){
@@ -146,14 +162,10 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void whenReportSavedAndClickSubmitBtnThenReportPersistedAndRedirectedToHome() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		/*
-		 * need to create valid report
-		 * with line items and adding name and clicking related project
-		 */
+		enterReportNameProjectLineitems(report);
 		
-		//need to find ids os save and submit buttons
-		report.click(By.id("SaveBtn"));
-		report.click(By.id("SubmitBtn"));
+		report.click(By.id("ReportSave"));
+		report.click(By.id("ReportSubmit"));
 		report.find(By.id("logout_button"));
 		String actualUrl = report.getUrl();
 		String expectedURL = "http://localhost:8080/#/home";
@@ -168,15 +180,11 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 
-		/*
-		 * need to create valid report
-		 * with line items and adding name and clicking related project
-		 */
+		enterReportNameProjectLineitems(report);
 		
 		boolean elementFound = false;
 		try{
-			//just need submit button id
-			report.find(By.id(""));
+			report.find(By.id("ReportSave"));
 			elementFound = false;
 		}
 		catch(Exception E){
@@ -192,7 +200,14 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void whenNotSelectingAnyDropboxesAndClickSaveErrorMessageDisplays() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
+		report.sendKeys(By.id("reportName"), generateString());
+		dropdown1.selectByIndex(1);
+		report.click(By.id("lineitemBtn"));
+		report.click(By.id("lineitemBtn"));
+		report.click(By.id("SaveBtn"));
 		
+		//now check for error messages
 		
 
 	}
