@@ -60,7 +60,7 @@ public class ProjectServiceImplTest {
 		target.setProjectServiceValidation(mockProjectServiceValidation);
 		
 		Project project = new Project();
-		
+
 		when(mockProjectServiceValidation.projectName(project)).thenThrow(new Exception("hey an exception"));
 		target.createProject(project);
 	}
@@ -68,14 +68,9 @@ public class ProjectServiceImplTest {
 	@Test
 	public void testGetAllProjects(){
 		target.setProjectDao(mockProjectDao);
-		
 		List<Project> expected = new ArrayList<>();
-		
 		when(mockProjectDao.getAllProjects()).thenReturn(expected);
-		
 		List<Project> actual = target.getAllProjects();
-		
 		assertEquals(expected, actual);
-		
 	}
 }

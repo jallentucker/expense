@@ -17,26 +17,13 @@ public class ReportServiceImplTest {
 
 	private ReportServiceImpl target;
 	private ReportDao mockReportDao;
-	//private ReportServiceValidation mockReportServiceValidation;
 	
 	@Before 
 	public void setup() {
 		target = new ReportServiceImpl();
 		mockReportDao = mock(ReportDao.class);
 	}
-	
-//	@Test
-//	public void testCreateReportWhenIsValidReturnsTrue() {
-//		target.setReportDao(mockReportDao);
-//		
-//		Report report = new Report();
-//		
-//		when(mockReportServiceValidation.reportName(report)).thenReturn(true);
-//		boolean expected = true;
-//		boolean actual = target.createReport(report);
-//		assertEquals(expected, actual);
-//	}	
-	
+		
 	/**
 	 * Tests that getAllReports() calls the dao method of the same name
 	 */
@@ -61,22 +48,10 @@ public class ReportServiceImplTest {
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void testToVerifyApprovedDateGetsSetWhenStatusChangedToApproved()
-//	{
-//		
-//		Report report = new Report();
-//		Status status = new Status();
-//		report.setReportName("Test Report Test Report");
-//		status.setStatusType("approved");
-//		
-//	
-//		
-//		Date approvedDate = report.getApprovedDate();
-//		Date expected = new Date();
-//		
-//		target.editReport(report);
-//		System.out.println(expected + " & " + approvedDate);
-//		assertEquals(expected, approvedDate);
-//	}
+	@Test
+	public void testInvalidReportName() {
+		target.setReportDao(mockReportDao);
+		
+	}
+	
 }

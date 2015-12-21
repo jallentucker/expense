@@ -57,22 +57,6 @@ public class ReportDaoData implements ReportDao {
 	}
 	
 	/**
-	 * Deletes a report from the database 
-	 * @param id 
-	 */
-	public void deleteReport(int id) {
-		em.remove(id);
-	}
-	
-	/**
-	 * Updates a report in the database
-	 * @param report
-	 */
-	public void editReport(Report report) {
-		em.merge(report);
-	}
-	
-	/**
 	 * verifies if a report with the given name exists in the database
 	 * @param reportName
 	 * @return

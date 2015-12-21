@@ -31,15 +31,6 @@ public class ReportServiceImpl implements ReportService {
 	public List<Report> getAllReports() {
 		return reportDao.getAllReports();
 	}
-	
-	/**
-	 * Deletes a report from the database 
-	 * @param id 
-	 */
-	@Override
-	public void deleteReport(int id) {
-		this.reportDao.deleteReport(id);	
-	}
 
 	/**
 	 * Adds a new report that's been created to the database
@@ -65,28 +56,7 @@ public class ReportServiceImpl implements ReportService {
 			return 0;
 		}
 	}
-	
-	/**
-	 * Edits a selected report and updates it in the database.
-	 */
-	@Override
-	public void editReport(Report report){
-		
-		//String statusType = status.getStatusType();
-		String reportName = report.getReportName();
-		
-		/**
-		 * Checks to see if the entered report name is greater
-		 * than 3 characters and there's no whitespace.
-		 */
-		if(reportName.trim().length() > 3)
-		{
-			reportName.toLowerCase();
-			report.setReportName(reportName);
-		} else {
-			System.out.println("Report name doesn't meet requirements.");
-		}
-	}
+
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
 	}

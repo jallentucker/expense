@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.catalyst.tla_expense.SeleniumFramework.Pages.LoginPage;
-import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
 public class SeleniumConstants {
 

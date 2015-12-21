@@ -28,18 +28,6 @@ public interface ReportDao {
 	public int createReport(Report report);
 	
 	/**
-	 * Deletes a report from the database 
-	 * @param id 
-	 */
-	public void deleteReport(int id);
-	
-	/**
-	 * Updates a report in the database
-	 * @param report
-	 */
-	public void editReport(Report report);
-	
-	/**
 	 * verifies if a report with the given name exists in the database
 	 * @param reportName
 	 * @return

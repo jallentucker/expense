@@ -54,22 +54,4 @@ public class ReportController {
 	public int addReport(@RequestBody Report report) {
 		return this.reportService.createReport(report);
 	}
-	
-	/**
-	 * Deletes a report from the database 
-	 * @param id 
-	 */
-	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT+"/{id}", method = RequestMethod.DELETE)
-	public void deleteReport(@PathVariable int id){
-		reportService.deleteReport(id);
-	}
-	
-	/**
-	 * Updates a report from the database
-	 * @param report updated in database
-	 */
-	@RequestMapping(value = EndpointConstants.REPORT_ENDPOINT+"/{id}", method = RequestMethod.PUT)
-	public void editReport(@RequestBody Report report){
-		this.reportService.editReport(report);
-	}
 }

@@ -20,23 +20,10 @@ public interface ReportService {
 	public List<Report> getAllReports();
 	
 	/**
-	 * Deletes a report from the database 
-	 * @param id 
-	 */
-	public void deleteReport(int id);
-	
-	/**
 	 * Adds a new report that's been created to the database
 	 * @param report added to database
 	 * @return 
 	 * @throws Exception 
 	 */
 	public int createReport(Report report);
-	
-	/**
-	 * Edits a selected report and updates it in the database.
-	 */
-	void editReport(Report report);
-	
-
 }
