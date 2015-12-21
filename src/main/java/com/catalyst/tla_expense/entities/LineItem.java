@@ -22,17 +22,26 @@ public class LineItem {
 	@Column(name = "monetary_amount")
 	private double monetaryAmount;
 	
+	/**
+	 * Links the table by lineItemType id
+	 */
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "line_item_type_id")
 	private LineItemType lineItemType;
 	
+	/**
+	 * Links the table by report id
+	 */
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "report_id")
 	private Report report;
 
-	
+	/**
+	 * Getters and Setters
+	 * @return
+	 */
 	public Report getReport() {
 		return report;
 	}

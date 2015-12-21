@@ -16,11 +16,21 @@ public class UserWebService {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * Used by the userFactory.js in order to retrieve the current user that's logged
+	 * into the app.
+	 * @param principal
+	 * @return
+	 */
 	@RequestMapping(value="/user/getCurrent", method=RequestMethod.GET)
 	public User currentUser(Principal principal){
 		return userService.getEmployeeByUsername(principal.getName());
 	}
 	
+	/**
+	 * Sets the UserService
+	 * @param userService
+	 */
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}

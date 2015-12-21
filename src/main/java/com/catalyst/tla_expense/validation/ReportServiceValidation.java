@@ -13,6 +13,13 @@ public class ReportServiceValidation {
 	@Autowired
 	private ReportDao reportDao;
 
+	/**
+	 * Checks to see that the name of the report is not whitespace and that it does
+	 * not already exist in the database.
+	 * @param project
+	 * @return boolean
+	 * @throws Exception
+	 */
 	public boolean reportName(Report report) throws Exception{
 		boolean result = true;
 		try{
@@ -36,6 +43,10 @@ public class ReportServiceValidation {
 		}
 	}
 
+	/**
+	 * Sets the ReportDao to exchange data
+	 * @param reportDao
+	 */
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
 	}

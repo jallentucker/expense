@@ -23,14 +23,20 @@ public class ProjectController {
 	
 	@Autowired
 	ProjectService projectService;
-	
-	//request mapping for GETing a project. Uses a constant located EndpointConstant Class
+	/**
+	 * Request mapping for GETing a project. Uses a constant located EndpointConstant Class
+	 * @return
+	 */
 	@RequestMapping(value=EndpointConstants.PROJECT_ENDPOINT, method = RequestMethod.GET)
 	public  List<Project> getAllProjects(){
 		return projectService.getAllProjects();
 	}
-	
-	//request mapping for POST-ing a project. Uses a constant located EndpointConstant Class
+	/**
+	 * request mapping for POST-ing a project. Uses a constant located EndpointConstant Class
+	 * @param project
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value=EndpointConstants.PROJECT_ENDPOINT, method = RequestMethod.POST)
 	public boolean createProject(@RequestBody Project project) throws Exception{
 		return projectService.createProject(project);

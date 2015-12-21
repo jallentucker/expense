@@ -19,11 +19,24 @@ public class LineItemServiceImpl implements LineItemService {
 	@Autowired 
 	LineItemValidation lineItemValidation;
 	
+	/**
+	 * GET
+	 * Returns a list of all line items from the dao
+	 * @author cmiller
+	 */
 	@Override
 	public List<LineItem> getAllLineItems() {
 		return lineItemDao.getAllLineItems();
 	}
 
+	/**
+	 * POST
+	 * Sends a Line Item to the dao layer
+	 * @param LineItem
+	 * @author cmiller
+	 * @return 
+	 * @throws Exception 
+	 */
 	@Override
 	public int addLineItem(LineItem lineItem) throws Exception {
 		boolean result = false;
@@ -34,22 +47,42 @@ public class LineItemServiceImpl implements LineItemService {
 		return -1;
 	}
 
+	/**
+	 * DELETE
+	 * Sends a Line Item Id to the dao layer
+	 * @param LineItemId
+	 * @author cmiller
+	 */
 	@Override
 	public void deleteLineItemById(Integer lineItemId) {
 		lineItemDao.deleteLineItemById(lineItemId);
 		
 	}
-
+	
+	/**
+	 * PUT
+	 * Sends a Line Item to the dao layer
+	 * @param LineItem
+	 * @author cmiller
+	 */
 	@Override
 	public void updateLineItem(LineItem lineItem) {
 		lineItemDao.updateLineItem(lineItem);
 		
 	}
-
+	
+	/**
+	 * Sets the lineItemDao.
+	 * @param lineItemDao
+	 */
 	public void setLineItemDao(LineItemDao lineItemDao) {
 		this.lineItemDao = lineItemDao;
 	}
 
+	/**
+	 * sets the lineItemValidation class in order to validate input.
+	 * @param lineItemValidation
+	 */
 	public void setLineItemValidation(LineItemValidation lineItemValidation) {
 		this.lineItemValidation = lineItemValidation;
 	}

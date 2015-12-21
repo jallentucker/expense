@@ -1,5 +1,8 @@
 
-angular.module('myApp').controller('createReportController',['$scope', '$compile', '$element', '$http', 'createReportFactory', 'lineItemFactory', 'lineTypeListFactory', 'toastr', function($scope, $compile, $element, $http, createReportFactory, lineItemFactory, lineTypeListFactory, toastr){
+angular.module('myApp').controller('createReportController',
+		['$scope', '$compile', '$element', 'createReportFactory', 'lineItemFactory', 
+		 'lineTypeListFactory', 'toastr', function($scope, $compile, $element, createReportFactory, 
+		  lineItemFactory, lineTypeListFactory, toastr){
                                                              
     $scope.monetary= [];
     $scope.expenseType = [];

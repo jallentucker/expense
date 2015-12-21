@@ -15,6 +15,10 @@ public class StatusServiceImpl implements StatusService {
 	@Autowired
 	private StatusDao statusDao;
 	
+	/**
+	 * Sets the statusDao in order to exchange data
+	 * @param statusDao
+	 */
 	public void setStatusDao(StatusDao statusDao) {
 		this.statusDao = statusDao;
 	}

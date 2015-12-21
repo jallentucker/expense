@@ -90,10 +90,14 @@ public class CreateReportPageEvaluation extends TestPageObject
 
 	//testing card 23--submitting a report
 	
+	//function used to enter report name attach it to a project and input two line items, thus creating a valid report
 	public void enterReportNameProjectLineitems(CreateReportPage report){
+		//attaching a project to report
 		Select dropdown1 = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
 		dropdown1.selectByIndex(1);
+		//giving our report a name
+		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
+		//creating 2 line items
 		report.click(By.id("lineitemBtn"));
 		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
 		dropdown2.selectByIndex(1);
@@ -109,6 +113,11 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void checkThatOnlySaveButtonExistsWhenReportNotSaved() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		/*using a try catch finally
+		 * if submit button is displayed, then set to true
+		 * if not displayed, goes to catch and sets to false
+		 * expect submit button to not be displayed and set to false
+		 */
 		boolean submitBtnFound = true;
 		try{
 		
@@ -128,10 +137,15 @@ public class CreateReportPageEvaluation extends TestPageObject
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		
+		//function creates a valid report with associated project, valid name, and two line items
 		enterReportNameProjectLineitems(report);
-		
+		//click save
 		report.click(By.id("ReportSave"));
-		
+		/*using a try catch finally
+		 * if submit button is displayed, then set to true
+		 * if not displayed, goes to catch and sets to false
+		 * expect submit button to be displayed and set to true
+		 */
 		boolean elementFound = false;
 		try{
 		elementFound =	report.find(By.id("ReportSubmit")).isDisplayed();
@@ -149,10 +163,12 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void whenReportSavedAndClickSubmitBtnThenReportPersistedAndRedirectedToHome() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		//creates a valid report
 		enterReportNameProjectLineitems(report);
-		
+		//save and submit a valid report
 		report.click(By.id("ReportSave"));
 		report.click(By.id("ReportSubmit"));
+		//acts like a wait to find element on new page before grabbing URL
 		report.find(By.id("logout_button"));
 		String actualUrl = report.getUrl();
 		String expectedURL = "http://localhost:8080/#/home";
@@ -169,6 +185,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 
 		enterReportNameProjectLineitems(report);
 		
+		//checks to see if line item is displayed
 		boolean elementFound = false;
 		try{
 			elementFound = report.find(By.id("ReportSave")).isDisplayed();
@@ -208,6 +225,9 @@ public class CreateReportPageEvaluation extends TestPageObject
 		boolean btnPresent = false;
 		boolean lineitemPresent = false;
 		String lineitemActual = "";
+		/*checks for the presence of the line item button and line item row
+		 * if not present, then goes to catch and sets to false
+		 */
 		try{
 			btnPresent = report.find(By.id("lineitemBtn")).isDisplayed();
 			report.click(By.id("lineitemBtn"));
@@ -234,7 +254,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 	public void lineItemRowContainsDropDownOfTypesAndInputOfMonetaryAmount() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		
+		//grab list of all line item types, set to strings, and check against expected types
 		List<WebElement> selectedOptions = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select"))).getOptions();
 		String[] selects = new String[9];
 		int i = 0;
@@ -252,6 +272,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		assertEquals("Parking", selects[7]);
 		assertEquals("Other", selects[8]);
 		
+		//check that the monetary amount is displayed on the page
 		boolean monetaryAmountInputFound = false;
 		try{
 		

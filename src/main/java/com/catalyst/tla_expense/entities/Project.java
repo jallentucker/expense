@@ -14,11 +14,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity (name = "project")
 public class Project {
+	
+	/**
+	 * Generates the project_id which is the primary key
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "project_id")
 	private int projectId;
 	
+	/**
+	 * Required field for the project name
+	 */
 	@NotNull
 	@Column(name = "project_name", unique = true, length = 255)
 	private String projectName;
@@ -26,16 +33,25 @@ public class Project {
 	@Column(name = "description", length = 255)
 	private String description;
 	
+	/**
+	 * Generates a date when a new project is created
+	 */
 	@Column(name="create_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date createDate = new Date();
 
-	// Link to user table by id
+	/**
+	 * Links the user table by user id
+	 */
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "approver_id", referencedColumnName="user_id")
 	private User user;
 
+	/**
+	 * Getters and Setters
+	 * @return
+	 */
 	public int getProjectId() {
 		return projectId;
 	}
