@@ -90,15 +90,33 @@ public class CreateReportPageEvaluation extends TestPageObject
 	}
 	
 	@Test 
-	public void checkThatAReportIsntSubmittedWithoutAProject() {
+	public void checkThatAReportCantBeSavedWithoutAProject() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
-
-		report.click(By.id("ReportSubmit"));
+		//giving our report a name
+		report.sendKeys(By.id("reportName"), SeleniumConstants.generateString());
+		//creating 2 line items
+		report.click(By.id("lineitemBtn"));
+		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
+		dropdown2.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input"),"55");
+		Select dropdown3 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[2]/select")));
+		dropdown3.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[3]/input"),"55");
 		
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/createReport"), actualURL);
+		boolean saveBtnFound = true;
+		try{
+		
+			saveBtnFound =  report.find(By.id("ReportSave")).isDisplayed();
+			
+		}
+		catch(Exception E){
+			saveBtnFound = false;
+		}
+		finally{
+			assertFalse(saveBtnFound);
+		}
+
 	}
 	
 
