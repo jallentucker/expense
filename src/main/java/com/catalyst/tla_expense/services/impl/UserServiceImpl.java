@@ -53,7 +53,11 @@ public class UserServiceImpl implements UserService {
 		}
 		return result;
 	}
-
+	/**
+	 * Retrieves an employee by their username.
+	 * @param username
+	 * @return employee
+	 */
 	@Override
 	public User getEmployeeByUsername(String username) {
 		return userDao.getEmployeeByUsername(username);

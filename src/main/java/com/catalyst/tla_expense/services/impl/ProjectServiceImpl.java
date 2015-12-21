@@ -19,11 +19,21 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	ProjectServiceValidation projectServiceValidation;
 	
+	/**
+	 * Request mapping for GETing a project. Uses a constant located EndpointConstant Class
+	 * @return
+	 */
 	@Override
 	public List<Project> getAllProjects() {
 		return projectDao.getAllProjects();
 	}
-
+	
+	/**
+	 * request mapping for POST-ing a project. Uses a constant located EndpointConstant Class
+	 * @param project
+	 * @return
+	 * @throws Exception
+	 */
 	@Override
 	public boolean createProject(Project project) throws Exception {
 		try{
@@ -40,10 +50,18 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 
+	/**
+	 * Sets the ProjectServiceValidation class in order to validate input
+	 * @param projectServiceValidation
+	 */
 	public void setProjectServiceValidation(ProjectServiceValidation projectServiceValidation) {
 		this.projectServiceValidation = projectServiceValidation;
 	}
 
+	/**
+	 * Sets the ProjectDao to exchange data
+	 * @param projectDao
+	 */
 	public void setProjectDao(ProjectDao projectDao) {
 		this.projectDao = projectDao;
 	}

@@ -14,6 +14,13 @@ public class ProjectServiceValidation {
 	@Autowired
 	ProjectDao projectDao;
 
+	/**
+	 * Checks to see that the name of the project is not whitespace and that it does
+	 * not already exist in the database.
+	 * @param project
+	 * @return boolean
+	 * @throws Exception
+	 */
 	public boolean projectName(Project project) throws Exception{
 		boolean result = true;
 		try{
@@ -37,9 +44,11 @@ public class ProjectServiceValidation {
 		}
 	}
 
+	/**
+	 * Sets the ProjectDao to exchange data
+	 * @param projectDao
+	 */
 	public void setProjectDao(ProjectDao projectDao) {
 		this.projectDao = projectDao;
 	}
-	
-	
 }

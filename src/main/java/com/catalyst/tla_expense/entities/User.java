@@ -20,24 +20,41 @@ import com.catalyst.tla_expense.utility.RegexConstants;
 @Table(name="expense_user", schema="public")
 public class User {
 	
+	/**
+	 * Generates the user_id which is the primary key.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int userId;
 	
+	/**
+	 * Required field for a user to input their password which is used
+	 * to login to the app.
+	 */
 	@NotNull
 	@Column(name="user_password")
 	private String userPassword;
 
+	/**
+	 * Required field for a user to input their email which becomes their
+	 * username in order to log into the app.
+	 */
 	@NotNull 
 	@Pattern(regexp=RegexConstants.USER_EMAIl)
 	@Column(name="user_email", unique = true)
 	private String userEmail;
 	
+	/**
+	 * Generates a date when a user is added to the database.
+	 */
 	@Column(name="create_date", columnDefinition="DATE")
 	@JsonFormat(pattern = "MM/dd/yyyy", timezone="PST")
 	private Date createDate = new Date();
 
+	/**
+	 * Getters and Setters
+	 */
 	public int getUserId() {
 		return userId;
 	}

@@ -2,7 +2,7 @@ package com.catalyst.tla_expense.utility;
 
 public class RegexConstants {
 
-	/*
+	/**
 	 * requires an @ sign
 	 * requires at least 2 characters
 	 * after the "." character
@@ -12,7 +12,8 @@ public class RegexConstants {
 	 */
 	public static final String USER_EMAIl = "^[a-zA-Z0-9._%+-]{1,}[@]{1}[a-zA-Z0-9.-]{1,}[.]{1}[a-zA-Z]{2,}$";
 	
-	/* PASSWORD REGEX:
+	/**
+	 * PASSWORD REGEX:
 	 * a minimum of 8 characters
 	 * one upper case
 	 * one lower case

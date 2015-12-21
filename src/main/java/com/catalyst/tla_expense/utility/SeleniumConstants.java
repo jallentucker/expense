@@ -11,12 +11,19 @@ import com.catalyst.tla_expense.SeleniumFramework.Pages.RegisterPage;
 
 public class SeleniumConstants {
 
+	/**
+	 * Constant made to use throughout the app.
+	 */
 	public static final String URL = "http://localhost:8080";
 
 	public String getUrl() {
 		return URL;
 	}
 	
+	/**
+	 * Generates a random string to use for testing.
+	 * @return randomString.
+	 */
 	public static String generateString()
 	{
 		Random rng = new Random();
@@ -31,6 +38,11 @@ public class SeleniumConstants {
 		return new String(text);
 	}
 	
+	/**
+	 * Logs in the user in order to run selenium tests since a user must
+	 * log in each time the app is launched.
+	 * @param driver
+	 */
 	public void loginUser(WebDriver driver){
 	    LoginPage register = new LoginPage(driver);
         register.sendKeys(By.id("username"), "dummy@gmail.com");
@@ -39,11 +51,4 @@ public class SeleniumConstants {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		register.click(By.id("loginSubmit"));
 	}
-	
-	
-	
-	public void login(WebDriver driver){
-		
-	}
-
 }
