@@ -46,7 +46,18 @@ public class CreateReportPageEvaluation extends TestPageObject
 		
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		report.sendKeys(By.id("reportName"), "        ");
+		Select projectDropdown = new Select(driver.findElement(By.id("projectDropDown")));
+		projectDropdown.selectByIndex(1);
+		Select expenseTypeDropdown = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
+		expenseTypeDropdown.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input"), "100");
 		
 		try{
 			System.out.println("IF statement hit, setting save to true");
