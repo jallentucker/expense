@@ -62,7 +62,8 @@ public class RegisterPageEvaluation extends TestPageObject{
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
 		 register.click(By.id("loginSubmit"));
-		 
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 		 register.find(By.id("logout_button"));
 		 String actualURL = register.getUrl();
 		 assertEquals((URL + "/#/home"), actualURL);
