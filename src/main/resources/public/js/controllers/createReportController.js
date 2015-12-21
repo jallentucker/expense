@@ -1,8 +1,8 @@
 
 angular.module('myApp').controller('createReportController',
-		['$scope', '$compile', '$element', 'createReportFactory', 'lineItemFactory', 
-		 'lineTypeListFactory', 'toastr', function($scope, $compile, $element, createReportFactory, 
-		  lineItemFactory, lineTypeListFactory, toastr){
+		['$scope', '$compile', '$element', 'createReportFactory', 
+		 'toastr', function($scope, $compile, $element, createReportFactory, 
+		  toastr){
                                                              
     $scope.monetary= [];
     $scope.expenseType = [];
@@ -58,7 +58,7 @@ angular.module('myApp').controller('createReportController',
                         report.reportId = success.data;
                         
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            lineItemFactory.postLineItem($scope.lineItemArray[i]).then(
+                        	createReportFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
                                  $scope.postLineItemSuccess = success.data;
                              },
@@ -102,7 +102,7 @@ angular.module('myApp').controller('createReportController',
 			}
 		);
 	
-	$scope.lineTypesList = lineTypeListFactory.getType().then(
+	$scope.lineTypesList = createReportFactory.getType().then(
             function(success){
                 $scope.result = success.data;
             },

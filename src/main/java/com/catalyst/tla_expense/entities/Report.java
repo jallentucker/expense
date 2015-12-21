@@ -51,6 +51,7 @@ public class Report {
 	/**
 	 * Joins the report table with the project table via project_id
 	 */
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="project_id")
 	private Project project;

@@ -57,7 +57,6 @@ public class ReportServiceImpl implements ReportService {
 		 */
 		if(reportName.trim().length() > 2)
 		{
-			reportName.toLowerCase();
 			report.setReportName(reportName);
 			return this.reportDao.createReport(report);
 		}
