@@ -5,6 +5,7 @@
 		$state.transitionTo('home');
 	}]);
 	
+	// Create Project page.
 	function appConfig($stateProvider){		       
         var createProject = {
             name:'createProject',
@@ -14,6 +15,7 @@
         };
         $stateProvider.state(createProject);
         
+        // Home page.
         var home = {
                 name:'home',
                 url:'/home',
@@ -21,6 +23,7 @@
          };
          $stateProvider.state(home);
          
+         // Create Report page.
          var createReport = {
         		 name: 'createReport',
         		 url: '/createReport',

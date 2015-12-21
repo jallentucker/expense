@@ -3,7 +3,8 @@ angular.module('myApp').controller('createReportController',
 		['$scope', '$compile', '$element', 'createReportFactory', 
 		 'toastr', function($scope, $compile, $element, createReportFactory, 
 		  toastr){
-                                                             
+                 
+	// Sets variable values
     $scope.monetary= [];
     $scope.expenseType = [];
 	$scope.report = {};
@@ -11,13 +12,15 @@ angular.module('myApp').controller('createReportController',
 	$scope.submitBtnHide = true;
 	$scope.isClicked = false;
 	
+	// Any change after clicking the save button in order to show the submit button
+	// hides the submit button again and waits for save button click.
 	$scope.onChange = function(){
 		if($scope.isClicked == true){
 			$scope.submitBtnHide = true;
 		}
 	}
 	
-	
+	// Retrieves the current user that is logged into the app.
     $scope.getCurrentUser = createReportFactory.getCurrentUser().then(
     		function(success){
     			$scope.currentUser = success.data;
@@ -26,13 +29,17 @@ angular.module('myApp').controller('createReportController',
     			$scope.currentUser = error;
     	});
     
+    // Makes sure that all the drop down menus have a value selected in order to save a report.
     $scope.reqDropdown = function() {
-    	if($scope.selectedProject && $scope.selectedProject.projectId && $scope.lineItems.length == 0 &&
+    	if($scope.selectedProject && $scope.selectedProject.projectId &&
     			$scope.expenseType[$index] && $scope.expenseType[$index].lineItemTypeId) return false;
     	return true;
     }
    
+    // Adds a report and line items to the database.  This also persists any changes made before the
+    // report is submitted to the database and you're returned to the home page.
     $scope.createReport = function(report, selectedProject, lineItemTypes, status){
+    		// Tells it which values to grab to be passed into the database.
     		report.user = $scope.currentUser;
             report.project = {};
             report.project.projectId = selectedProject;
@@ -41,8 +48,11 @@ angular.module('myApp').controller('createReportController',
             	createReportFactory.createReport(report).then(
                     function(success){
                         $scope.createReportResult = success;
+                        // Sets the reportId for the entire report so that any changes before submit 
+                        // will persist to the database without adding another report.
                         report.reportId = success.data;
                         for(var i = 0; i < $scope.expenseType.length; i++){
+                        	// Line item object that is passed into the database.
                             var lineItemObj = {
                                 'lineItemType':{
                                         'lineItemTypeId' : $scope.expenseType[i]
@@ -57,6 +67,7 @@ angular.module('myApp').controller('createReportController',
                         
                         report.reportId = success.data;
                         
+                        // Adds each line item on the page.
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
                         	createReportFactory.postLineItem($scope.lineItemArray[i]).then(
                              function(success){
@@ -67,10 +78,14 @@ angular.module('myApp').controller('createReportController',
                             })
                         }
                         console.log($scope.lineItemArray);
+                        // If status is equal to 'submitted' and it is successful, return to the 
+                        // home page.
                         if (status == 2)
                         	{
                         		window.location = "/#/home";
                         	}
+                        // If status is equal to 'saved' send the data to the database and alert the
+                        // user that the data has been saved.
                         if(status == 4){
                         	$scope.submitBtnHide = false;
                         	$scope.isClicked = true;
@@ -93,6 +108,7 @@ angular.module('myApp').controller('createReportController',
             }
         }
 
+    // Retrieves the projects in the database and populates the project dropdown.
 	$scope.ProjectList = createReportFactory.getProjects().then(
 			function(success){
 				$scope.projectName = success.data;
@@ -102,6 +118,7 @@ angular.module('myApp').controller('createReportController',
 			}
 		);
 	
+	// Retrieves the line item types in the database and populates the line item types dropdown.
 	$scope.lineTypesList = createReportFactory.getType().then(
             function(success){
                 $scope.result = success.data;
@@ -111,15 +128,20 @@ angular.module('myApp').controller('createReportController',
             }
         );
 	
+		// Sets the line Items array and line item object to null
 		$scope.lineItems=[];
         $scope.lineItem= {};
     
         $scope.lineItemArray = [];
 		$scope.count = 0;
+		
+		// Populates the page with a clean line item object for the user to fill in 
+		// with desired values.
 		$scope.addLineitem = function(){
             $scope.lineItems.push($scope.lineItem);
 		}
 		
+		// When the page loads, one line item shows on the page.
 		$scope.addLineitem();
 }])
 

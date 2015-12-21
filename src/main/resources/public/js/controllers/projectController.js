@@ -1,7 +1,9 @@
 angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'validationFactory', 'projectNameRegex', function($scope, projectFactory, validationFactory, projectNameRegex){
     
+	// Sets the project object to null.
     $scope.project = {};
     
+    // Retrieves the current user.
     $scope.getCurrentUser = projectFactory.getCurrentUser().then(
     		function(success){
     			$scope.currentUser = success.data;
@@ -10,6 +12,8 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
     			$scope.currentUser = error;
     		});
     
+    // Creates a project if the project name meets the requirements and redirects the user
+    // to the home page on a successful submit.  Otherwise, it'll stay on the same page.
     $scope.createProject = function(project){
         $scope.validateProjectName(project.projectName, true);
         if (!$scope.projectNameIsInvalid) {
@@ -28,23 +32,12 @@ angular.module('myApp').controller('projectCtrl',['$scope', 'projectFactory', 'v
         }
     };
 
+    // Validates that the name of the project meets the requirements.
     $scope.validateProjectName = function(projectName, persist) {
         if (!validationFactory.validateField(projectNameRegex, persist, projectName)) {
             $scope.projectNameIsInvalid = true;
         } else {
             $scope.projectNameIsInvalid = false;
         }
-    };
-    
-    
-    $scope.types = function(){
-        typesFactory.getTypes().then(
-            function(success){
-                $scope.result = success;
-            },
-            function(error){
-                $scope.result = error;
-            }
-        );
     };
 }])
