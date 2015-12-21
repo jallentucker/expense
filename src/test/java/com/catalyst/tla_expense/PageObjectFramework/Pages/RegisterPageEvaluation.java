@@ -52,11 +52,16 @@ public class RegisterPageEvaluation extends TestPageObject{
 	        //wait 5 secs for username to be entered
 		 register.click(By.id("registerSubmit"));
 	        //wait 5 secs for username to be entered
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		 register.find(By.id("username"));
+
 		 register.sendKeys(By.id("username"), userName);
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
 		 register.click(By.id("loginSubmit"));
-		 
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 		 register.find(By.id("logout_button"));
 		 String actualURL = register.getUrl();
 		 assertEquals((URL + "/#/home"), actualURL);
