@@ -58,7 +58,7 @@ public class RegisterPageEvaluation extends TestPageObject{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 register.sendKeys(By.id("username"), "tla@te.st");
+		 register.sendKeys(By.id("username"), userName);
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
 		 register.click(By.id("loginSubmit"));

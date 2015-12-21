@@ -41,13 +41,27 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatWhitespaceDoesNotGetAdded() {
+		
+		boolean save = true; 
+		
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), "        ");
-		report.click(By.id("ReportSubmit"));
 		
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/createReport"), actualURL);
+		try{
+			System.out.println("IF statement hit, setting save to true");
+			 if((report.find(By.id("ReportSave")).isDisplayed())){
+				 save = true;
+				 
+			 }else{
+				 save = false;
+			 }
+		}catch(Exception e){
+			save = false;
+			System.out.println("Exception occured, setting save to false");
+		}
+		
+		assertTrue(!save);
 	}
 	
 	@Test
