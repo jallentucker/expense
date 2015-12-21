@@ -86,16 +86,6 @@ public class ReportServiceImpl implements ReportService {
 		} else {
 			System.out.println("Report name doesn't meet requirements.");
 		}
-		
-//		/**
-//		 * Checks to see what the status is set to and if it is approved, then
-//		 * generate an approved date and store it.
-//		 */
-//		if(statusType.equals("approved"))
-//		{
-//			report.setApprovedDate(new Date());
-//		}
-//		this.reportDao.editReport(report);
 	}
 	public void setReportDao(ReportDao reportDao) {
 		this.reportDao = reportDao;
