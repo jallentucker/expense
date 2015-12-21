@@ -13,25 +13,6 @@ public class ReportServiceImpl implements ReportService {
 	@Autowired
 	private ReportDao reportDao;
 	
-//	@Autowired
-//	private ReportServiceValidation reportServiceValidation;
-	
-	
-//	@Override
-//	public boolean createReport(Report report) throws Exception {
-//		try{
-//			boolean result = false;
-//			boolean valid = reportServiceValidation.reportName(report);
-//			if(valid){
-//				result = true;
-//				reportDao.createReport(report);
-//			}
-//			return result;
-//		}catch(Exception e){
-//			throw new Exception(e.getMessage());
-//		}
-//	}
-	
 	/**
 	 * Retrieves a single report by id
 	 * @param id
@@ -121,7 +102,4 @@ public class ReportServiceImpl implements ReportService {
 		this.reportDao = reportDao;
 	}
 	
-//	public void setReportServiceValidation(ReportServiceValidation reportServiceValidation) {
-//		this.reportServiceValidation = reportServiceValidation;
-//	}
 }

@@ -30,7 +30,7 @@ public class Report {
 	 * Required field to add a unique report name.
 	 */
 	@NotNull
-	@Column(name = "report_name", unique=true, length=150)
+	@Column(name = "report_name", length=150)
 	private String reportName;
 	
 	/**
