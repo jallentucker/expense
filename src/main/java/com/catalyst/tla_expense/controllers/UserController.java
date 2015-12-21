@@ -25,7 +25,7 @@ public class UserController {
 	
 	/**
 	 * GET
-	 * Url "/user/get
+	 * Url "/user
 	 * Returns a list of all users.
 	 * @author cmiller
 	 */
@@ -36,7 +36,7 @@ public class UserController {
 	
 	/**
 	 * POST
-	 * Url "/user/post
+	 * Url "/user
 	 * Sends a User through the layers and eventually persists in the dao.
 	 * @author cmiller
 	 */

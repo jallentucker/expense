@@ -52,10 +52,12 @@ public class RegisterPageEvaluation extends TestPageObject{
 	        //wait 5 secs for username to be entered
 		 register.click(By.id("registerSubmit"));
 	        //wait 5 secs for username to be entered
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-		 register.find(By.id("username"));
-
+		 try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 register.sendKeys(By.id("username"), userName);
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered

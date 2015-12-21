@@ -41,29 +41,29 @@ public class CreateReportPageEvaluation extends TestPageObject
 	
 	@Test
 	public void checkThatWhitespaceDoesNotGetAdded() {
+		
+		boolean save = true; 
+		
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
 		report.sendKeys(By.id("reportName"), "        ");
-		report.click(By.id("ReportSubmit"));
 		
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/createReport"), actualURL);
+		try{
+			System.out.println("IF statement hit, setting save to true");
+			 if((report.find(By.id("ReportSave")).isDisplayed())){
+				 save = true;
+				 
+			 }else{
+				 save = false;
+			 }
+		}catch(Exception e){
+			save = false;
+			System.out.println("Exception occured, setting save to false");
+		}
+		
+		assertTrue(!save);
 	}
 	
-	@Test
-	public void checkThatReportWasSubmitted() {
-		seleniumConstants.loginUser(driver);
-		CreateReportPage report = new CreateReportPage(driver);
-		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		dropdown.selectByIndex(1);
-		report.click(By.id("ReportSubmit"));
-		report.find(By.id("logout_button"));
-
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/home"), actualURL);
-	}
 	
 	@Test
 	public void checkThatCancelButtonWorks() {
@@ -76,15 +76,33 @@ public class CreateReportPageEvaluation extends TestPageObject
 	}
 	
 	@Test 
-	public void checkThatAReportIsntSubmittedWithoutAProject() {
+	public void checkThatAReportCantBeSavedWithoutAProject() {
 		seleniumConstants.loginUser(driver);
 		CreateReportPage report = new CreateReportPage(driver);
-		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
-
-		report.click(By.id("ReportSubmit"));
+		//giving our report a name
+		report.sendKeys(By.id("reportName"), SeleniumConstants.generateString());
+		//creating 2 line items
+		report.click(By.id("lineitemBtn"));
+		Select dropdown2 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[2]/select")));
+		dropdown2.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[4]/div[1]/div[3]/input"),"55");
+		Select dropdown3 = new Select(driver.findElement(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[2]/select")));
+		dropdown3.selectByIndex(1);
+		report.sendKeys(By.xpath("/html/body/ui-view/div/div/div[2]/form/div/div/div[5]/div[1]/div[3]/input"),"55");
 		
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/createReport"), actualURL);
+		boolean saveBtnFound = true;
+		try{
+		
+			saveBtnFound =  report.find(By.id("ReportSave")).isDisplayed();
+			
+		}
+		catch(Exception E){
+			saveBtnFound = false;
+		}
+		finally{
+			assertFalse(saveBtnFound);
+		}
+
 	}
 	
 
