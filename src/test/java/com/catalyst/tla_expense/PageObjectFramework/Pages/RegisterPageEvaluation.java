@@ -45,18 +45,19 @@ public class RegisterPageEvaluation extends TestPageObject{
 	@Test
 	public void checkThatValidUserNameAndPasswordRegisterNavigatesToLoginPageAndCanUseToLogin(){
 		 RegisterPage register = new RegisterPage(driver);
-		 register.sendKeys(By.id("registerUsername"), "tla@te.st");
+		 String userName =  SeleniumConstants.generateString() + "@aol.com";
+		 register.sendKeys(By.id("registerUsername"), userName);
 		 register.sendKeys(By.id("registerPassword"), "Password1!");
 		 register.sendKeys(By.id("confirmPassword"), "Password1!");
 	        //wait 5 secs for username to be entered
 		 register.click(By.id("registerSubmit"));
 	        //wait 5 secs for username to be entered
-		 register.sendKeys(By.id("username"), "tla@te.st");
+		 register.sendKeys(By.id("username"), userName);
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
 		 register.click(By.id("loginSubmit"));
 		 
-		 
+		 register.find(By.id("logout_button"));
 		 String actualURL = register.getUrl();
 		 assertEquals((URL + "/#/home"), actualURL);
 	}
