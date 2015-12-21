@@ -64,20 +64,6 @@ public class CreateReportPageEvaluation extends TestPageObject
 		assertTrue(!save);
 	}
 	
-	@Test
-	public void checkThatReportWasSubmitted() {
-		seleniumConstants.loginUser(driver);
-		CreateReportPage report = new CreateReportPage(driver);
-		Select dropdown = new Select(driver.findElement(By.id("projectDropDown")));
-		report.sendKeys(By.id("reportName"), seleniumConstants.generateString());
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		dropdown.selectByIndex(1);
-		report.click(By.id("ReportSubmit"));
-		report.find(By.id("logout_button"));
-
-		String actualURL = report.getUrl();
-		assertEquals((URL + "/#/home"), actualURL);
-	}
 	
 	@Test
 	public void checkThatCancelButtonWorks() {
