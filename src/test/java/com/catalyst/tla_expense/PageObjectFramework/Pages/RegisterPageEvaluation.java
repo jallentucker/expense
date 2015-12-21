@@ -51,6 +51,12 @@ public class RegisterPageEvaluation extends TestPageObject{
 	        //wait 5 secs for username to be entered
 		 register.click(By.id("registerSubmit"));
 	        //wait 5 secs for username to be entered
+		 try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 register.sendKeys(By.id("username"), "tla@te.st");
 		 register.sendKeys(By.id("password"), "Password1!");       
 		 	//wait 5 secs for username to be entered
