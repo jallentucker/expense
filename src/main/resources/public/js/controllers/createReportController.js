@@ -37,7 +37,7 @@ angular.module('myApp').controller('createReportController',
     	return true;
     }
 
-    $scope.setLineItemId = function(i) {
+    var setLineItemId = function(i) {
         if ($scope.lineItemId.length !== 0 && i < $scope.lineItemId.length) {
             return $scope.lineItemId[i];
         } else {
@@ -63,7 +63,7 @@ angular.module('myApp').controller('createReportController',
                         for(var i = 0; i < $scope.expenseType.length; i++){
                         	// Line item object that is passed into the database.
                             var lineItemObj = {
-                                'lineItemId': $scope.setLineItemId(i),
+                                'lineItemId': setLineItemId(i),
                                 'lineItemType':{
                                         'lineItemTypeId' : $scope.expenseType[i]
                                 },
@@ -79,8 +79,8 @@ angular.module('myApp').controller('createReportController',
                         
                         // Adds each line item on the page.
                         var promiseArray = [];
+                        $scope.lineItemId = [];
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                            console.log($scope.lineItemArray[i]);
                         	var promise = createReportFactory.postLineItem($scope.lineItemArray[i]).then(
                                 function(success){
                                     $scope.lineItemId.push(success.data.lineItemId);
@@ -94,9 +94,10 @@ angular.module('myApp').controller('createReportController',
                             // $scope.lineItemArray[i].lineItemId = $scope.postLineItemSuccess;
                         }
                         $q.all(promiseArray).then(function() {
-                            console.log(promiseArray);
+                            $scope.lineItemId.sort(function(a, b) {
+                                return a - b;
+                            });
                         });
-                        console.log($scope.lineItemArray);
                         // If status is equal to 'submitted' and it is successful, return to the 
                         // home page.
                         if (status == 2)
@@ -110,7 +111,6 @@ angular.module('myApp').controller('createReportController',
                         	$scope.isClicked = true;
                         	toastr.success('Success', 'Your Report Has Been Saved');
                         }
-                        console.log($scope.lineItemArray);
                         $scope.lineItemArray = [];
                         // $scope.lineItems = [];
                         // $scope.lineItems.push($scope.lineItem);
