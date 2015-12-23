@@ -37,6 +37,7 @@ angular.module('myApp').controller('createReportController',
     	return true;
     }
 
+    // Grabs LineItemId from global array and attaches it to an existing line item to be edited
     var setLineItemId = function(i) {
         if ($scope.lineItemId.length !== 0 && i < $scope.lineItemId.length) {
             return $scope.lineItemId[i];
@@ -91,8 +92,8 @@ angular.module('myApp').controller('createReportController',
                                 }
                             );
                             promiseArray.push(promise);
-                            // $scope.lineItemArray[i].lineItemId = $scope.postLineItemSuccess;
                         }
+                        // Executes once all promises in promiseArray have been resolved
                         $q.all(promiseArray).then(function() {
                             $scope.lineItemId.sort(function(a, b) {
                                 return a - b;
@@ -112,10 +113,6 @@ angular.module('myApp').controller('createReportController',
                         	toastr.success('Success', 'Your Report Has Been Saved');
                         }
                         $scope.lineItemArray = [];
-                        // $scope.lineItems = [];
-                        // $scope.lineItems.push($scope.lineItem);
-                        // $scope.monetary= [];
-                        // $scope.expenseType = [];
                     },
                     function(error){
                         $scope.createReportResult = error;
