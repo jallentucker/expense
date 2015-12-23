@@ -39,14 +39,15 @@ public class LineItemServiceImplTest {
 	public void testAddLineItemWhenValid() throws Exception{
 		LineItem lineItem = new LineItem();
 		when(mockLineItemValidation.validateLineItem(lineItem)).thenReturn(true);
-		Assert.assertTrue(target.addLineItem(lineItem) >= 0);
+		when(mockLineItemDao.addLineItem(lineItem)).thenReturn(lineItem);
+		Assert.assertTrue(target.addLineItem(lineItem) == lineItem);
 	}
 	
 	@Test
 	public void testAddLineItemWhenInvalid() throws Exception{
 		LineItem lineItem = new LineItem();
 		when(mockLineItemValidation.validateLineItem(lineItem)).thenReturn(false);
-		Assert.assertFalse((target.addLineItem(lineItem)) >= 0);
+		Assert.assertTrue((target.addLineItem(lineItem)) == null);
 	}
 	
 	@Test
