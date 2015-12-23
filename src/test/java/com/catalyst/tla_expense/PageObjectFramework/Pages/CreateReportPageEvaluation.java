@@ -196,6 +196,7 @@ public class CreateReportPageEvaluation extends TestPageObject
 		enterReportNameProjectLineitems(report);
 		//save and submit a valid report
 		report.click(By.id("ReportSave"));
+		new WebDriverWait(driver, 3).until(ExpectedConditions.presenceOfElementLocated(By.id("ReportSubmit")));
 		report.click(By.id("ReportSubmit"));
 		//acts like a wait to find element on new page before grabbing URL
 		report.find(By.id("logout_button"));
