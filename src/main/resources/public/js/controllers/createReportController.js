@@ -1,12 +1,13 @@
 
 angular.module('myApp').controller('createReportController',
-		['$scope', '$compile', '$element', 'createReportFactory', 
-		 'toastr', function($scope, $compile, $element, createReportFactory, 
+		['$q', '$scope', '$compile', '$element', 'createReportFactory', 
+		 'toastr', function($q, $scope, $compile, $element, createReportFactory, 
 		  toastr){
                  
 	// Sets variable values
     $scope.monetary= [];
     $scope.expenseType = [];
+    $scope.lineItemId = [];
 	$scope.report = {};
 	$scope.showSubmitBtn = false;
 	$scope.submitBtnHide = true;
@@ -54,6 +55,7 @@ angular.module('myApp').controller('createReportController',
                         for(var i = 0; i < $scope.expenseType.length; i++){
                         	// Line item object that is passed into the database.
                             var lineItemObj = {
+                                'lineItemId': $scope.lineItemId[i],
                                 'lineItemType':{
                                         'lineItemTypeId' : $scope.expenseType[i]
                                 },
@@ -68,15 +70,23 @@ angular.module('myApp').controller('createReportController',
                         report.reportId = success.data;
                         
                         // Adds each line item on the page.
+                        var promiseArray = [];
                         for(var i = 0; i <$scope.lineItemArray.length; i++){
-                        	createReportFactory.postLineItem($scope.lineItemArray[i]).then(
-                             function(success){
-                                 $scope.postLineItemSuccess = success.data;
-                             },
-                            function(error){
-                                console.log(error);
-                            })
+                            console.log($scope.lineItemArray[i]);
+                        	var promise = createReportFactory.postLineItem($scope.lineItemArray[i]).then(
+                                function(success){
+                                    $scope.postLineItemSuccess = success.data;
+                                },
+                                function(error){
+                                    console.log(error);
+                                }
+                            );
+                            promiseArray.push(promise);
+                            // $scope.lineItemArray[i].lineItemId = $scope.postLineItemSuccess;
                         }
+                        $q.all(promiseArray).then(function() {
+                            console.log(promiseArray);
+                        });
                         console.log($scope.lineItemArray);
                         // If status is equal to 'submitted' and it is successful, return to the 
                         // home page.
@@ -92,7 +102,7 @@ angular.module('myApp').controller('createReportController',
                         	toastr.success('Success', 'Your Report Has Been Saved');
                         }
                         console.log($scope.lineItemArray);
-                        $scope.lineItemArray = [];
+                        // $scope.lineItemArray = [];
                         $scope.lineItems = [];
                         $scope.lineItems.push($scope.lineItem);
                         $scope.monetary= [];

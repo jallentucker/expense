@@ -21,7 +21,7 @@ public interface LineItemService {
 	 * @return 
 	 * @throws Exception 
 	 */
-	public int addLineItem(LineItem lineItem) throws Exception;
+	public LineItem addLineItem(LineItem lineItem) throws Exception;
 
 	/**
 	 * DELETE

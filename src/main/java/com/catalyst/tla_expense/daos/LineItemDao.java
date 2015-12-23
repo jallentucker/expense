@@ -19,7 +19,7 @@ public interface LineItemDao {
 	 * @param LineItem
 	 * @author cmiller
 	 */
-	public int addLineItem(LineItem lineItem);
+	public LineItem addLineItem(LineItem lineItem);
 
 	/**
 	 * DELETE

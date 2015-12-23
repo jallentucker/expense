@@ -43,7 +43,7 @@ public class LineItemController {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value=EndpointConstants.LINE_ITEM_ENDPOINT, method = RequestMethod.POST)
-	public int addLineItem(@RequestBody LineItem lineItem) throws Exception{
+	public LineItem addLineItem(@RequestBody LineItem lineItem) throws Exception{
 		return lineItemService.addLineItem(lineItem);
 	}
 	
