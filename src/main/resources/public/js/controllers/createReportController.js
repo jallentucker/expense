@@ -36,6 +36,14 @@ angular.module('myApp').controller('createReportController',
     			$scope.expenseType[$index] && $scope.expenseType[$index].lineItemTypeId) return false;
     	return true;
     }
+
+    $scope.setLineItemId = function(i) {
+        if ($scope.lineItemId.length !== 0 && i < $scope.lineItemId.length) {
+            return $scope.lineItemId[i];
+        } else {
+            return null;
+        }
+    };
    
     // Adds a report and line items to the database.  This also persists any changes made before the
     // report is submitted to the database and you're returned to the home page.
@@ -55,7 +63,7 @@ angular.module('myApp').controller('createReportController',
                         for(var i = 0; i < $scope.expenseType.length; i++){
                         	// Line item object that is passed into the database.
                             var lineItemObj = {
-                                'lineItemId': $scope.lineItemId[i],
+                                'lineItemId': $scope.setLineItemId(i),
                                 'lineItemType':{
                                         'lineItemTypeId' : $scope.expenseType[i]
                                 },
@@ -75,6 +83,7 @@ angular.module('myApp').controller('createReportController',
                             console.log($scope.lineItemArray[i]);
                         	var promise = createReportFactory.postLineItem($scope.lineItemArray[i]).then(
                                 function(success){
+                                    $scope.lineItemId.push(success.data.lineItemId);
                                     $scope.postLineItemSuccess = success.data;
                                 },
                                 function(error){
@@ -102,11 +111,11 @@ angular.module('myApp').controller('createReportController',
                         	toastr.success('Success', 'Your Report Has Been Saved');
                         }
                         console.log($scope.lineItemArray);
-                        // $scope.lineItemArray = [];
-                        $scope.lineItems = [];
-                        $scope.lineItems.push($scope.lineItem);
-                        $scope.monetary= [];
-                        $scope.expenseType = [];
+                        $scope.lineItemArray = [];
+                        // $scope.lineItems = [];
+                        // $scope.lineItems.push($scope.lineItem);
+                        // $scope.monetary= [];
+                        // $scope.expenseType = [];
                     },
                     function(error){
                         $scope.createReportResult = error;
